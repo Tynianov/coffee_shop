@@ -38,7 +38,8 @@ class VoucherConfig(StatusModel):
         default=MIN_PURCHASE_AMOUNT
     )
     discount = models.CharField(
-        "Выберете",
+        "Выберете тип скидки",
+        choices=DISCOUNT_CHOICES,
         max_length=32,
         help_text="Выберете тип скидки",
         default=FIXED
@@ -49,3 +50,14 @@ class VoucherConfig(StatusModel):
         decimal_places=2,
         help_text="Выставите значение скидки (процент либо фиксированное значение)"
     )
+    duration = models.DurationField(
+        "Длительность действия",
+        null=True,
+        blank=True,
+        help_text="Выставите, сколько ваучер будет доступен после получения"
+                  " (оставьте пустым для того, что бы ваучер действовал всегда )"
+    )
+
+    class Meta:
+        verbose_name = "Шаблон ваучера"
+        verbose_name_plural = "Шаблоны ваучеров"

@@ -1,3 +1,8 @@
 from django.contrib import admin
 
-# Register your models here.
+from .models import VoucherConfig
+
+
+@admin.register(VoucherConfig)
+class VoucherConfigAdmin(admin.ModelAdmin):
+    list_display = ['name', 'is_active', 'type']

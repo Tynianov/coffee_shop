@@ -39,7 +39,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 
     'voucher',
-    'menu'
+    'menu',
+    'user'
 ]
 
 MIDDLEWARE = [
@@ -144,3 +145,5 @@ STATICFILES_FINDERS = (
     'django.contrib.staticfiles.finders.FileSystemFinder',
     'django.contrib.staticfiles.finders.AppDirectoriesFinder',
 )
+
+AUTH_USER_MODEL = 'user.User'
