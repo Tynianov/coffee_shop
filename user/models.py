@@ -22,3 +22,15 @@ class User(AbstractUser):
         null=True,
         blank=True
     )
+    email = models.EmailField(
+        "Адрес электронной почты",
+        max_length=255,
+        unique=True
+    )
+
+    USERNAME_FIELD = 'email'
+    REQUIRED_FIELDS = ['phone_number', 'last_name', 'first_name']
+
+    class Meta:
+        verbose_name = "Пользователь"
+        verbose_name_plural = "Пользователи"
