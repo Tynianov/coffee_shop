@@ -12,6 +12,11 @@ https://docs.djangoproject.com/en/3.0/ref/settings/
 
 import os
 
+try:
+    from .local import *
+except (ImportError, ModuleNotFoundError) as e:
+    from .production import *
+
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 PROJECT_ROOT = os.path.normpath(os.path.dirname(__file__))
@@ -48,7 +53,8 @@ INSTALLED_APPS = [
 
     'voucher',
     'menu',
-    'user'
+    'user',
+    'qr_code'
 ]
 SITE_ID = 1
 
@@ -86,21 +92,21 @@ WSGI_APPLICATION = 'coffee_shop.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'coffee_shop',
-        'USER': 'root',
-        'PASSWORD': 'root',
-        'HOST': 'localhost',
-        'PORT': '3306',
-        'OPTIONS': {
-            # 'init_command': 'SET storage_engine=InnoDB; SET sql_mode="STRICT_TRANS_TABLES"',
-            'charset': 'utf8mb4',
-            'use_unicode': True,
-        },
-    },
-}
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.mysql',
+#         'NAME': 'coffee_shop',
+#         'USER': 'root',
+#         'PASSWORD': 'root',
+#         'HOST': 'localhost',
+#         'PORT': '3306',
+#         'OPTIONS': {
+#             # 'init_command': 'SET storage_engine=InnoDB; SET sql_mode="STRICT_TRANS_TABLES"',
+#             'charset': 'utf8mb4',
+#             'use_unicode': True,
+#         },
+#     },
+# }
 
 
 # Password validation
@@ -156,3 +162,52 @@ STATICFILES_FINDERS = (
 )
 
 AUTH_USER_MODEL = 'user.User'
+
+REST_FRAMEWORK = {
+    'DEFAULT_PERMISSION_CLASSES': [
+        'rest_framework.permissions.IsAuthenticated'
+    ],
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        # 'rest_framework.authentication.SessionAuthentication',
+        'rest_framework.authentication.TokenAuthentication',
+    ),
+
+    'DEFAULT_RENDERER_CLASSES': (
+        'rest_framework.renderers.JSONRenderer',
+        # 'rest_framework.renderers.TemplateHTMLRenderer',
+        # 'rest_framework.renderers.BrowsableAPIRenderer',
+    ),
+
+    'DEFAULT_PARSER_CLASSES': (
+        'rest_framework.parsers.JSONParser',
+        'rest_framework.parsers.FormParser',
+        'rest_framework.parsers.MultiPartParser'
+    ),
+    'DEFAULT_THROTTLE_CLASSES': (
+        'rest_framework.throttling.AnonRateThrottle',
+        'rest_framework.throttling.UserRateThrottle',
+        # 'extras.dashboard.throttles.EventRateThrottle'
+    ),
+    'DEFAULT_THROTTLE_RATES': {
+        'anon': '90000/day',
+        'user': '90000/day',
+        'event': '1000/min',
+    },
+    'NON_FIELD_ERRORS_KEY': 'non_field_errors',
+    # 'EXCEPTION_HANDLER': 'knpay.error_handler.custom_exception_handler',
+    'DEFAULT_FILTER_BACKENDS': ('django_filters.rest_framework.DjangoFilterBackend',),
+    # 'VIEW_DESCRIPTION_FUNCTION': 'rest_framework_swagger.views.get_restructuredtext',
+    # 'PAGE_SIZE': 20,
+    # 'DEFAULT_CONTENT_NEGOTIATION_CLASS': 'base.negotiation.BrowserOrAPIContentNegotiation'
+    # 'DATETIME_FORMAT': DATETIME_OUTPUT_FORMAT,
+    # 'DATE_FORMAT': DATE_OUTPUT_FORMAT,
+    # 'DATETIME_INPUT_FORMATS': ['%d/%m/%Y %H:%M'],
+    # "DATE_INPUT_FORMATS": DATE_INPUT_FORMATS + ['iso-8601'],
+}
+
+# REST_AUTH_SERIALIZERS = {
+#     'LOGIN_SERIALIZER': 'user.serializers.'
+# }
+
+ACCOUNT_AUTHENTICATION_METHOD = 'email'
+ACCOUNT_EMAIL_REQUIRED = True

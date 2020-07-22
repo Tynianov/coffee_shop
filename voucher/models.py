@@ -1,6 +1,7 @@
 from django.db import models
 
 from utils.models import StatusModel
+from user.models import User
 
 
 class VoucherConfig(StatusModel):
@@ -61,3 +62,34 @@ class VoucherConfig(StatusModel):
     class Meta:
         verbose_name = "Шаблон ваучера"
         verbose_name_plural = "Шаблоны ваучеров"
+
+
+class Voucher(StatusModel):
+
+    voucher_config = models.ForeignKey(
+        VoucherConfig,
+        on_delete=models.CASCADE,
+        related_name='vouchers'
+    )
+    user = models.ForeignKey(
+        User,
+        on_delete=models.CASCADE,
+        related_name='vouchers'
+    )
+    is_scanned = models.BooleanField(
+        "Отсканирован?",
+        default=False
+    )
+    created = models.DateTimeField(
+        "дата содания",
+        auto_created=True
+    )
+    expiration_date = models.DateTimeField(
+        "Дата истечения",
+        null=True,
+        blank=True
+    )
+
+    class Meta:
+        verbose_name = "Ваучер"
+        verbose_name_plural = "Ваучеры"
