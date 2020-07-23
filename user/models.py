@@ -1,12 +1,10 @@
 from django.db import models
 from django.contrib.auth.models import AbstractUser
+from django.db.models.signals import post_save
+from django.dispatch import receiver
 
 
 class User(AbstractUser):
-    profile_image = models.ImageField(
-        upload_to='users/profile_images',
-        null=True,
-    )
     instagram_username = models.CharField(
         "Профиль в Instagram",
         max_length=30,
@@ -31,3 +29,16 @@ class User(AbstractUser):
     class Meta:
         verbose_name = "Пользователь"
         verbose_name_plural = "Пользователи"
+
+    def create_qr_code(self):
+        from qr_code.models import UserQRCode
+
+        code = UserQRCode.objects.create(user=self)
+        code.create_code(self.pk, filename=self.email)
+        return code
+
+
+@receiver(post_save, sender=User)
+def create_user_qr_code(sender, instance, created, **kwargs):
+    if created:
+        instance.create_qr_code()

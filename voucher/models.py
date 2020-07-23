@@ -1,4 +1,6 @@
 from django.db import models
+from django.db.models.signals import post_save
+from django.dispatch import receiver
 
 from utils.models import StatusModel
 from user.models import User
@@ -93,3 +95,17 @@ class Voucher(StatusModel):
     class Meta:
         verbose_name = "Ваучер"
         verbose_name_plural = "Ваучеры"
+
+    def create_qr_code(self):
+        from qr_code.models import VoucherQRCode
+
+        code = VoucherQRCode.objects.create(user=self)
+        code.create_code(self.pk, filename=self.pk)
+        return code
+
+
+@receiver(post_save, sender=User)
+def create_user_qr_code(sender, instance, created, **kwargs):
+    if created:
+        instance.create_qr_code()
+
