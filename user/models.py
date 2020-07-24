@@ -38,7 +38,8 @@ class User(AbstractUser):
         return code
 
 
-@receiver(post_save, sender=User)
-def create_user_qr_code(sender, instance, created, **kwargs):
-    if created:
-        instance.create_qr_code()
+# @receiver(post_save, sender=User)
+# def create_user_qr_code(sender, instance, created, **kwargs):
+#     if created:
+#         if not hasattr(instance, 'qr_code'):
+#             instance.create_qr_code()
