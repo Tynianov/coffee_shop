@@ -54,9 +54,11 @@ INSTALLED_APPS = [
     'voucher',
     'menu',
     'user',
-    'qr_code'
+    'qr_code',
+    'config'
 ]
 SITE_ID = 1
+# PROTOCOL = 'https'
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -146,20 +148,21 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
 
 STATIC_URL = '/static/'
-STATIC_ROOT = os.path.join(BASE_DIR, 'static')
-
-# Additional locations of static_repo files
-# STATICFILES_DIRS = (
-#     os.path.normpath(os.path.join(BASE_DIR, 'static')),
-# )
-
-MEDIA_URL = '/media/'
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+STATIC_ROOT = os.path.normpath(os.path.join(PROJECT_ROOT, 'assets'))
+# STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
 STATICFILES_FINDERS = (
     'django.contrib.staticfiles.finders.FileSystemFinder',
     'django.contrib.staticfiles.finders.AppDirectoriesFinder',
 )
+
+STATICFILES_DIRS = [
+    os.path.normpath(os.path.join(PROJECT_ROOT, 'static')),
+]
+
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
 
 AUTH_USER_MODEL = 'user.User'
 

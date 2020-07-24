@@ -53,7 +53,7 @@ class VoucherConfig(StatusModel):
         decimal_places=2,
         help_text="Выставите значение скидки (процент либо фиксированное значение)"
     )
-    duration = models.DurationField(
+    duration = models.PositiveIntegerField(
         "Длительность действия",
         null=True,
         blank=True,
@@ -99,12 +99,12 @@ class Voucher(StatusModel):
     def create_qr_code(self):
         from qr_code.models import VoucherQRCode
 
-        code = VoucherQRCode.objects.create(user=self)
+        code = VoucherQRCode.objects.create(voucher=self)
         code.create_code(self.pk, filename=self.pk)
         return code
 
 
-@receiver(post_save, sender=User)
+@receiver(post_save, sender=Voucher)
 def create_user_qr_code(sender, instance, created, **kwargs):
     if created:
         instance.create_qr_code()
