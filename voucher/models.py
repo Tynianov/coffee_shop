@@ -84,7 +84,7 @@ class Voucher(StatusModel):
     )
     created = models.DateTimeField(
         "дата содания",
-        auto_created=True
+        auto_now_add=True
     )
     expiration_date = models.DateTimeField(
         "Дата истечения",
