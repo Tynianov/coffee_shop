@@ -11,3 +11,8 @@ class StatusModel(models.Model):
 
     class Meta:
         abstract = True
+
+
+class StatusQuerySet(models.QuerySet):
+    def active(self):
+        return self.filter(is_active=True)

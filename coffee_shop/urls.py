@@ -18,6 +18,7 @@ from django.conf import settings
 from django.urls import path, include, re_path
 
 from user.views import CustomRegistrationView
+from config.urls import urlpatterns as config_url
 
 
 urlpatterns = [
@@ -25,7 +26,8 @@ urlpatterns = [
     re_path(r'^auth/', include('rest_auth.urls')),
     re_path(r'^register/', CustomRegistrationView.as_view(), name='register'),
     re_path(r'^rest-auth/registration/', include('rest_auth.registration.urls')),
-    re_path(r'^user/', include('user.urls'))
+    re_path(r'^user/', include('user.urls')),
+    re_path(r'restaurant/', include(config_url))
 ]
 
 if settings.DEBUG:

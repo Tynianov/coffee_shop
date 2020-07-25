@@ -2,7 +2,7 @@ from django.db import models
 from django.utils.translation import ugettext_lazy as _
 from solo.models import SingletonModel
 
-from utils.models import StatusModel
+from utils.models import StatusModel, StatusQuerySet
 
 
 class WorkHours(models.Model):
@@ -126,7 +126,7 @@ class RestaurantBranch(StatusModel):
         _("Branch image"),
         blank=True,
         null=True,
-        upload_to='restaurant/branches',
+        upload_to='branch_images',
         help_text=_("Add branch image to display it in the app")
     )
     short_description = models.CharField(
@@ -136,6 +136,8 @@ class RestaurantBranch(StatusModel):
         max_length=512,
         help_text=_("Enter short description of branch")
     )
+
+    objects = StatusQuerySet.as_manager()
 
     class Meta:
         verbose_name = _("Restaurant branch")
