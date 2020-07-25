@@ -22,3 +22,12 @@ class BranchInline(admin.ModelAdmin):
 class RestaurantConfigAdmin(admin.ModelAdmin):
     list_display = ['name', 'email', 'phone']
 
+
+@admin.register(WeekDay)
+class WeekDayAdmin(admin.ModelAdmin):
+    list_display = ['name']
+
+
+@admin.register(WorkHours)
+class WorkHoursAdmin(admin.ModelAdmin):
+    list_display = ['begin', 'end']
