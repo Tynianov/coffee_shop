@@ -1,12 +1,13 @@
 from django.db import models
+from django.utils.translation import ugettext_lazy as _
 
 
 class StatusModel(models.Model):
     is_active = models.BooleanField(
-        "Активен?",
+        _("Is active?"),
         default=True,
         db_index=True,
-        help_text="Отметьте, если объект должен быть активным"
+        help_text=_("Designate, if object is active")
     )
 
     class Meta:

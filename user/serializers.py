@@ -5,7 +5,6 @@ from voucher.serializers import VoucherSerializer
 from .models import User
 
 
-
 class CustomRegistrationSerializer(RegisterSerializer):
     email = serializers.EmailField(required=True)
     username = serializers.CharField(required=False, allow_null=True)
