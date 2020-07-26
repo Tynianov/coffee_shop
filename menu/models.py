@@ -1,4 +1,5 @@
 from django.db import models
+from django.utils.translation import ugettext_lazy as _
 
 from utils.models import StatusModel
 # Create your models here.
@@ -6,7 +7,7 @@ from utils.models import StatusModel
 
 class ProductCategory(StatusModel):
     name = models.CharField(
-        "Имя категории",
+        _("Category name"),
         max_length=128
     )
     image = models.ImageField(
@@ -14,23 +15,23 @@ class ProductCategory(StatusModel):
     )
 
     class Meta:
-        verbose_name = "Категория"
-        verbose_name_plural = "Категории"
+        verbose_name = _("Category")
+        verbose_name_plural = _("Categories")
 
 
 class Product(StatusModel):
     name = models.CharField(
-        "Название продукта",
+        _("Product name"),
         max_length=128
     )
     description = models.CharField(
-        "Описание продукта",
+        _("Product description"),
         max_length=256,
         null=True,
         blank=True
     )
     price = models.DecimalField(
-        "Цена",
+        _("Price"),
         max_digits=8,
         decimal_places=2,
     )
@@ -41,8 +42,8 @@ class Product(StatusModel):
     )
 
     class Meta:
-        verbose_name = "Продукт"
-        verbose_name_plural = "Продукты"
+        verbose_name = _("Product")
+        verbose_name_plural = _("Products")
 
 
 class ProductImage(models.Model):

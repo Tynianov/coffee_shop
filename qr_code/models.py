@@ -3,6 +3,7 @@ from io import BytesIO
 
 from django.db import models
 from django.core.files.uploadedfile import InMemoryUploadedFile
+from django.utils.translation import ugettext_lazy as _
 
 from user.models import User
 from voucher.models import Voucher
@@ -14,7 +15,7 @@ class QRCode(models.Model):
     """
 
     qr_code = models.ImageField(
-        "QR код", upload_to="qr_codes", blank=True, null=True
+        _("QR code"), upload_to="qr_codes", blank=True, null=True
     )
 
     class Meta:
@@ -52,23 +53,23 @@ class UserQRCode(QRCode):
 
     user = models.OneToOneField(
         User,
-        verbose_name="Пользователь",
+        verbose_name=_("User"),
         related_name="qr_code",
         on_delete=models.CASCADE,
     )
 
     def __str__(self):
-        return f"{self.user} QR код [{self.pk}]"
+        return _(f"{self.user} QR code [{self.pk}]")
 
     class Meta:
-        verbose_name = "QR код пользователя"
-        verbose_name_plural = "QR коды пользователей"
+        verbose_name = "User QR code"
+        verbose_name_plural = "User QR codes"
 
 
 class VoucherQRCode(QRCode):
     voucher = models.OneToOneField(
         Voucher,
-        verbose_name="Ваучер",
+        verbose_name=_("Voucher"),
         related_name="qr_code",
         on_delete=models.CASCADE,
     )
@@ -77,8 +78,8 @@ class VoucherQRCode(QRCode):
     )
 
     def __str__(self):
-        return f"{self.user} QR код [{self.pk}]"
+        return _(f"{self.voucher} QR code [{self.pk}]")
 
     class Meta:
-        verbose_name = "QR код ваучера"
-        verbose_name_plural = "QR коды ваучеров"
+        verbose_name = _("Voucher QR code")
+        verbose_name_plural = _("Voucher QR code")

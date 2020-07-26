@@ -1,6 +1,7 @@
 from django.db import models
 from django.db.models.signals import post_save
 from django.dispatch import receiver
+from django.utils.translation import ugettext_lazy as _
 
 from utils.models import StatusModel
 from user.models import User
@@ -10,60 +11,59 @@ class VoucherConfig(StatusModel):
 
     MIN_PURCHASE_AMOUNT, FOR_REGISTRATION, FOR_ALL_USERS = 'min_purchase_amount', 'for_registration', 'for_all_users'
     TYPE_CHOICES = (
-        (MIN_PURCHASE_AMOUNT, "Минимальное кол-во покупок"),
-        (FOR_REGISTRATION, "За регестрацию"),
-        (FOR_ALL_USERS, "Для всех пользователей")
+        (MIN_PURCHASE_AMOUNT, _("Minimum purchase amount")),
+        (FOR_REGISTRATION, _("For registration")),
+        (FOR_ALL_USERS, _("For all users"))
     )
     FIXED, PERCENTAGE, FREE_ITEM = 'fixed', 'percentage', 'free_item'
     DISCOUNT_CHOICES = (
-        (FIXED, 'Фиксированная скидка'),
-        (PERCENTAGE, 'Процентная скидка'),
-        (FREE_ITEM, 'Бесплатный продукт')
+        (FIXED, _('Fixed discount')),
+        (PERCENTAGE, _('Percentage dicount')),
+        (FREE_ITEM, _('Free product'))
     )
 
     name = models.CharField(
-        "Название ваучера",
+        _("Voucher name"),
         max_length=256,
-        help_text="Введите название ваучера"
+        help_text=_("Enter voucher name")
     )
     description = models.CharField(
-        "Описание ваучера",
+        _("Voucher description"),
         max_length=512,
         blank=True,
         default='',
-        help_text="Введите опсание ваучера"
+        help_text=_("Enter voucher description")
     )
     type = models.CharField(
-        "Тип ваучера",
+        _("Voucher type"),
         choices=TYPE_CHOICES,
         max_length=32,
-        help_text="Выберете тип ваучера (в каких случаях ользователи будут получать ваучеры)",
+        help_text=_("Select voucher type (in which case user receive voucher)"),
         default=MIN_PURCHASE_AMOUNT
     )
     discount = models.CharField(
-        "Выберете тип скидки",
+        _("Discount type"),
         choices=DISCOUNT_CHOICES,
         max_length=32,
-        help_text="Выберете тип скидки",
+        help_text=_("Select discount type"),
         default=FIXED
     )
     amount = models.DecimalField(
-        "Значение",
+        _("Amount"),
         max_digits=8,
         decimal_places=2,
-        help_text="Выставите значение скидки (процент либо фиксированное значение)"
+        help_text=_("Set discount amount")
     )
     duration = models.PositiveIntegerField(
-        "Длительность действия",
+        _("Voucher duration"),
         null=True,
         blank=True,
-        help_text="Выставите, сколько ваучер будет доступен после получения"
-                  " (оставьте пустым для того, что бы ваучер действовал всегда )"
+        help_text=_("Set how much days will voucher be available after creation")
     )
 
     class Meta:
-        verbose_name = "Шаблон ваучера"
-        verbose_name_plural = "Шаблоны ваучеров"
+        verbose_name = _("Voucher discount")
+        verbose_name_plural = _("Voucher discount")
 
 
 class Voucher(StatusModel):
@@ -79,22 +79,22 @@ class Voucher(StatusModel):
         related_name='vouchers'
     )
     is_scanned = models.BooleanField(
-        "Отсканирован?",
+        _("Is scanned?"),
         default=False
     )
     created = models.DateTimeField(
-        "дата содания",
+        _("Creation date"),
         auto_now_add=True
     )
     expiration_date = models.DateTimeField(
-        "Дата истечения",
+        _("Expiration date"),
         null=True,
         blank=True
     )
 
     class Meta:
-        verbose_name = "Ваучер"
-        verbose_name_plural = "Ваучеры"
+        verbose_name = _("Ваучер")
+        verbose_name_plural = _("Ваучеры")
 
     def create_qr_code(self):
         from qr_code.models import VoucherQRCode

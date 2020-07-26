@@ -1,24 +1,23 @@
 from django.db import models
 from django.contrib.auth.models import AbstractUser
-from django.db.models.signals import post_save
-from django.dispatch import receiver
+from django.utils.translation import ugettext_lazy as _
 
 
 class User(AbstractUser):
     instagram_username = models.CharField(
-        "Профиль в Instagram",
+        _("Instagram Profile"),
         max_length=30,
         null=True,
         blank=True
     )
     phone_number = models.CharField(
-        "Номер телефона",
+        _("Phone number"),
         max_length=16,
         null=True,
         blank=True
     )
     email = models.EmailField(
-        "Адрес электронной почты",
+        _("Email address"),
         max_length=255,
         unique=True
     )
@@ -27,8 +26,8 @@ class User(AbstractUser):
     REQUIRED_FIELDS = ['phone_number', 'last_name', 'first_name', 'username']
 
     class Meta:
-        verbose_name = "Пользователь"
-        verbose_name_plural = "Пользователи"
+        verbose_name = _("User")
+        verbose_name_plural = _("Users")
 
     def create_qr_code(self):
         from qr_code.models import UserQRCode

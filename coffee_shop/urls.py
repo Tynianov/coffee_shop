@@ -15,6 +15,7 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.conf import settings
+from django.conf.urls.i18n import i18n_patterns
 from django.urls import path, include, re_path
 
 from user.views import CustomRegistrationView
@@ -22,13 +23,17 @@ from config.urls import urlpatterns as config_url
 
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
     re_path(r'^auth/', include('rest_auth.urls')),
     re_path(r'^register/', CustomRegistrationView.as_view(), name='register'),
     re_path(r'^rest-auth/registration/', include('rest_auth.registration.urls')),
     re_path(r'^user/', include('user.urls')),
     re_path(r'restaurant/', include(config_url))
 ]
+
+urlpatterns += i18n_patterns(
+    re_path(f"{settings.ADMIN_URL}/", admin.site.urls, name="admin"),
+    prefix_default_language=False,
+)
 
 if settings.DEBUG:
     from django.conf.urls.static import static
