@@ -11,3 +11,5 @@ coffee_shop/settings/production.py
 *.pyc
 
 __pycache__
+
+production.py
