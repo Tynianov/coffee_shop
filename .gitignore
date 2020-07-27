@@ -6,4 +6,8 @@ statifiles/
 
 test/
 coffee_shop/local.py
-coffee_shop/production.py
+coffee_shop/settings/production.py
+
+*.pyc
+
+__pycache__

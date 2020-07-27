@@ -13,13 +13,10 @@ https://docs.djangoproject.com/en/3.0/ref/settings/
 import os
 from django.utils.translation import ugettext_lazy as _
 
-try:
-    from .local import *
-except (ImportError, ModuleNotFoundError) as e:
-    from .production import *
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
-BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+# BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 PROJECT_ROOT = os.path.normpath(os.path.dirname(__file__))
 
 # Quick-start development settings - unsuitable for production
@@ -98,21 +95,21 @@ WSGI_APPLICATION = 'coffee_shop.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases
 
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.mysql',
-#         'NAME': 'coffee_shop',
-#         'USER': 'root',
-#         'PASSWORD': 'root',
-#         'HOST': 'localhost',
-#         'PORT': '3306',
-#         'OPTIONS': {
-#             # 'init_command': 'SET storage_engine=InnoDB; SET sql_mode="STRICT_TRANS_TABLES"',
-#             'charset': 'utf8mb4',
-#             'use_unicode': True,
-#         },
-#     },
-# }
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'coffee_shop',
+        'USER': 'root',
+        'PASSWORD': 'root',
+        'HOST': 'localhost',
+        'PORT': '3306',
+        'OPTIONS': {
+            # 'init_command': 'SET storage_engine=InnoDB; SET sql_mode="STRICT_TRANS_TABLES"',
+            'charset': 'utf8mb4',
+            'use_unicode': True,
+        },
+    },
+}
 
 
 # Password validation
@@ -144,7 +141,7 @@ LANGUAGES = (
     ('ru', _('Russian')),
 )
 
-LOCALE_PATHS = (os.path.normpath(os.path.join(BASE_DIR, 'locale')),)
+LOCALE_PATHS = ('locale', BASE_DIR)
 
 TIME_ZONE = 'UTC'
 
@@ -160,8 +157,7 @@ ADMIN_URL = 'admin'
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
 
 STATIC_URL = '/static/'
-STATIC_ROOT = os.path.normpath(os.path.join(PROJECT_ROOT, 'assets'))
-# STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 STATICFILES_FINDERS = (
     'django.contrib.staticfiles.finders.FileSystemFinder',
@@ -169,7 +165,7 @@ STATICFILES_FINDERS = (
 )
 
 STATICFILES_DIRS = [
-    os.path.normpath(os.path.join(PROJECT_ROOT, 'static')),
+    os.path.join(BASE_DIR, 'static'),
 ]
 
 MEDIA_URL = '/media/'
