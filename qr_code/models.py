@@ -74,7 +74,7 @@ class VoucherQRCode(QRCode):
         on_delete=models.CASCADE,
     )
     qr_code = models.ImageField(
-        "QR код", upload_to="vouchers/qr_codes", blank=True, null=True
+        _("QR Code"), upload_to="vouchers/qr_codes", blank=True, null=True
     )
 
     def __str__(self):

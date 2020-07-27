@@ -93,8 +93,8 @@ class Voucher(StatusModel):
     )
 
     class Meta:
-        verbose_name = _("Ваучер")
-        verbose_name_plural = _("Ваучеры")
+        verbose_name = _("Voucher")
+        verbose_name_plural = _("Vouchers")
 
     def create_qr_code(self):
         from qr_code.models import VoucherQRCode

@@ -6,11 +6,11 @@ from utils.models import StatusModel, StatusQuerySet
 
 
 class WorkHours(models.Model):
-    begin = models.TimeField("Начало")
-    end = models.TimeField("Конец")
+    begin = models.TimeField(_("Start"))
+    end = models.TimeField(_('End'))
 
     class Meta:
-        verbose_name = "Рабочие время"
+        verbose_name = _("Work Hours")
 
     def __str__(self):
         return self.begin.strftime("%H:%M") + "-" + self.end.strftime("%H:%M")
@@ -35,8 +35,8 @@ class WeekDay(models.Model):
         return f"{self.get_name_display()}, {self.working_hours}"
 
     class Meta:
-        verbose_name = "Week day"
-        verbose_name_plural = "Week days"
+        verbose_name = _("Week day")
+        verbose_name_plural = _("Week days")
 
     @property
     def working_hours(self):

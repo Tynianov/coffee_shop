@@ -13,3 +13,4 @@ coffee_shop/settings/production.py
 __pycache__
 
 production.py
+*.mo
