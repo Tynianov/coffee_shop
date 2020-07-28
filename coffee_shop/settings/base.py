@@ -49,13 +49,15 @@ INSTALLED_APPS = [
     'allauth.account',
     'rest_auth.registration',
     'ckeditor',
+    'drf_yasg',
 
     'voucher',
     'menu',
     'user',
     'qr_code',
     'config',
-    'post'
+    'post',
+    'api'
 ]
 SITE_ID = 1
 # PROTOCOL = 'https'

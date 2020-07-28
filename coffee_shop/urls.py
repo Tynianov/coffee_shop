@@ -13,23 +13,32 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
+from rest_framework import permissions
+from drf_yasg.views import get_schema_view
+from drf_yasg import openapi
 from django.contrib import admin
 from django.conf import settings
 from django.conf.urls.i18n import i18n_patterns
 from django.urls import path, include, re_path
 
 from user.views import CustomRegistrationView
-from config.urls import urlpatterns as config_url
-from post.urls import urlpatterns as posts_url
 
+
+schema_view = get_schema_view(
+   openapi.Info(
+      title="Coffee shop API",
+      default_version='v1',
+   ),
+   public=True,
+   permission_classes=(permissions.AllowAny,),
+)
 
 urlpatterns = [
     re_path(r'^auth/', include('rest_auth.urls')),
     re_path(r'^register/', CustomRegistrationView.as_view(), name='register'),
     re_path(r'^rest-auth/registration/', include('rest_auth.registration.urls')),
-    re_path(r'^user/', include('user.urls')),
-    re_path(r'restaurant/', include(config_url)),
-    re_path(r'posts/', include(posts_url))
+    re_path('^api/v1/', include('api.urls')),
+    re_path(r'^swagger/$', schema_view.with_ui('swagger', cache_timeout=0), name='schema-swagger-ui'),
 ]
 
 urlpatterns += i18n_patterns(

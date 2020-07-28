@@ -14,3 +14,4 @@ __pycache__
 
 production.py
 *.mo
+/coffee_shop/settings/local.py
