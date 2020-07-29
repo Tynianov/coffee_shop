@@ -3,8 +3,13 @@ from django.db.models.signals import post_save
 from django.dispatch import receiver
 from django.utils.translation import ugettext_lazy as _
 
-from utils.models import StatusModel
+from utils.models import StatusModel, StatusQuerySet
 from user.models import User
+
+
+class VoucherQuerySet(StatusQuerySet):
+    def min_purchase_type(self):
+        return self.active().filter(type=VoucherConfig.MIN_PURCHASE_AMOUNT)
 
 
 class VoucherConfig(StatusModel):
@@ -60,10 +65,26 @@ class VoucherConfig(StatusModel):
         blank=True,
         help_text=_("Set how much days will voucher be available after creation")
     )
+    purchase_count = models.PositiveIntegerField(
+        _("Purchase count"),
+        null=True,
+        blank=True,
+        help_text=_("Set minimum purchase amount for receiving voucher")
+    )
+
+    objects = VoucherQuerySet.as_manager()
 
     class Meta:
         verbose_name = _("Voucher discount")
         verbose_name_plural = _("Voucher discount")
+
+
+class VoucherQuerySet(StatusQuerySet):
+    def not_scanned(self):
+        return self.filter(is_scanned=False)
+
+    def scanned(self):
+        return self.filter(is_scanned=True)
 
 
 class Voucher(StatusModel):
@@ -91,6 +112,8 @@ class Voucher(StatusModel):
         null=True,
         blank=True
     )
+
+    objects = VoucherQuerySet.as_manager()
 
     class Meta:
         verbose_name = _("Voucher")

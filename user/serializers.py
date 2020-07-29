@@ -1,7 +1,12 @@
+from datetime import timedelta
+
+from django.utils import timezone
 from rest_framework import serializers
 from rest_auth.registration.serializers import RegisterSerializer
+from django.utils.translation import ugettext_lazy as _
 
 from voucher.serializers import VoucherSerializer
+from voucher.models import Voucher, VoucherConfig
 from .models import User
 
 
@@ -26,5 +31,37 @@ class UserSerializer(serializers.ModelSerializer):
             "phone_number",
             "instagram_username",
             "qr_code",
-            "vouchers"
+            "vouchers",
+            "current_purchase_count"
         ]
+
+
+class ValidateUserQrCodeSerializer(serializers.Serializer):
+    id = serializers.IntegerField()
+
+    def validate(self, attrs):
+        id = attrs.get('id')
+        user = User.objects.filter(id=id).first()
+        if not user:
+            raise serializers.ValidationError({
+                'message': _("Invalid user QR code")
+            })
+
+        user.current_purchase_count += 1
+        user.save()
+
+        for voucher_config in VoucherConfig.objects.min_purchase_type():
+            if voucher_config.purchase_count <= user.current_purchase_count:
+                voucher_data = {
+                    'user': user,
+                    'voucher_config': voucher_config
+                }
+                if voucher_config.duration:
+                    now = timezone.localtime()
+                    expiration_date = now + timedelta(days=voucher_config.duration)
+                    voucher_data.update({
+                        'expiration_date': expiration_date
+                    })
+                Voucher.objects.create(**voucher_data)
+
+        return attrs
