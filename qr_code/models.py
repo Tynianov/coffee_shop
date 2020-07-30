@@ -59,7 +59,7 @@ class UserQRCode(QRCode):
     )
 
     def __str__(self):
-        return _(f"{self.user} QR code [{self.pk}]")
+        return f"{self.user} QR code [{self.pk}]"
 
     class Meta:
         verbose_name = "User QR code"

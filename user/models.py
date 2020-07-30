@@ -1,6 +1,11 @@
 from django.db import models
+from django.db.models.signals import post_save
+from django.urls import reverse
 from django.contrib.auth.models import AbstractUser
 from django.utils.translation import ugettext_lazy as _
+from django.dispatch import receiver
+
+from utils.funcs import get_backend_url
 
 
 class User(AbstractUser):
@@ -41,12 +46,14 @@ class User(AbstractUser):
         from qr_code.models import UserQRCode
 
         code = UserQRCode.objects.create(user=self)
-        code.create_code(self.pk, filename=self.email)
+        path = reverse('scan-user-code', args=(self.pk, ))
+        url = f"{get_backend_url()}{path}"
+        code.create_code(url, filename=self.email)
         return code
 
 
-# @receiver(post_save, sender=User)
-# def create_user_qr_code(sender, instance, created, **kwargs):
-#     if created:
-#         if not hasattr(instance, 'qr_code'):
-#             instance.create_qr_code()
+@receiver(post_save, sender=User)
+def create_user_qr_code(sender, instance, created, **kwargs):
+    if created:
+        if not hasattr(instance, 'qr_code'):
+            instance.create_qr_code()

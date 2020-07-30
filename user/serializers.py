@@ -5,7 +5,7 @@ from rest_framework import serializers
 from rest_auth.registration.serializers import RegisterSerializer
 from django.utils.translation import ugettext_lazy as _
 
-from voucher.serializers import VoucherSerializer
+from voucher.serializers import UserDetailsVoucherSerializer
 from voucher.models import Voucher, VoucherConfig
 from .models import User
 
@@ -20,7 +20,7 @@ class CustomRegistrationSerializer(RegisterSerializer):
 
 
 class UserSerializer(serializers.ModelSerializer):
-    vouchers = VoucherSerializer(many=True)
+    vouchers = UserDetailsVoucherSerializer(many=True)
 
     class Meta:
         model = User
@@ -63,5 +63,7 @@ class ValidateUserQrCodeSerializer(serializers.Serializer):
                         'expiration_date': expiration_date
                     })
                 Voucher.objects.create(**voucher_data)
+                user.current_purchase_count = 0
+                user.save()
 
         return attrs

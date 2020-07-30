@@ -1,9 +1,11 @@
 from django.db import models
 from django.db.models.signals import post_save
 from django.dispatch import receiver
+from django.urls import reverse
 from django.utils.translation import ugettext_lazy as _
 
 from utils.models import StatusModel, StatusQuerySet
+from utils.funcs import get_backend_url
 from user.models import User
 
 
@@ -123,7 +125,9 @@ class Voucher(StatusModel):
         from qr_code.models import VoucherQRCode
 
         code = VoucherQRCode.objects.create(voucher=self)
-        code.create_code(self.pk, filename=self.pk)
+        path = reverse('scan-voucher-code', args=(self.pk, ))
+        url = f"{get_backend_url()}{path}"
+        code.create_code(url, filename=self.pk)
         return code
 
 
