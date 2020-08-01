@@ -27,6 +27,12 @@ class Post(StatusModel):
         _("Title"),
         max_length=128
     )
+    short_description = models.TextField(
+        _("Short description"),
+        blank=True,
+        default="",
+        help_text=_("Set post short description to show on post preview")
+    )
     content = HTMLField(
         _("Post content")
     )

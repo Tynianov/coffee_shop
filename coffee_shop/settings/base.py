@@ -219,9 +219,9 @@ REST_FRAMEWORK = {
     # "DATE_INPUT_FORMATS": DATE_INPUT_FORMATS + ['iso-8601'],
 }
 
-# REST_AUTH_SERIALIZERS = {
-#     'LOGIN_SERIALIZER': 'user.serializers.'
-# }
+REST_AUTH_SERIALIZERS = {
+    'TOKEN_SERIALIZER': 'user.serializers.TokenSerializer'
+}
 
 ACCOUNT_AUTHENTICATION_METHOD = 'email'
 ACCOUNT_EMAIL_REQUIRED = True

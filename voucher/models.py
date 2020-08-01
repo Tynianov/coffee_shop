@@ -80,6 +80,9 @@ class VoucherConfig(StatusModel):
         verbose_name = _("Voucher discount")
         verbose_name_plural = _("Voucher discount")
 
+    def __str__(self):
+        return self.name
+
 
 class VoucherQuerySet(StatusQuerySet):
     def not_scanned(self):
@@ -120,6 +123,9 @@ class Voucher(StatusModel):
     class Meta:
         verbose_name = _("Voucher")
         verbose_name_plural = _("Vouchers")
+
+    def __str__(self):
+        return f"{self.voucher_config.name} - {self.user.email}"
 
     def create_qr_code(self):
         from qr_code.models import VoucherQRCode

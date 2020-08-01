@@ -5,21 +5,20 @@ from .models import Post
 
 
 class PostListSerializer(serializers.ModelSerializer):
-    short_content = serializers.SerializerMethodField()
+    short_description = serializers.SerializerMethodField()
     first_image = serializers.SerializerMethodField()
 
     class Meta:
         model = Post
-        fields = ['id', 'title', 'short_content', 'first_image']
+        fields = ['id', 'title', 'short_description', 'first_image', 'content']
 
-    def get_short_content(self, obj):
-        if len(obj.content) < 128:
-            return obj.content
-        return f'{obj.content[:128]}...'
+    def get_short_description(self, obj):
+        if len(obj.short_description) < 128:
+            return obj.short_description
+        return f'{obj.short_description[:128]}...'
 
     def get_first_image(self, obj):
         if obj.images:
-            print('!!!', obj.images.all().first().image)
             return get_absolute_url(obj.images.all().first().image.url)
         return None
 

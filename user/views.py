@@ -1,10 +1,14 @@
+from rest_framework.permissions import IsAdminUser
 from rest_framework import status
 from rest_framework.views import APIView
 from rest_auth.registration.views import RegisterView
 from rest_framework.response import Response
 from django.utils.translation import ugettext_lazy as _
 
-from .serializers import CustomRegistrationSerializer, UserSerializer, ValidateUserQrCodeSerializer
+from .serializers import \
+    CustomRegistrationSerializer,\
+    UserSerializer,\
+    ValidateUserQrCodeSerializer
 
 
 class CustomRegistrationView(RegisterView):
@@ -20,6 +24,7 @@ class UserView(APIView):
 
 
 class ScanUserQRCodeView(APIView):
+    permission_classes = [IsAdminUser]
 
     def post(self, request, *args, **kwargs):
 

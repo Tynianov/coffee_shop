@@ -2,6 +2,7 @@ from datetime import timedelta
 
 from django.utils import timezone
 from rest_framework import serializers
+from rest_auth.models import TokenModel
 from rest_auth.registration.serializers import RegisterSerializer
 from django.utils.translation import ugettext_lazy as _
 
@@ -21,6 +22,7 @@ class CustomRegistrationSerializer(RegisterSerializer):
 
 class UserSerializer(serializers.ModelSerializer):
     vouchers = UserDetailsVoucherSerializer(many=True)
+    voucher_purchase_count = serializers.SerializerMethodField()
 
     class Meta:
         model = User
@@ -32,8 +34,16 @@ class UserSerializer(serializers.ModelSerializer):
             "instagram_username",
             "qr_code",
             "vouchers",
-            "current_purchase_count"
+            "current_purchase_count",
+            "voucher_purchase_count"
         ]
+
+    def get_voucher_purchase_count(self, obj):
+        voucher_conf = VoucherConfig.objects\
+            .filter(type=VoucherConfig.MIN_PURCHASE_AMOUNT)\
+            .order_by('purchase_count')\
+            .first()
+        return voucher_conf.purchase_count
 
 
 class ValidateUserQrCodeSerializer(serializers.Serializer):
@@ -67,3 +77,14 @@ class ValidateUserQrCodeSerializer(serializers.Serializer):
                 user.save()
 
         return attrs
+
+
+class TokenSerializer(serializers.ModelSerializer):
+    is_staff = serializers.SerializerMethodField()
+
+    class Meta:
+        model = TokenModel
+        fields = ['key', 'is_staff']
+
+    def get_is_staff(self, obj):
+        return obj.user.is_staff or obj.user.is_superuser
