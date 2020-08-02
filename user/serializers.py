@@ -23,6 +23,7 @@ class CustomRegistrationSerializer(RegisterSerializer):
 class UserSerializer(serializers.ModelSerializer):
     vouchers = UserDetailsVoucherSerializer(many=True)
     voucher_purchase_count = serializers.SerializerMethodField()
+    is_staff = serializers.SerializerMethodField()
 
     class Meta:
         model = User
@@ -35,15 +36,18 @@ class UserSerializer(serializers.ModelSerializer):
             "qr_code",
             "vouchers",
             "current_purchase_count",
-            "voucher_purchase_count"
+            "voucher_purchase_count",
+            "is_staff"
         ]
 
     def get_voucher_purchase_count(self, obj):
-        voucher_conf = VoucherConfig.objects\
-            .filter(type=VoucherConfig.MIN_PURCHASE_AMOUNT)\
-            .order_by('purchase_count')\
-            .first()
-        return voucher_conf.purchase_count
+        voucher_conf = VoucherConfig.objects \
+            .filter(type=VoucherConfig.MIN_PURCHASE_AMOUNT) \
+            .order_by('purchase_count')
+        return voucher_conf[0].purchase_count if voucher_conf.count() > 0 else 0
+
+    def get_is_staff(self, obj):
+        return obj.is_staff or obj.is_superuser
 
 
 class ValidateUserQrCodeSerializer(serializers.Serializer):
@@ -77,14 +81,3 @@ class ValidateUserQrCodeSerializer(serializers.Serializer):
                 user.save()
 
         return attrs
-
-
-class TokenSerializer(serializers.ModelSerializer):
-    is_staff = serializers.SerializerMethodField()
-
-    class Meta:
-        model = TokenModel
-        fields = ['key', 'is_staff']
-
-    def get_is_staff(self, obj):
-        return obj.user.is_staff or obj.user.is_superuser
