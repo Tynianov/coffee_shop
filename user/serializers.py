@@ -2,10 +2,10 @@ from datetime import timedelta
 
 from django.utils import timezone
 from rest_framework import serializers
-from rest_auth.models import TokenModel
 from rest_auth.registration.serializers import RegisterSerializer
 from django.utils.translation import ugettext_lazy as _
 
+from utils.funcs import get_absolute_url
 from voucher.serializers import UserDetailsVoucherSerializer
 from voucher.models import Voucher, VoucherConfig
 from .models import User
@@ -24,6 +24,7 @@ class UserSerializer(serializers.ModelSerializer):
     vouchers = UserDetailsVoucherSerializer(many=True)
     voucher_purchase_count = serializers.SerializerMethodField()
     is_staff = serializers.SerializerMethodField()
+    qr_code = serializers.SerializerMethodField()
 
     class Meta:
         model = User
@@ -48,6 +49,11 @@ class UserSerializer(serializers.ModelSerializer):
 
     def get_is_staff(self, obj):
         return obj.is_staff or obj.is_superuser
+
+    def get_qr_code(self, obj):
+        if hasattr(obj, "qr_code"):
+            return get_absolute_url(obj.qr_code.qr_code.url)
+        return None
 
 
 class ValidateUserQrCodeSerializer(serializers.Serializer):

@@ -1,4 +1,7 @@
 from datetime import timedelta
+
+from django.utils import timezone
+from django.utils.translation import ugettext_lazy as _
 from rest_framework import serializers
 
 from utils.funcs import get_absolute_url
@@ -66,3 +69,33 @@ class UserDetailsVoucherSerializer(serializers.ModelSerializer):
 
     def get_description(self, obj):
         return obj.voucher_config.description
+
+
+class ScanVoucherSerializer(serializers.Serializer):
+    id = serializers.IntegerField()
+
+    def validate(self, attrs):
+        id = attrs.get('id')
+        voucher = Voucher.objects.filter(id=id).first()
+        if not voucher:
+            raise serializers.ValidationError({
+                'message': _("Invalid voucher QR code")
+            })
+
+        if voucher.is_scanned:
+            raise serializers.ValidationError({
+                'message': _("QR code has already been scanned")
+            })
+
+        today = timezone.localtime()
+
+        if voucher.expiration_date and voucher.expiration_date < today:
+            raise serializers.ValidationError({
+                "message": _(f"Voucher expired {voucher.expiration_date.strftime('%m/%d/%Y')}")
+            })
+
+        voucher.is_scanned = True
+        voucher.save()
+        self.voucher = voucher
+
+        return attrs
