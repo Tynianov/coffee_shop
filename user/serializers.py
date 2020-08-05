@@ -87,3 +87,16 @@ class ValidateUserQrCodeSerializer(serializers.Serializer):
                 user.save()
 
         return attrs
+
+
+class UpdateUserDetailsSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = User
+        fields = [
+            "email",
+            "last_name",
+            "first_name",
+            "phone_number",
+            "instagram_username"
+        ]
+        read_only_fields = ('email', )

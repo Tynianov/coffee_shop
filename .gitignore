@@ -5,7 +5,7 @@ media/
 statifiles/
 
 test/
-coffee_shop/local.py
+coffee_shop/settings/local.py
 coffee_shop/settings/production.py
 
 *.pyc

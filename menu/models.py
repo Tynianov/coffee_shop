@@ -28,9 +28,8 @@ class Product(StatusModel):
         _("Product name"),
         max_length=128
     )
-    description = models.CharField(
+    description = models.TextField(
         _("Product description"),
-        max_length=256,
         null=True,
         blank=True
     )
