@@ -1,8 +1,10 @@
+from rest_framework.views import APIView
+from rest_framework.response import Response
 from rest_framework.viewsets import GenericViewSet
 from rest_framework.mixins import RetrieveModelMixin, ListModelMixin
 
-from .serializers import PostListSerializer, PostDetailsSerializer
-from .models import Post
+from .serializers import PostListSerializer, PostDetailsSerializer, PostConfigSerializer
+from .models import Post, PostConfig
 
 
 class PostViewSet(GenericViewSet, ListModelMixin, RetrieveModelMixin):
@@ -14,3 +16,9 @@ class PostViewSet(GenericViewSet, ListModelMixin, RetrieveModelMixin):
             return PostDetailsSerializer
         return PostListSerializer
 
+
+class PostConfigView(APIView):
+
+    def get(self, request):
+        config = PostConfig.get_solo()
+        return Response(PostConfigSerializer(config).data)

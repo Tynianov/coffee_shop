@@ -1,7 +1,7 @@
 from rest_framework import serializers
 
 from utils.funcs import get_absolute_url
-from .models import Post
+from .models import Post, PostConfig
 
 
 class PostListSerializer(serializers.ModelSerializer):
@@ -10,12 +10,12 @@ class PostListSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Post
-        fields = ['id', 'title', 'short_description', 'first_image', 'content']
+        fields = ['id', 'title', 'short_description', 'first_image', 'content', 'created']
 
     def get_short_description(self, obj):
-        if len(obj.short_description) < 128:
-            return obj.short_description
-        return f'{obj.short_description[:128]}...'
+        if len(obj.content) < 128:
+            return obj.content
+        return f'{obj.content[:128]}...'
 
     def get_first_image(self, obj):
         if obj.images:
@@ -37,3 +37,9 @@ class PostDetailsSerializer(serializers.ModelSerializer):
                 images.append(get_absolute_url(image.image.url))
             return images
         return None
+
+
+class PostConfigSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = PostConfig
+        fields = ['show_post_section', 'max_post_amount']

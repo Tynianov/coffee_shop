@@ -212,6 +212,8 @@ REST_FRAMEWORK = {
     'NON_FIELD_ERRORS_KEY': 'non_field_errors',
     # 'EXCEPTION_HANDLER': 'knpay.error_handler.custom_exception_handler',
     'DEFAULT_FILTER_BACKENDS': ('django_filters.rest_framework.DjangoFilterBackend',),
+    'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.LimitOffsetPagination',
+    'PAGE_SIZE': 100,
     # 'VIEW_DESCRIPTION_FUNCTION': 'rest_framework_swagger.views.get_restructuredtext',
     # 'PAGE_SIZE': 20,
     # 'DEFAULT_CONTENT_NEGOTIATION_CLASS': 'base.negotiation.BrowserOrAPIContentNegotiation'
