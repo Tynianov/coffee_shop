@@ -59,7 +59,8 @@ INSTALLED_APPS = [
     'qr_code',
     'config',
     'post',
-    'api'
+    'api',
+    'logs'
 ]
 SITE_ID = 1
 # PROTOCOL = 'https'

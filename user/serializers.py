@@ -8,6 +8,7 @@ from django.utils.translation import ugettext_lazy as _
 from utils.funcs import get_absolute_url
 from voucher.serializers import UserDetailsVoucherSerializer
 from voucher.models import Voucher, VoucherConfig
+from logs.models import ScanLogEntry
 from .models import User
 
 
@@ -62,9 +63,22 @@ class ValidateUserQrCodeSerializer(serializers.Serializer):
     def validate(self, attrs):
         id = attrs.get('id')
         user = User.objects.filter(id=id).first()
+
+        log_entry_data = {
+            'type': ScanLogEntry.USER,
+            'initiator': self.context.get('initiator')
+        }
+
         if not user:
+            error_msg = "Invalid user QR code"
+            log_entry_data.update({
+                'status': False,
+                'error_message': error_msg
+            })
+            ScanLogEntry.objects.create(**log_entry_data)
+
             raise serializers.ValidationError({
-                'message': _("Invalid user QR code")
+                'message': _(error_msg)
             })
 
         user.current_purchase_count += 1
@@ -85,6 +99,11 @@ class ValidateUserQrCodeSerializer(serializers.Serializer):
                 Voucher.objects.create(**voucher_data)
                 user.current_purchase_count = 0
                 user.save()
+        log_entry_data.update({
+            'status': True,
+            'user': user
+        })
+        ScanLogEntry.objects.create(**log_entry_data)
 
         return attrs
 
