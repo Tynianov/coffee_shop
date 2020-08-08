@@ -12,7 +12,7 @@ class ScanVoucherQRCode(APIView):
 
     def post(self, request, *args, **kwargs):
         voucher_id = self.kwargs.get('pk')
-        serializer = ScanVoucherSerializer(data={"id": voucher_id})
+        serializer = ScanVoucherSerializer(data={"id": voucher_id}, context={'initiator': request.user})
         if serializer.is_valid():
             data = {
                 'message': _("QR Code scanned successfully"),
