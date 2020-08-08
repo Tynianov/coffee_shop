@@ -1,4 +1,5 @@
 from django.db import models
+from django.core.exceptions import ValidationError
 from django.utils.translation import ugettext_lazy as _
 
 from utils.models import StatusModel, StatusQuerySet
@@ -43,6 +44,9 @@ class Product(StatusModel):
         on_delete=models.CASCADE,
         related_name='products'
     )
+    image = models.ImageField(
+        upload_to='products/images'
+    )
 
     objects = StatusQuerySet.as_manager()
 
@@ -52,14 +56,3 @@ class Product(StatusModel):
 
     def __str__(self):
         return f"{self.name}, {self.category.name}"
-
-
-class ProductImage(models.Model):
-    product = models.ForeignKey(
-        Product,
-        on_delete=models.CASCADE,
-        related_name='images'
-    )
-    image = models.ImageField(
-        upload_to='products/images'
-    )

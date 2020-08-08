@@ -1,26 +1,20 @@
 from rest_framework import serializers
 
 from utils.funcs import get_absolute_url
-from .models import ProductCategory, Product, ProductImage
-
-
-class ProductImageSerializer(serializers.ModelSerializer):
-    image = serializers.SerializerMethodField()
-
-    class Meta:
-        model = ProductImage
-        fields = ['id', 'image']
-
-    def get_image(self, obj):
-        return get_absolute_url(obj.image.url)
+from .models import ProductCategory, Product
 
 
 class ProductSerializer(serializers.ModelSerializer):
-    images = ProductImageSerializer(many=True)
+    image = serializers.SerializerMethodField()
 
     class Meta:
         model = Product
         fields = '__all__'
+
+    def get_image(self, obj):
+        if obj.image:
+            return get_absolute_url(obj.image.url)
+        return None
 
 
 class ProductCategoryListSerializer(serializers.ModelSerializer):
