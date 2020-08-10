@@ -31,9 +31,14 @@ class User(AbstractUser):
         default=0,
         help_text=_("Count of current user purchase")
     )
+    birth_date = models.DateField(
+        _("Birth day"),
+        null=True,
+        blank=True
+    )
 
     USERNAME_FIELD = 'email'
-    REQUIRED_FIELDS = ['phone_number', 'last_name', 'first_name', 'username']
+    REQUIRED_FIELDS = ['phone_number', 'last_name', 'first_name']
 
     def __str__(self):
         return self.email

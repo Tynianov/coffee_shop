@@ -12,12 +12,34 @@ from .models import User
 
 
 class CustomRegistrationSerializer(RegisterSerializer):
-    email = serializers.EmailField(required=True)
-    username = serializers.CharField(required=False, allow_null=True)
-    first_name = serializers.CharField(required=True)
+    email = serializers.EmailField()
+    first_name = serializers.CharField()
     last_name = serializers.CharField(required=False)
-    phone_number = serializers.CharField(required=False)
+    phone_number = serializers.CharField()
     instagram_username = serializers.CharField(required=False)
+    birth_date = serializers.DateField(required=False)
+
+    def get_cleaned_data(self):
+        super(CustomRegistrationSerializer, self).get_cleaned_data()
+        return {
+            'first_name': self.validated_data.get('first_name', ''),
+            'last_name': self.validated_data.get('last_name', ''),
+            'password1': self.validated_data.get('password1', ''),
+            'email': self.validated_data.get('email', ''),
+            'phone_number': self.validated_data.get('phone_number', ''),
+            'instagram_username': self.validated_data.get('instagram_username', ''),
+            'birth_date': self.validated_data.get('birth_date', '')
+        }
+
+    def save(self, request):
+        user = super(CustomRegistrationSerializer, self).save(request)
+        cleaned_data = self.get_cleaned_data()
+        User.objects.filter(pk=user.pk).update(**{
+            'phone_number': cleaned_data.get('phone_number', None),
+            'instagram_username': cleaned_data.get('instagram_username', None),
+            'birth_date': cleaned_data.get('birth_date', None)
+        })
+        return user
 
 
 class UserSerializer(serializers.ModelSerializer):
@@ -38,7 +60,8 @@ class UserSerializer(serializers.ModelSerializer):
             "vouchers",
             "current_purchase_count",
             "voucher_purchase_count",
-            "is_staff"
+            "is_staff",
+            "birth_date"
         ]
 
     def get_voucher_purchase_count(self, obj):

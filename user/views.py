@@ -1,18 +1,12 @@
 from rest_framework.permissions import IsAdminUser
 from rest_framework import status
 from rest_framework.views import APIView
-from rest_auth.registration.views import RegisterView
 from rest_framework.response import Response
 from django.utils.translation import ugettext_lazy as _
 
 from .serializers import \
-    CustomRegistrationSerializer,\
     UserSerializer,\
     ValidateUserQrCodeSerializer
-
-
-class CustomRegistrationView(RegisterView):
-    serializer_class = CustomRegistrationSerializer
 
 
 class UserView(APIView):

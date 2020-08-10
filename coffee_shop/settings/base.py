@@ -179,6 +179,18 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 AUTH_USER_MODEL = 'user.User'
 
+DATETIME_FORMAT = "d/m/Y H:i:s"
+
+DATE_FORMAT = "d/m/Y"
+
+DATETIME_OUTPUT_FORMAT = "%d/%m/%Y %H:%M"
+
+DATE_OUTPUT_FORMAT = "%d/%m/%Y"
+
+DATE_INPUT_FORMATS = [
+    '%d/%m/%Y'
+]
+
 REST_FRAMEWORK = {
     'DEFAULT_PERMISSION_CLASSES': [
         'rest_framework.permissions.IsAuthenticated'
@@ -217,10 +229,10 @@ REST_FRAMEWORK = {
     # 'VIEW_DESCRIPTION_FUNCTION': 'rest_framework_swagger.views.get_restructuredtext',
     # 'PAGE_SIZE': 20,
     # 'DEFAULT_CONTENT_NEGOTIATION_CLASS': 'base.negotiation.BrowserOrAPIContentNegotiation'
-    # 'DATETIME_FORMAT': DATETIME_OUTPUT_FORMAT,
-    # 'DATE_FORMAT': DATE_OUTPUT_FORMAT,
-    # 'DATETIME_INPUT_FORMATS': ['%d/%m/%Y %H:%M'],
-    # "DATE_INPUT_FORMATS": DATE_INPUT_FORMATS + ['iso-8601'],
+    'DATETIME_FORMAT': DATETIME_OUTPUT_FORMAT,
+    'DATE_FORMAT': DATE_OUTPUT_FORMAT,
+    'DATETIME_INPUT_FORMATS': ['%d/%m/%Y %H:%M'],
+    "DATE_INPUT_FORMATS": DATE_INPUT_FORMATS + ['iso-8601'],
 }
 
 ACCOUNT_AUTHENTICATION_METHOD = 'email'
@@ -228,5 +240,8 @@ ACCOUNT_EMAIL_REQUIRED = True
 ACCOUNT_USERNAME_REQUIRED = False
 
 REST_AUTH_SERIALIZERS = {
-    'USER_DETAILS_SERIALIZER': 'user.serializers.UpdateUserDetailsSerializer'
+    'USER_DETAILS_SERIALIZER': 'user.serializers.UpdateUserDetailsSerializer',
+}
+REST_AUTH_REGISTER_SERIALIZERS = {
+    'REGISTER_SERIALIZER': "user.serializers.CustomRegistrationSerializer"
 }
