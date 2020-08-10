@@ -36,6 +36,7 @@ urlpatterns = [
     re_path(r'^rest-auth/registration/', include('rest_auth.registration.urls')),
     re_path('^api/v1/', include('api.urls')),
     re_path(r'^swagger/$', schema_view.with_ui('swagger', cache_timeout=0), name='schema-swagger-ui'),
+    re_path(r'^', include('django.contrib.auth.urls')),
 ]
 
 urlpatterns += i18n_patterns(
