@@ -38,6 +38,8 @@ class Product(StatusModel):
         _("Price"),
         max_digits=8,
         decimal_places=2,
+        null=True,
+        blank=True
     )
     category = models.ForeignKey(
         ProductCategory,
@@ -56,3 +58,35 @@ class Product(StatusModel):
 
     def __str__(self):
         return f"{self.name}, {self.category.name}"
+
+    @property
+    def variation_min_price(self):
+        if not self.variations.active().exists():
+            return self.price
+        return min(list(self.variations.active().values_list('price', flat=True)))
+
+
+class ProductVariation(StatusModel):
+    name = models.CharField(
+        _("Name"),
+        max_length=128
+    )
+    price = models.DecimalField(
+        _('Price'),
+        decimal_places=2,
+        max_digits=5
+    )
+    product = models.ForeignKey(
+        Product,
+        on_delete=models.CASCADE,
+        related_name='variations'
+    )
+
+    objects = StatusQuerySet.as_manager()
+
+    class Meta:
+        verbose_name = _("Product Variation")
+        verbose_name_plural = _("Product Variations")
+
+    def __str__(self):
+        return f'{self.name} - {self.product.name}'
