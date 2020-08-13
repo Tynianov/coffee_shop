@@ -42,7 +42,7 @@ urlpatterns = [
 urlpatterns += i18n_patterns(
     re_path(r'^jet/', include('jet.urls', 'jet')),
     re_path(f"{settings.ADMIN_URL}/", admin.site.urls, name="admin"),
-    prefix_default_language=False,
+    prefix_default_language=True,
 )
 
 if settings.DEBUG:

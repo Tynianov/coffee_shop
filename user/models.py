@@ -4,6 +4,7 @@ from django.urls import reverse
 from django.contrib.auth.models import AbstractUser
 from django.utils.translation import ugettext_lazy as _
 from django.dispatch import receiver
+from phonenumber_field.modelfields import PhoneNumberField
 
 from utils.funcs import get_backend_url
 
@@ -15,12 +16,7 @@ class User(AbstractUser):
         null=True,
         blank=True
     )
-    phone_number = models.CharField(
-        _("Phone number"),
-        max_length=16,
-        null=True,
-        blank=True
-    )
+    phone_number = PhoneNumberField(_("Phone number"))
     email = models.EmailField(
         _("Email address"),
         max_length=255,

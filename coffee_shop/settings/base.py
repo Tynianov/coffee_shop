@@ -52,6 +52,7 @@ INSTALLED_APPS = [
     'rest_auth.registration',
     'ckeditor',
     'drf_yasg',
+    'phonenumber_field',
 
     'voucher',
     'menu',
