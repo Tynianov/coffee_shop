@@ -3,15 +3,20 @@ from django.db.models.signals import post_save
 from django.dispatch import receiver
 from django.urls import reverse
 from django.utils.translation import ugettext_lazy as _
+from django.core.exceptions import ValidationError
 
 from utils.models import StatusModel, StatusQuerySet
 from utils.funcs import get_backend_url
+from menu.models import Product
 from user.models import User
 
 
 class VoucherQuerySet(StatusQuerySet):
     def min_purchase_type(self):
         return self.active().filter(type=VoucherConfig.MIN_PURCHASE_AMOUNT)
+
+    def for_registration(self):
+        return self.active().filter(type=VoucherConfig.FOR_REGISTRATION)
 
 
 class VoucherConfig(StatusModel):
@@ -59,6 +64,8 @@ class VoucherConfig(StatusModel):
         _("Amount"),
         max_digits=8,
         decimal_places=2,
+        null=True,
+        blank=True,
         help_text=_("Set discount amount")
     )
     duration = models.PositiveIntegerField(
@@ -73,6 +80,12 @@ class VoucherConfig(StatusModel):
         blank=True,
         help_text=_("Set minimum purchase amount for receiving voucher")
     )
+    free_item = models.ForeignKey(
+        Product,
+        on_delete=models.SET_NULL,
+        null=True,
+        blank=True
+    )
 
     objects = VoucherQuerySet.as_manager()
 
@@ -82,6 +95,16 @@ class VoucherConfig(StatusModel):
 
     def __str__(self):
         return self.name
+
+    def clean(self):
+        if self.discount == self.FIXED or self.discount == self.PERCENTAGE and not self.amount:
+            raise ValidationError(_("Specify discount amount"))
+
+        if self.discount == self.FREE_ITEM and not self.free_item:
+            raise ValidationError(_("Select free item"))
+
+        if self.type == self.MIN_PURCHASE_AMOUNT and not self.purchase_count:
+            raise ValidationError(_("Specify purchase count"))
 
 
 class VoucherQuerySet(StatusQuerySet):

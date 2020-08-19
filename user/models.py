@@ -56,5 +56,14 @@ class User(AbstractUser):
 @receiver(post_save, sender=User)
 def create_user_qr_code(sender, instance, created, **kwargs):
     if created:
+        from voucher.models import VoucherConfig, Voucher
+
         if not hasattr(instance, 'qr_code'):
             instance.create_qr_code()
+
+        if VoucherConfig.objects.for_registration().exists():
+            voucher_conf = VoucherConfig.objects.for_registration().first()
+            Voucher.objects.create(**{
+                'voucher_config': voucher_conf,
+                'user': instance
+            })
