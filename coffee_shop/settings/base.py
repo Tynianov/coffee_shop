@@ -60,7 +60,8 @@ INSTALLED_APPS = [
     'qr_code',
     'config',
     'post',
-    'api'
+    'api',
+    'sms'
 ]
 SITE_ID = 1
 # PROTOCOL = 'https'
@@ -246,3 +247,5 @@ REST_AUTH_SERIALIZERS = {
 REST_AUTH_REGISTER_SERIALIZERS = {
     'REGISTER_SERIALIZER': "user.serializers.CustomRegistrationSerializer"
 }
+
+SMS_CODE_DURATION = 10  # in minutes

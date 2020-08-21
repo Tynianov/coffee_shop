@@ -1,3 +1,4 @@
+import random
 from datetime import timedelta
 
 from django.utils import timezone
@@ -8,6 +9,7 @@ from django.utils.translation import ugettext_lazy as _
 from utils.funcs import get_absolute_url
 from voucher.serializers import UserDetailsVoucherSerializer
 from voucher.models import Voucher, VoucherConfig
+from sms.models import PasswordResetSMSCode
 from .models import User
 
 
@@ -123,3 +125,33 @@ class UpdateUserDetailsSerializer(serializers.ModelSerializer):
             "instagram_username"
         ]
         read_only_fields = ('email', )
+
+
+class PasswordResetBySMSSerializer(serializers.Serializer):
+    phone_number = serializers.CharField()
+
+    def validate(self, attrs):
+        phone_number = attrs.get('phone_number')
+
+        user = User.objects.filter(phone_number=phone_number).first()
+
+        if not user:
+            raise serializers.ValidationError({
+                'error': _("User with entered phone number not found")
+            })
+
+        PasswordResetSMSCode.objects.create(**{
+            "phone_number": phone_number,
+            "code": self.generate_sms_code()
+        })
+        #TODO send code by SMS
+        return attrs
+
+    def generate_sms_code(self):
+        code = ''
+        while True:
+            rnd_numbers = ["%02d" % random.randint(0, 99) for i in range(3)]
+            code = ''.join(rnd_numbers)
+            if not PasswordResetSMSCode.objects.filter(code=code).exists():
+                break
+        return code
