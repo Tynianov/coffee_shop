@@ -1,4 +1,5 @@
 from rest_framework.permissions import IsAdminUser, AllowAny
+from rest_framework.viewsets import ModelViewSet
 from rest_framework import status
 from rest_framework.views import APIView
 from rest_framework.response import Response
@@ -7,7 +8,9 @@ from django.utils.translation import ugettext_lazy as _
 from .serializers import \
     UserSerializer,\
     ValidateUserQrCodeSerializer,\
-    PasswordResetBySMSSerializer
+    PasswordResetBySMSSerializer, \
+    ValidatePasswordResetPasswordCodeSerializer, \
+    ChangePasswordSerializer
 
 
 class UserView(APIView):
@@ -30,7 +33,7 @@ class ScanUserQRCodeView(APIView):
         return Response({"message": _("QR Code scanned successfully")})
 
 
-class PasswordResetBySMSView(APIView):
+class RequestPasswordRestCodeView(APIView):
     permission_classes = [AllowAny]
 
     def post(self, request):
@@ -39,3 +42,30 @@ class PasswordResetBySMSView(APIView):
 
         return Response({'data': _("Code was successfully send by SMS")})
 
+
+class ValidatePasswordResetPasswordCodeView(APIView):
+    permission_classes = [AllowAny]
+
+    def post(self, request):
+        serializer = ValidatePasswordResetPasswordCodeSerializer(data=request.data)
+        serializer.is_valid(raise_exception=True)
+
+        user = serializer.user
+        return Response({'key': user.auth_token.key})
+
+
+class ChangePasswordView(ModelViewSet):
+    serializer_class = ChangePasswordSerializer
+
+    def create(self, request, *args, **kwargs):
+
+        user = request.user
+        serializer = self.get_serializer(data=request.data, context={'user': user})
+
+        if serializer.is_valid():
+            new_password = request.data.get('new_password')
+            user.set_password(new_password)
+            user.save()
+            return Response(data={'message': _('Password was successfully changed')}, status=status.HTTP_200_OK)
+
+        return Response(data=serializer.errors, status=status.HTTP_400_BAD_REQUEST)

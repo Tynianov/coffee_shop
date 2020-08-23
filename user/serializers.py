@@ -5,6 +5,7 @@ from django.utils import timezone
 from rest_framework import serializers
 from rest_auth.registration.serializers import RegisterSerializer
 from django.utils.translation import ugettext_lazy as _
+from django.contrib.auth.password_validation import validate_password
 
 from utils.funcs import get_absolute_url
 from voucher.serializers import UserDetailsVoucherSerializer
@@ -14,7 +15,7 @@ from .models import User
 
 
 class CustomRegistrationSerializer(RegisterSerializer):
-    email = serializers.EmailField()
+    email = serializers.EmailField(required=False)
     first_name = serializers.CharField()
     last_name = serializers.CharField(required=False)
     phone_number = serializers.CharField()
@@ -155,3 +156,48 @@ class PasswordResetBySMSSerializer(serializers.Serializer):
             if not PasswordResetSMSCode.objects.filter(code=code).exists():
                 break
         return code
+
+
+class ValidatePasswordResetPasswordCodeSerializer(serializers.Serializer):
+    code = serializers.CharField()
+    phone_number = serializers.CharField()
+
+    def validate(self, attrs):
+        sms_code = attrs.get('code')
+        phone_number = attrs.get('phone_number')
+
+        code = PasswordResetSMSCode.objects.filter(code=sms_code).first()
+
+        if not code:
+            raise serializers.ValidationError({'error': _("Invalid code")})
+
+        if phone_number != code.phone_number:
+            raise serializers.ValidationError({
+                "error": _("Error occurred while phone number validation")
+            })
+
+        user = User.objects.filter(phone_number=phone_number).first()
+
+        if not user:
+            raise serializers.ValidationError({
+                "error": _("User with entered phone number not found")
+            })
+        self.user = user
+
+        return attrs
+
+
+class ChangePasswordSerializer(serializers.Serializer):
+    new_password = serializers.CharField(write_only=True)
+    repeat_password = serializers.CharField(write_only=True)
+
+    def validate(self, attrs):
+        new_password = attrs.get('new_password')
+        repeat_password = attrs.get('repeat_password')
+        if new_password != repeat_password:
+            raise serializers.ValidationError({'error': _('Passwords must match')})
+        return attrs
+
+    def validate_new_password(self, value):
+        validate_password(value)
+        return value

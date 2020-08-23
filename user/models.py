@@ -16,7 +16,10 @@ class User(AbstractUser):
         null=True,
         blank=True
     )
-    phone_number = PhoneNumberField(_("Phone number"))
+    phone_number = PhoneNumberField(
+        _("Phone number"),
+        unique=True
+    )
     email = models.EmailField(
         _("Email address"),
         max_length=255,
@@ -33,8 +36,8 @@ class User(AbstractUser):
         blank=True
     )
 
-    USERNAME_FIELD = 'email'
-    REQUIRED_FIELDS = ['phone_number', 'last_name', 'first_name']
+    USERNAME_FIELD = 'phone_number'
+    REQUIRED_FIELDS = ['first_name']
 
     def __str__(self):
         return self.email
