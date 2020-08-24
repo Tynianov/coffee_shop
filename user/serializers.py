@@ -2,6 +2,7 @@ import random
 from datetime import timedelta
 
 from django.utils import timezone
+from django.contrib.auth import get_user_model, authenticate
 from rest_framework import serializers
 from rest_auth.registration.serializers import RegisterSerializer
 from django.utils.translation import ugettext_lazy as _
@@ -201,3 +202,11 @@ class ChangePasswordSerializer(serializers.Serializer):
     def validate_new_password(self, value):
         validate_password(value)
         return value
+
+#
+# class CustomLoginSerializer(serializers.Serializer):
+#     password = serializers.CharField(style={'input_type': 'password'})
+#     phone_number = serializers.CharField()
+#
+#     def authenticate(self, **kwargs):
+#         return authenticate(self.context['request'], **kwargs)
