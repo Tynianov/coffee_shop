@@ -12,6 +12,8 @@ from utils.funcs import get_absolute_url
 from voucher.serializers import UserDetailsVoucherSerializer
 from voucher.models import Voucher, VoucherConfig
 from sms.models import PasswordResetSMSCode
+from sms.utils import nexmo_send_sms
+from config.models import RestaurantConfig
 from phonenumber_field.serializerfields import PhoneNumberField
 from .models import User
 
@@ -147,11 +149,20 @@ class PasswordResetBySMSSerializer(serializers.Serializer):
                 'error': _("User with entered phone number not found")
             })
 
+        code = self.generate_sms_code()
         PasswordResetSMSCode.objects.create(**{
             "phone_number": phone_number,
-            "code": self.generate_sms_code()
+            "code": code
         })
         #TODO send code by SMS
+        restaurant_config = RestaurantConfig.get_solo()
+        sms_context = {
+            "from": restaurant_config.name,
+            "to": phone_number,
+            "text": f"Your password receive code is {code}"
+        }
+        nexmo_send_sms(sms_context)
+
         return attrs
 
     def generate_sms_code(self):
