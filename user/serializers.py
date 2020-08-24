@@ -12,14 +12,14 @@ from utils.funcs import get_absolute_url
 from voucher.serializers import UserDetailsVoucherSerializer
 from voucher.models import Voucher, VoucherConfig
 from sms.models import PasswordResetSMSCode
+from phonenumber_field.serializerfields import PhoneNumberField
 from .models import User
 
 
 class CustomRegistrationSerializer(RegisterSerializer):
-    email = serializers.EmailField(required=False)
     first_name = serializers.CharField()
     last_name = serializers.CharField(required=False)
-    phone_number = serializers.CharField()
+    phone_number = PhoneNumberField()
     instagram_username = serializers.CharField(required=False)
     birth_date = serializers.DateField(required=False)
 
@@ -29,7 +29,6 @@ class CustomRegistrationSerializer(RegisterSerializer):
             'first_name': self.validated_data.get('first_name', ''),
             'last_name': self.validated_data.get('last_name', ''),
             'password1': self.validated_data.get('password1', ''),
-            'email': self.validated_data.get('email', ''),
             'phone_number': self.validated_data.get('phone_number', ''),
             'instagram_username': self.validated_data.get('instagram_username', ''),
             'birth_date': self.validated_data.get('birth_date', '')
@@ -44,6 +43,12 @@ class CustomRegistrationSerializer(RegisterSerializer):
             'birth_date': cleaned_data.get('birth_date', None)
         })
         return user
+
+    def validate_phone_number(self, val):
+        if User.objects.filter(phone_number=val).exists():
+            raise serializers.ValidationError({"error": _("User with this phone number already registered")})
+
+        return val
 
 
 class UserSerializer(serializers.ModelSerializer):
@@ -203,10 +208,36 @@ class ChangePasswordSerializer(serializers.Serializer):
         validate_password(value)
         return value
 
-#
-# class CustomLoginSerializer(serializers.Serializer):
-#     password = serializers.CharField(style={'input_type': 'password'})
-#     phone_number = serializers.CharField()
-#
-#     def authenticate(self, **kwargs):
-#         return authenticate(self.context['request'], **kwargs)
+
+class CustomLoginSerializer(serializers.Serializer):
+    password = serializers.CharField(style={'input_type': 'password'})
+    phone_number = serializers.CharField()
+
+    def authenticate(self, **kwargs):
+        return authenticate(self.context['request'], **kwargs)
+    
+    def _validate_phone_number(self, phone_number, password):
+        user = None
+
+        if phone_number and password:
+            user = self.authenticate(phone_number=phone_number, password=password)
+        else:
+            raise serializers.ValidationError({"error": _("Must include phone number and password")})
+
+        return user
+
+    def validate(self, attrs):
+        phone_number = attrs.get('phone_number')
+        password = attrs.get('password')
+        
+        user = self._validate_phone_number(phone_number, password)
+        if user:
+            if not user.is_active:
+                msg = _('User account is disabled.')
+                raise serializers.ValidationError({"error": msg})
+        else:
+            msg = _('Unable to log in with provided credentials.')
+            raise serializers.ValidationError({"error": msg})
+
+        attrs['user'] = user
+        return attrs

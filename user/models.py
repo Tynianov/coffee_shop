@@ -23,7 +23,8 @@ class User(AbstractUser):
     email = models.EmailField(
         _("Email address"),
         max_length=255,
-        unique=True
+        null=True,
+        blank=True
     )
     current_purchase_count = models.PositiveIntegerField(
         _("Current user purchase"),
@@ -40,7 +41,7 @@ class User(AbstractUser):
     REQUIRED_FIELDS = ['first_name']
 
     def __str__(self):
-        return self.email
+        return f"{self.first_name} {self.last_name}"
 
     class Meta:
         verbose_name = _("User")
