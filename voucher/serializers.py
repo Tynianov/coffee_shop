@@ -5,10 +5,14 @@ from django.utils.translation import ugettext_lazy as _
 from rest_framework import serializers
 
 from utils.funcs import get_absolute_url
+from menu.serializers import ProductSerializer
+
 from .models import Voucher, VoucherConfig
 
 
 class VoucherConfigSerializer(serializers.ModelSerializer):
+    free_item = ProductSerializer()
+
     class Meta:
         model = VoucherConfig
         fields = "__all__"

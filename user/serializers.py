@@ -44,7 +44,6 @@ class CustomRegistrationSerializer(RegisterSerializer):
 
 class UserSerializer(serializers.ModelSerializer):
     vouchers = UserDetailsVoucherSerializer(many=True)
-    voucher_purchase_count = serializers.SerializerMethodField()
     is_staff = serializers.SerializerMethodField()
     qr_code = serializers.SerializerMethodField()
 
@@ -59,16 +58,9 @@ class UserSerializer(serializers.ModelSerializer):
             "qr_code",
             "vouchers",
             "current_purchase_count",
-            "voucher_purchase_count",
             "is_staff",
             "birth_date"
         ]
-
-    def get_voucher_purchase_count(self, obj):
-        voucher_conf = VoucherConfig.objects \
-            .filter(type=VoucherConfig.MIN_PURCHASE_AMOUNT) \
-            .order_by('purchase_count')
-        return voucher_conf[0].purchase_count if voucher_conf.count() > 0 else 0
 
     def get_is_staff(self, obj):
         return obj.is_staff or obj.is_superuser
