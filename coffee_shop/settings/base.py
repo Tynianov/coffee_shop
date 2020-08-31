@@ -53,6 +53,7 @@ INSTALLED_APPS = [
     'ckeditor',
     'drf_yasg',
     'phonenumber_field',
+    'fcm_django',
 
     'voucher',
     'menu',

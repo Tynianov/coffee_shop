@@ -9,13 +9,15 @@ from django.utils.translation import ugettext_lazy as _
 from django.contrib.auth.password_validation import validate_password
 
 from utils.funcs import get_absolute_url
-from voucher.serializers import UserDetailsVoucherSerializer
+from voucher.serializers import UserDetailsVoucherSerializer, VoucherSerializer
 from voucher.models import Voucher, VoucherConfig
 from sms.models import PasswordResetSMSCode
 from sms.utils import twilio_send_sms
 from config.models import RestaurantConfig
 from phonenumber_field.serializerfields import PhoneNumberField
 from .models import User
+from .utils import send_push_notification
+from .constants import *
 
 
 class CustomRegistrationSerializer(RegisterSerializer):
@@ -96,6 +98,7 @@ class ValidateUserQrCodeSerializer(serializers.Serializer):
         user.current_purchase_count += 1
         user.save()
 
+        user_received_voucher = False
         for voucher_config in VoucherConfig.objects.min_purchase_type():
             if voucher_config.purchase_count <= user.current_purchase_count:
                 voucher_data = {
@@ -108,9 +111,25 @@ class ValidateUserQrCodeSerializer(serializers.Serializer):
                     voucher_data.update({
                         'expiration_date': expiration_date
                     })
-                Voucher.objects.create(**voucher_data)
+                voucher_serializer = VoucherSerializer(data=voucher_data)
+                voucher_serializer.is_valid()
+                voucher_serializer.save()
                 user.current_purchase_count = 0
                 user.save()
+                user_received_voucher = True
+                push_notification_data = {
+                    'code': VOUCHER_RECEIVED,
+                    'voucher': voucher_serializer.data,
+                    'updated_counter': user.current_purchase_count
+                }
+                send_push_notification(user, "Voucher received", push_notification_data)
+
+        if not user_received_voucher:
+            push_notification_data = {
+                'code': QR_CODE_SCANNED,
+                'updated_counter': user.current_purchase_count
+            }
+            send_push_notification(user, "QR code scanned successfully", push_notification_data)
 
         return attrs
 

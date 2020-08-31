@@ -20,6 +20,7 @@ from django.contrib import admin
 from django.conf import settings
 from django.conf.urls.i18n import i18n_patterns
 from django.urls import path, include, re_path
+from fcm_django.api.rest_framework import FCMDeviceAuthorizedViewSet
 
 
 schema_view = get_schema_view(
@@ -36,6 +37,8 @@ urlpatterns = [
     re_path(r'^rest-auth/registration/', include('rest_auth.registration.urls')),
     re_path('^api/v1/', include('api.urls')),
     re_path(r'^swagger/$', schema_view.with_ui('swagger', cache_timeout=0), name='schema-swagger-ui'),
+    re_path(r'^register-notify-token/',
+         FCMDeviceAuthorizedViewSet.as_view({'post': 'create'}), name='create_fcm_device'),
     re_path(r'^', include('django.contrib.auth.urls')),
 ]
 
