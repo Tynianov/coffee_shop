@@ -60,7 +60,8 @@ INSTALLED_APPS = [
     'qr_code',
     'config',
     'post',
-    'api'
+    'api',
+    'sms'
 ]
 SITE_ID = 1
 # PROTOCOL = 'https'
@@ -236,13 +237,16 @@ REST_FRAMEWORK = {
     "DATE_INPUT_FORMATS": DATE_INPUT_FORMATS + ['iso-8601'],
 }
 
-ACCOUNT_AUTHENTICATION_METHOD = 'email'
-ACCOUNT_EMAIL_REQUIRED = True
+ACCOUNT_AUTHENTICATION_METHOD = 'phone_number'
+ACCOUNT_EMAIL_REQUIRED = False
 ACCOUNT_USERNAME_REQUIRED = False
 
 REST_AUTH_SERIALIZERS = {
     'USER_DETAILS_SERIALIZER': 'user.serializers.UpdateUserDetailsSerializer',
+    'LOGIN_SERIALIZER': "user.serializers.CustomLoginSerializer"
 }
 REST_AUTH_REGISTER_SERIALIZERS = {
     'REGISTER_SERIALIZER': "user.serializers.CustomRegistrationSerializer"
 }
+
+SMS_CODE_DURATION = 10  # in minutes

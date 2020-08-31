@@ -16,11 +16,15 @@ class User(AbstractUser):
         null=True,
         blank=True
     )
-    phone_number = PhoneNumberField(_("Phone number"))
+    phone_number = PhoneNumberField(
+        _("Phone number"),
+        unique=True
+    )
     email = models.EmailField(
         _("Email address"),
         max_length=255,
-        unique=True
+        null=True,
+        blank=True
     )
     current_purchase_count = models.PositiveIntegerField(
         _("Current user purchase"),
@@ -32,9 +36,15 @@ class User(AbstractUser):
         null=True,
         blank=True
     )
+    firebase_uid = models.CharField(
+        _("Firebase user uId"),
+        null=True,
+        blank=True,
+        max_length=1024
+    )
 
-    USERNAME_FIELD = 'email'
-    REQUIRED_FIELDS = ['phone_number', 'last_name', 'first_name']
+    USERNAME_FIELD = 'phone_number'
+    REQUIRED_FIELDS = ['first_name']
 
     def __str__(self):
         return self.phone_number.__str__()

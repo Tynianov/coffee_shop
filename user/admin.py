@@ -1,4 +1,5 @@
 from django.contrib import admin
+from django.contrib.auth.forms import UserChangeForm
 
 from qr_code.models import UserQRCode
 from .models import User
@@ -10,5 +11,6 @@ class UserQRCodeInline(admin.TabularInline):
 
 @admin.register(User)
 class UserAdmin(admin.ModelAdmin):
-    list_display = ['email', 'first_name', 'last_name']
+    list_display = ['phone_number', 'first_name', 'last_name']
     inlines = [UserQRCodeInline]
+    form = UserChangeForm
