@@ -12,7 +12,7 @@ from utils.funcs import get_absolute_url
 from voucher.serializers import UserDetailsVoucherSerializer
 from voucher.models import Voucher, VoucherConfig
 from sms.models import PasswordResetSMSCode
-from sms.utils import nexmo_send_sms
+from sms.utils import twilio_send_sms
 from config.models import RestaurantConfig
 from phonenumber_field.serializerfields import PhoneNumberField
 from .models import User
@@ -161,7 +161,8 @@ class PasswordResetBySMSSerializer(serializers.Serializer):
             "to": phone_number,
             "text": f"Your password receive code is {code}"
         }
-        nexmo_send_sms(sms_context)
+        message = f"Your password receive code is {code}"
+        twilio_send_sms(phone_number, message)
 
         return attrs
 

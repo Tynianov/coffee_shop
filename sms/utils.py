@@ -1,11 +1,12 @@
-import nexmo
+from twilio.rest import Client
 from django.conf import settings
 
-
-def nexmo_client_factory():
-    return nexmo.Client(key=settings.NEXMO_API_KEY, secret=settings.NEXMO_API_SECRET)
+twilio_client = Client(settings.TWILIO_SID, settings.TWILIO_AUTH_TOKEN)
 
 
-def nexmo_send_sms(context):
-    sms = nexmo.Sms(nexmo_client_factory())
-    sms.send_message(context)
+def twilio_send_sms(to, message):
+    twilio_client.messages.create(
+        to=to,
+        from_=settings.TWILIO_PHONE_NUMBER,
+        body=message
+    )
