@@ -36,6 +36,12 @@ class User(AbstractUser):
         null=True,
         blank=True
     )
+    firebase_uid = models.CharField(
+        _("Firebase user uId"),
+        null=True,
+        blank=True,
+        max_length=1024
+    )
 
     USERNAME_FIELD = 'phone_number'
     REQUIRED_FIELDS = ['first_name']
