@@ -2,7 +2,7 @@ import random
 from datetime import timedelta
 
 from django.utils import timezone
-from django.contrib.auth import get_user_model, authenticate
+from django.contrib.auth import authenticate
 from rest_framework import serializers
 from rest_auth.registration.serializers import RegisterSerializer
 from django.utils.translation import ugettext_lazy as _
