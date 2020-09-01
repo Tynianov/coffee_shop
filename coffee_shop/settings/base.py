@@ -12,10 +12,10 @@ https://docs.djangoproject.com/en/3.0/ref/settings/
 
 import os
 
-try:
-    from .production import *
-except ImportError:
-    from .local import *
+# try:
+#     from .production import *
+# except ImportError:
+#     from .local import *
 
 from django.utils.translation import ugettext_lazy as _
 import sentry_sdk
@@ -259,6 +259,7 @@ REST_AUTH_REGISTER_SERIALIZERS = {
 }
 
 SMS_CODE_DURATION = 10  # in minutes
+SENTRY_DSN = ''
 
 sentry_sdk.init(
     dsn=SENTRY_DSN,
