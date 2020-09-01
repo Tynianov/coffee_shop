@@ -15,6 +15,7 @@ from sms.models import PasswordResetSMSCode
 from sms.utils import twilio_send_sms
 from config.models import RestaurantConfig
 from phonenumber_field.serializerfields import PhoneNumberField
+from logs.models import ScanLogEntry
 from .models import User
 from .utils import send_push_notification
 from .constants import *
@@ -90,9 +91,22 @@ class ValidateUserQrCodeSerializer(serializers.Serializer):
     def validate(self, attrs):
         id = attrs.get('id')
         user = User.objects.filter(id=id).first()
+
+        log_entry_data = {
+            'type': ScanLogEntry.USER,
+            'initiator': self.context.get('initiator')
+        }
+
         if not user:
+            error_msg = "Invalid user QR code"
+            log_entry_data.update({
+                'status': False,
+                'error_message': error_msg
+            })
+            ScanLogEntry.objects.create(**log_entry_data)
+
             raise serializers.ValidationError({
-                'message': _("Invalid user QR code")
+                'message': _(error_msg)
             })
 
         user.current_purchase_count += 1
@@ -116,6 +130,11 @@ class ValidateUserQrCodeSerializer(serializers.Serializer):
                 voucher_serializer.save()
                 user.current_purchase_count = 0
                 user.save()
+        log_entry_data.update({
+            'status': True,
+            'user': user
+        })
+        ScanLogEntry.objects.create(**log_entry_data)
                 user_received_voucher = True
                 push_notification_data = {
                     'code': VOUCHER_RECEIVED,
@@ -238,7 +257,7 @@ class CustomLoginSerializer(serializers.Serializer):
 
     def authenticate(self, **kwargs):
         return authenticate(self.context['request'], **kwargs)
-    
+
     def _validate_phone_number(self, phone_number, password):
         user = None
 
@@ -252,7 +271,7 @@ class CustomLoginSerializer(serializers.Serializer):
     def validate(self, attrs):
         phone_number = attrs.get('phone_number')
         password = attrs.get('password')
-        
+
         user = self._validate_phone_number(phone_number, password)
         if user:
             if not user.is_active:

@@ -62,6 +62,7 @@ INSTALLED_APPS = [
     'config',
     'post',
     'api',
+    'logs',
     'sms'
 ]
 SITE_ID = 1

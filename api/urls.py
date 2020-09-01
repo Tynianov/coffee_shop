@@ -5,6 +5,6 @@ urlpatterns = [
     re_path(r'restaurant/', include('config.urls')),
     re_path(r'posts/', include('post.urls')),
     re_path(r'vouchers/', include('voucher.urls')),
-    re_path(r'menu/', include('menu.urls'))
-
+    re_path(r'menu/', include('menu.urls')),
+    re_path(r'logs/', include('logs.urls'))
 ]

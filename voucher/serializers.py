@@ -4,6 +4,7 @@ from django.utils import timezone
 from django.utils.translation import ugettext_lazy as _
 from rest_framework import serializers
 
+from logs.models import ScanLogEntry
 from utils.funcs import get_absolute_url
 from menu.serializers import ProductSerializer
 
@@ -81,23 +82,43 @@ class ScanVoucherSerializer(serializers.Serializer):
     def validate(self, attrs):
         id = attrs.get('id')
         voucher = Voucher.objects.filter(id=id).first()
+        log_data = {
+            'type': ScanLogEntry.VOUCHER,
+            'initiator': self.context.get('initiator')
+        }
+        today = timezone.localtime()
+        error_message = None
+
         if not voucher:
-            raise serializers.ValidationError({
-                'message': _("Invalid voucher QR code")
-            })
+            error_message = _("Invalid voucher QR code")
+
+        log_data.update({
+            'voucher': voucher
+        })
 
         if voucher.is_scanned:
-            raise serializers.ValidationError({
-                'message': _("QR code has already been scanned")
-            })
-
-        today = timezone.localtime()
+            error_message = _("QR code has already been scanned")
 
         if voucher.expiration_date and voucher.expiration_date < today:
+            error_message = _(f"Voucher expired {voucher.expiration_date.strftime('%m/%d/%Y')}")
+
+        if not voucher.is_active:
+            error_message = _("Voucher is inactive")
+
+        if error_message:
+            log_data.update({
+                'error_message': error_message,
+                'status': False
+            })
+            ScanLogEntry.objects.create(**log_data)
             raise serializers.ValidationError({
-                "message": _(f"Voucher expired {voucher.expiration_date.strftime('%m/%d/%Y')}")
+                'message': error_message
             })
 
+        log_data.update({
+            'status': True
+        })
+        ScanLogEntry.objects.create(**log_data)
         voucher.is_scanned = True
         voucher.save()
         self.voucher = voucher
