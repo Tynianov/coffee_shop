@@ -130,11 +130,6 @@ class ValidateUserQrCodeSerializer(serializers.Serializer):
                 voucher_serializer.save()
                 user.current_purchase_count = 0
                 user.save()
-        log_entry_data.update({
-            'status': True,
-            'user': user
-        })
-        ScanLogEntry.objects.create(**log_entry_data)
                 user_received_voucher = True
                 push_notification_data = {
                     'code': VOUCHER_RECEIVED,
@@ -142,6 +137,11 @@ class ValidateUserQrCodeSerializer(serializers.Serializer):
                     'updated_counter': user.current_purchase_count
                 }
                 send_push_notification(user, "Voucher received", push_notification_data)
+        log_entry_data.update({
+            'status': True,
+            'user': user
+        })
+        ScanLogEntry.objects.create(**log_entry_data)
 
         if not user_received_voucher:
             push_notification_data = {

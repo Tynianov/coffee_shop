@@ -7,6 +7,8 @@ from rest_framework import serializers
 from logs.models import ScanLogEntry
 from utils.funcs import get_absolute_url
 from menu.serializers import ProductSerializer
+from user.utils import send_push_notification
+from user.constants import *
 
 from .models import Voucher, VoucherConfig
 
@@ -111,6 +113,13 @@ class ScanVoucherSerializer(serializers.Serializer):
                 'status': False
             })
             ScanLogEntry.objects.create(**log_data)
+
+            if voucher and voucher.user:
+                push_notification_data = {
+                    'code': VOUCHER_DID_NOT_SCANNED,
+                }
+                send_push_notification(voucher.user, error_message, push_notification_data)
+
             raise serializers.ValidationError({
                 'message': error_message
             })
@@ -122,5 +131,10 @@ class ScanVoucherSerializer(serializers.Serializer):
         voucher.is_scanned = True
         voucher.save()
         self.voucher = voucher
+        push_notification_data = {
+            'code': VOUCHER_SCANNED,
+            'voucher_id': voucher.id
+        }
+        send_push_notification(voucher.user, "Voucher scanned", push_notification_data)
 
         return attrs
