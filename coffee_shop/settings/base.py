@@ -11,7 +11,12 @@ https://docs.djangoproject.com/en/3.0/ref/settings/
 """
 
 import os
-from .local import *
+
+try:
+    from .production import *
+except ImportError:
+    from .local import *
+
 from django.utils.translation import ugettext_lazy as _
 import sentry_sdk
 from sentry_sdk.integrations.django import DjangoIntegration
