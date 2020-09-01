@@ -27,7 +27,7 @@ PROTOCOL = 'http'
 
 SECRET_KEY = 'your secret key'
 
-FCM_DJANGO_SETTINGS = {
-    "FCM_SERVER_KEY": "api key goes here"
-
-}
+TWILIO_SID = 'twilio sid'
+TWILIO_AUTH_TOKEN = 'twilio key'
+TWILIO_PHONE_NUMBER = 'twilio phone number'
+SENTRY_DSN = 'sentry dsn'
