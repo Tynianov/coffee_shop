@@ -23,6 +23,10 @@ from django.urls import path, include, re_path
 from fcm_django.api.rest_framework import FCMDeviceAuthorizedViewSet
 
 
+def trigger_error(request):
+    division_by_zero = 1 / 0
+
+
 schema_view = get_schema_view(
    openapi.Info(
       title="Coffee shop API",
@@ -33,6 +37,7 @@ schema_view = get_schema_view(
 )
 
 urlpatterns = [
+    re_path('^sentry-debug/', trigger_error),
     re_path(r'^auth/', include('rest_auth.urls')),
     re_path(r'^rest-auth/registration/', include('rest_auth.registration.urls')),
     re_path('^api/v1/', include('api.urls')),
