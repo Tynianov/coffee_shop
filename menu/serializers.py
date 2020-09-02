@@ -29,7 +29,7 @@ class ProductSerializer(serializers.ModelSerializer):
         return ProductVariationSerializer(qs, many=True).data
 
     def get_price(self, obj):
-        return obj.variation_min_price
+        return "%.2f" % obj.variation_min_price
 
 
 class ProductCategoryListSerializer(serializers.ModelSerializer):
