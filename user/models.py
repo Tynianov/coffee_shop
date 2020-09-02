@@ -14,7 +14,7 @@ class UserManager(BaseUserManager):
     def create_user(self, phone_number, first_name, last_name, password=None, is_superuser=False, is_staff=False,
                     is_active=True):
         if not phone_number:
-            raise ValueError("User must have an email")
+            raise ValueError("User must have an phone number")
         if not password:
             raise ValueError("User must have a password")
         if not first_name:
