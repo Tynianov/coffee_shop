@@ -30,7 +30,7 @@ class ScanUserQRCodeView(APIView):
     def post(self, request, *args, **kwargs):
 
         user_id = self.kwargs.get("pk")
-        serializer = ValidateUserQrCodeSerializer(data={"id": user_id})
+        serializer = ValidateUserQrCodeSerializer(data={"id": user_id}, context={'initiator': request.user})
         serializer.is_valid(raise_exception=True)
 
         return Response({"message": _("QR Code scanned successfully")})
