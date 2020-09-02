@@ -20,12 +20,9 @@ def send_push_notification(user, title, data):
     message_data = {
         'title': title,
         'data': data,
-        'api_key': settings.FCM_SERVER_KEY
+        'api_key': settings.FCM_SERVER_KEY,
+        'click_action': 'FLUTTER_NOTIFICATION_CLICK'
     }
-    if device.type == 'android':
-        message_data.update({
-            'click_action': 'FLUTTER_NOTIFICATION_CLICK'
-        })
 
     device.send_message(**message_data)
     logger.info("Push send")
