@@ -69,7 +69,9 @@ class UserDetailsVoucherSerializer(serializers.ModelSerializer):
         return obj.voucher_config.discount
 
     def get_amount(self, obj):
-        return "%.2f" % obj.voucher_config.amount
+        if obj.voucher_config.amount:
+            return "%.2f" % obj.voucher_config.amount
+        return None
 
     def get_title(self, obj):
         return obj.voucher_config.name

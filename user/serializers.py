@@ -125,7 +125,7 @@ class ValidateUserQrCodeSerializer(serializers.Serializer):
                     voucher_data.update({
                         'expiration_date': expiration_date
                     })
-                Voucher.objects.create(**voucher_data)
+                voucher = Voucher.objects.create(**voucher_data)
                 # TODO refactor it
                 # voucher_serializer = VoucherSerializer(data=voucher_data)
                 # voucher_serializer.is_valid(raise_exception=True)
@@ -135,7 +135,7 @@ class ValidateUserQrCodeSerializer(serializers.Serializer):
                 user_received_voucher = True
                 push_notification_data = {
                     'code': VOUCHER_RECEIVED,
-                    'voucher': voucher_data,
+                    'voucher': VoucherSerializer(voucher).data,
                     'updated_counter': user.current_purchase_count
                 }
                 send_push_notification(user, "Voucher received", push_notification_data)
