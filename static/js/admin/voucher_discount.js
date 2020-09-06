@@ -6,7 +6,7 @@ jQuery(document).ready(function ($) {
     const discountTypeSelect = '#id_discount';
 
     function initDisplay(){
-        if ($(voucherTypeSelect).val() !== 'free_item'){
+        if ($(discountTypeSelect).val() !== 'free_item'){
             $(freeItemRow).hide();
         }
         else {
