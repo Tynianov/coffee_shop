@@ -14,11 +14,7 @@ from .serializers import \
 class RestaurantBranchViewSet(GenericViewSet, ListModelMixin, RetrieveModelMixin):
     queryset = RestaurantBranch.objects.active()
     lookup_field = 'id'
-
-    def get_serializer_class(self):
-        if self.kwargs.get(self.lookup_field, None):
-            return RestaurantBranchDetailsSerializer
-        return RestaurantBranchListSerializer
+    serializer_class = RestaurantBranchDetailsSerializer
 
 
 class RestaurantConfigView(APIView):
