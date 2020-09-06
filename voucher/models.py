@@ -97,7 +97,7 @@ class VoucherConfig(StatusModel):
         return self.name
 
     def clean(self):
-        if self.discount == self.FIXED or self.discount == self.PERCENTAGE and not self.amount:
+        if self.discount in [self.PERCENTAGE, self.FIXED] and not self.amount:
             raise ValidationError(_("Specify discount amount"))
 
         if self.discount == self.FREE_ITEM and not self.free_item:

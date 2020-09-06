@@ -27,6 +27,7 @@ class CustomRegistrationSerializer(RegisterSerializer):
     phone_number = PhoneNumberField()
     instagram_username = serializers.CharField(required=False)
     birth_date = serializers.DateField(required=False)
+    firebase_uid = serializers.CharField(required=False)
 
     def get_cleaned_data(self):
         super(CustomRegistrationSerializer, self).get_cleaned_data()
@@ -36,7 +37,8 @@ class CustomRegistrationSerializer(RegisterSerializer):
             'password1': self.validated_data.get('password1', ''),
             'phone_number': self.validated_data.get('phone_number', ''),
             'instagram_username': self.validated_data.get('instagram_username', ''),
-            'birth_date': self.validated_data.get('birth_date', '')
+            'birth_date': self.validated_data.get('birth_date', ''),
+            'firebase_uid': self.validated_data.get('firebase_uid', '')
         }
 
     def save(self, request):
@@ -45,7 +47,8 @@ class CustomRegistrationSerializer(RegisterSerializer):
         User.objects.filter(pk=user.pk).update(**{
             'phone_number': cleaned_data.get('phone_number', None),
             'instagram_username': cleaned_data.get('instagram_username', None),
-            'birth_date': cleaned_data.get('birth_date', None)
+            'birth_date': cleaned_data.get('birth_date', None),
+            'firebase_uid': cleaned_data.get('firebase_uid', None)
         })
         return user
 
@@ -73,7 +76,8 @@ class UserSerializer(serializers.ModelSerializer):
             "vouchers",
             "current_purchase_count",
             "is_staff",
-            "birth_date"
+            "birth_date",
+            "firebase_uid"
         ]
 
     def get_is_staff(self, obj):
@@ -163,7 +167,8 @@ class UpdateUserDetailsSerializer(serializers.ModelSerializer):
             "last_name",
             "first_name",
             "phone_number",
-            "instagram_username"
+            "instagram_username",
+            "firebase_uid"
         ]
         read_only_fields = ('email', )
 
