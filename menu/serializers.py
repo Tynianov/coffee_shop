@@ -1,13 +1,19 @@
 from rest_framework import serializers
-from django.core.paginator import Paginator
 from utils.funcs import get_absolute_url
 from .models import ProductCategory, Product, ProductVariation
 
 
 class ProductVariationSerializer(serializers.ModelSerializer):
+    price = serializers.SerializerMethodField()
+
     class Meta:
         model = ProductVariation
         fields = '__all__'
+
+    def get_price(self, obj):
+        if obj.price - int(obj.price):
+            return "%.2f" % obj.price
+        return "{:g}".format(float(obj.price))
 
 
 class ProductSerializer(serializers.ModelSerializer):
@@ -30,7 +36,9 @@ class ProductSerializer(serializers.ModelSerializer):
 
     def get_price(self, obj):
         if obj.variation_min_price:
-            return "%.2f" % obj.variation_min_price
+            if obj.variation_min_price - int(obj.variation_min_price):
+                return "%.2f" % obj.variation_min_price
+            return "{:g}".format(float(obj.variation_min_price))
         return None
 
 
