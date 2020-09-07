@@ -4,18 +4,9 @@ from django.utils.translation import ugettext_lazy as _
 from .models import *
 
 
-class WeekDayInline(admin.TabularInline):
-    model = RestaurantBranch.working_days.through
-    verbose_name = _("Weekday")
-    verbose_name_plural = _("Weekdays")
-    extra = 0
-    max_num = 7
-
-
 @admin.register(RestaurantBranch)
 class BranchInline(admin.ModelAdmin):
     list_display = ['branch_name', 'is_active']
-    inlines = [WeekDayInline]
 
 
 @admin.register(RestaurantConfig)

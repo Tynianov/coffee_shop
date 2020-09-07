@@ -106,12 +106,6 @@ class RestaurantBranch(StatusModel):
         max_length=16,
         help_text=_("Enter restaurant phone number")
     )
-    working_days = models.ManyToManyField(
-        WeekDay,
-        verbose_name=_('Working hours during week'),
-        blank=True,
-        help_text=_("Specify days in which branch will work")
-    )
     address = models.CharField(
         _("Branch address"),
         max_length=512,
@@ -136,7 +130,21 @@ class RestaurantBranch(StatusModel):
         max_length=512,
         help_text=_("Enter short description of branch")
     )
+    weekday_working_hours = models.ForeignKey(
+        WorkHours,
+        on_delete=models.SET_NULL,
+        null=True,
+        related_name='weekday_working_hours',
+        help_text=_("Set working hours during weekdays")
+    )
 
+    weekend_working_hours = models.ForeignKey(
+        WorkHours,
+        on_delete=models.SET_NULL,
+        null=True,
+        related_name='weekend_working_hours',
+        help_text=_("Set working hours during weekends")
+    )
     objects = StatusQuerySet.as_manager()
 
     class Meta:

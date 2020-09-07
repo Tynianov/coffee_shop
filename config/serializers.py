@@ -33,7 +33,8 @@ class RestaurantBranchListSerializer(serializers.ModelSerializer):
 
 class RestaurantBranchDetailsSerializer(RestaurantBranchListSerializer):
     branch_phone = serializers.SerializerMethodField()
-    working_days = serializers.SerializerMethodField()
+    weekday_working_hours = serializers.SerializerMethodField()
+    weekend_working_hours = serializers.SerializerMethodField()
 
     class Meta:
         model = RestaurantBranch
@@ -46,11 +47,13 @@ class RestaurantBranchDetailsSerializer(RestaurantBranchListSerializer):
         config = RestaurantConfig.get_solo()
         return config.phone
 
-    def get_working_days(self, obj):
-        print('!', obj.working_days)
-        if obj.working_days:
-            working_days = {}
-            for working_day in obj.working_days.all():
-                working_days[working_day.get_name_display()] = working_day.working_hours
-            return working_days
+    def get_weekend_working_hours(self, obj):
+        if obj.weekend_working_hours:
+            return obj.weekend_working_hours.__str__()
         return None
+
+    def get_weekday_working_hours(self, obj):
+        if obj.weekday_working_hours:
+            return obj.weekday_working_hours.__str__()
+        return None
+
