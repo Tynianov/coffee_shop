@@ -109,3 +109,23 @@ class CheckIfPhoneNumberRegisterView(APIView):
             return Response({
                 "phone_number_taken": False
             })
+
+
+class GetAuthTokenByFirebaseUid(APIView):
+    permission_classes = [AllowAny]
+
+    def post(self, request):
+        uid = request.data.get('firebase_uid', None)
+
+        if not uid:
+            return Response(status=status.HTTP_400_BAD_REQUEST)
+
+        try:
+            user = User.objects.get(firebase_uid=uid)
+            return Response({
+                "token": user.auth_token.key
+            })
+        except Exception:
+            return Response({
+                "firebase_uid": "Invalid firebase uid"
+            }, status=status.HTTP_400_BAD_REQUEST)
