@@ -22,7 +22,7 @@ from .constants import *
 
 
 class CustomRegistrationSerializer(RegisterSerializer):
-    first_name = serializers.CharField()
+    first_name = serializers.CharField(required=False)
     last_name = serializers.CharField(required=False)
     phone_number = PhoneNumberField()
     instagram_username = serializers.CharField(required=False)
@@ -44,12 +44,17 @@ class CustomRegistrationSerializer(RegisterSerializer):
     def save(self, request):
         user = super(CustomRegistrationSerializer, self).save(request)
         cleaned_data = self.get_cleaned_data()
-        User.objects.filter(pk=user.pk).update(**{
+        data = {
             'phone_number': cleaned_data.get('phone_number', None),
             'instagram_username': cleaned_data.get('instagram_username', None),
-            'birth_date': cleaned_data.get('birth_date', None),
             'firebase_uid': cleaned_data.get('firebase_uid', None)
-        })
+        }
+        if cleaned_data.get('birth_date', None):
+            data.update({
+                'birth_date': cleaned_data.get('birth_date', '')
+            })
+
+        User.objects.filter(pk=user.pk).update(**data)
         return user
 
     def validate_phone_number(self, val):
