@@ -8,6 +8,7 @@ from django.utils.translation import ugettext_lazy as _
 from voucher.models import VoucherConfig
 from voucher.serializers import VoucherConfigSerializer
 
+from .models import User
 from .serializers import \
     UserSerializer,\
     ValidateUserQrCodeSerializer,\
@@ -88,3 +89,23 @@ class ChangePasswordView(ModelViewSet):
             return Response(data={'message': _('Password was successfully changed')}, status=status.HTTP_200_OK)
 
         return Response(data=serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+
+class CheckIfPhoneNumberRegisterView(APIView):
+    permission_classes = [AllowAny]
+
+    def post(self, request, *args, **kwargs):
+        phone_number = request.data.get('phone_number', None)
+
+        if not phone_number:
+            return Response(status=status.HTTP_400_BAD_REQUEST)
+
+        try:
+            User.objects.get(phone_number=phone_number)
+            return Response({
+                "phone_number_taken": True
+            })
+        except User.DoesNotExist:
+            return Response({
+                "phone_number_taken": False
+            })
