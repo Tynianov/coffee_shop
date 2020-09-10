@@ -62,6 +62,7 @@ class ScanLogEntry(models.Model):
     objects = ScanLogEntryQuerySet.as_manager()
 
     class Meta:
+        ordering = ["-created"]
         verbose_name = _("Scan log")
         verbose_name_plural = _("Scan logs")
 

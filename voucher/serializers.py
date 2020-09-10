@@ -123,6 +123,9 @@ class ScanVoucherSerializer(serializers.Serializer):
 
         if not voucher:
             error_message = _("Invalid voucher QR code")
+            log_data.update({"error_message": error_message, "status": False})
+            ScanLogEntry.objects.create(**log_data)
+            raise serializers.ValidationError({"message": error_message})
 
         log_data.update({"voucher": voucher})
 

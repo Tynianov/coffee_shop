@@ -1,7 +1,12 @@
-from django.urls import path
+from django.urls import path, include
+from rest_framework import routers
 
 from .views import *
 
+
+router = routers.DefaultRouter()
+router.register('list', ScanLogEntryView, basename='log-list')
+
 urlpatterns = [
-    path('list', ScanLogEntryView.as_view(), name='log-list')
+    path('', include(router.urls))
 ]
