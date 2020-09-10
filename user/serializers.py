@@ -59,7 +59,7 @@ class CustomRegistrationSerializer(RegisterSerializer):
 
     def validate_phone_number(self, val):
         if User.objects.filter(phone_number=val).exists():
-            raise serializers.ValidationError({"error": _("User with this phone number already registered")})
+            raise serializers.ValidationError(_("User with this phone number already registered"))
 
         return val
 
