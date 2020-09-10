@@ -31,7 +31,7 @@ class ProductSerializer(serializers.ModelSerializer):
         return None
 
     def get_variations(self, obj):
-        qs = obj.variations.active()
+        qs = obj.variations.active().order_by('price')
         return ProductVariationSerializer(qs, many=True).data
 
     def get_price(self, obj):
