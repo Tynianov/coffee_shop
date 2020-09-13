@@ -98,7 +98,9 @@ class CheckIfPhoneNumberRegisterView(APIView):
         phone_number = request.data.get('phone_number', None)
 
         if not phone_number:
-            return Response(status=status.HTTP_400_BAD_REQUEST)
+            return Response(data={
+                "message": _("Phone number is missing")
+            }, status=status.HTTP_400_BAD_REQUEST)
 
         try:
             User.objects.get(phone_number=phone_number)
