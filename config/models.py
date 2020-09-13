@@ -92,6 +92,9 @@ class RestaurantConfig(SingletonModel):
         help_text=_("Add restaurant logo to display it in the app")
     )
 
+    class Meta:
+        verbose_name = _("Restaurant config")
+
 
 class RestaurantBranch(StatusModel):
     branch_name = models.CharField(

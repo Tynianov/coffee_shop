@@ -62,8 +62,8 @@ class UserQRCode(QRCode):
         return f"{self.user} QR code [{self.pk}]"
 
     class Meta:
-        verbose_name = "User QR code"
-        verbose_name_plural = "User QR codes"
+        verbose_name = _("User QR code")
+        verbose_name_plural = _("User QR codes")
 
 
 class VoucherQRCode(QRCode):

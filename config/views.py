@@ -1,4 +1,3 @@
-from rest_framework import status
 from rest_framework.response import Response
 from rest_framework.views import APIView
 from rest_framework.viewsets import GenericViewSet
@@ -6,7 +5,6 @@ from rest_framework.mixins import RetrieveModelMixin, ListModelMixin
 
 from .models import RestaurantConfig, RestaurantBranch
 from .serializers import \
-    RestaurantBranchListSerializer,\
     RestaurantBranchDetailsSerializer,\
     RestaurantConfigSerializers
 

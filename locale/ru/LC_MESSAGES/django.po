@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-08-13 20:06+0000\n"
+"POT-Creation-Date: 2020-09-13 19:46+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -20,20 +20,12 @@ msgstr ""
 "%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n"
 "%100>=11 && n%100<=14)? 2 : 3);\n"
 
-#: coffee_shop/settings/base.py:145
+#: coffee_shop/settings/base.py:157
 msgid "English"
 msgstr ""
 
-#: coffee_shop/settings/base.py:146
+#: coffee_shop/settings/base.py:158
 msgid "Russian"
-msgstr ""
-
-#: config/admin.py:9
-msgid "Weekday"
-msgstr ""
-
-#: config/admin.py:10
-msgid "Weekdays"
 msgstr ""
 
 #: config/models.py:9
@@ -84,7 +76,7 @@ msgstr ""
 msgid "Week days"
 msgstr ""
 
-#: config/models.py:50 menu/models.py:71
+#: config/models.py:50 menu/models.py:70
 msgid "Name"
 msgstr ""
 
@@ -108,11 +100,11 @@ msgstr ""
 msgid "Enter restaurant website"
 msgstr ""
 
-#: config/models.py:67 config/models.py:103 user/models.py:19
+#: config/models.py:67 config/models.py:106 sms/models.py:12 user/models.py:50
 msgid "Phone number"
 msgstr ""
 
-#: config/models.py:71 config/models.py:107
+#: config/models.py:71 config/models.py:110
 msgid "Enter restaurant phone number"
 msgstr ""
 
@@ -140,100 +132,132 @@ msgstr ""
 msgid "Add restaurant logo to display it in the app"
 msgstr ""
 
-#: config/models.py:98
+#: config/models.py:96
+msgid "Restaurant config"
+msgstr ""
+
+#: config/models.py:101
 msgid "Branch name"
 msgstr ""
 
-#: config/models.py:100
+#: config/models.py:103
 msgid "Enter branch name"
 msgstr ""
 
-#: config/models.py:111
-msgid "Working hours during week"
-msgstr ""
-
 #: config/models.py:113
-msgid "Specify days in which branch will work"
-msgstr ""
-
-#: config/models.py:116
 msgid "Branch address"
 msgstr ""
 
-#: config/models.py:118
+#: config/models.py:115
 msgid "Enter Branch address"
 msgstr ""
 
-#: config/models.py:121
+#: config/models.py:118
 msgid "Google Maps embedded code"
 msgstr ""
 
-#: config/models.py:122
+#: config/models.py:119
 msgid ""
 "Click 'Share or embed map', then click 'Embed map' and copy-paste code there"
 msgstr ""
 
-#: config/models.py:126
+#: config/models.py:123
 msgid "Branch image"
 msgstr ""
 
-#: config/models.py:130
+#: config/models.py:127
 msgid "Add branch image to display it in the app"
 msgstr ""
 
-#: config/models.py:133
+#: config/models.py:130
 msgid "Short description"
 msgstr ""
 
-#: config/models.py:137
+#: config/models.py:134
 msgid "Enter short description of branch"
 msgstr ""
 
-#: config/models.py:143
+#: config/models.py:141
+msgid "Set working hours during weekdays"
+msgstr ""
+
+#: config/models.py:149
+msgid "Set working hours during weekends"
+msgstr ""
+
+#: config/models.py:154
 msgid "Restaurant branch"
 msgstr ""
 
-#: config/models.py:144
+#: config/models.py:155
 msgid "Restaurant branches"
 msgstr ""
 
-#: menu/models.py:10
+#: logs/models.py:22
+msgid "voucher"
+msgstr ""
+
+#: logs/models.py:23 qr_code/models.py:56 user/models.py:85
+msgid "User"
+msgstr "Пользователь"
+
+#: logs/models.py:27 post/models.py:33 sms/models.py:15 voucher/models.py:135
+msgid "Creation date"
+msgstr ""
+
+#: logs/models.py:40
+msgid "Successfully scanned?"
+msgstr ""
+
+#: logs/models.py:44
+msgid "Error message"
+msgstr ""
+
+#: logs/models.py:66
+msgid "Scan log"
+msgstr ""
+
+#: logs/models.py:67
+msgid "Scan logs"
+msgstr ""
+
+#: menu/models.py:9
 msgid "Category name"
 msgstr ""
 
-#: menu/models.py:18
+#: menu/models.py:17
 msgid "Category"
 msgstr ""
 
-#: menu/models.py:19
+#: menu/models.py:18
 msgid "Categories"
 msgstr ""
 
-#: menu/models.py:29
+#: menu/models.py:28
 msgid "Product name"
 msgstr ""
 
-#: menu/models.py:33
+#: menu/models.py:32
 msgid "Product description"
 msgstr ""
 
-#: menu/models.py:38 menu/models.py:75
+#: menu/models.py:37 menu/models.py:74
 msgid "Price"
 msgstr ""
 
-#: menu/models.py:56
+#: menu/models.py:55
 msgid "Product"
 msgstr ""
 
-#: menu/models.py:57
+#: menu/models.py:56
 msgid "Products"
 msgstr ""
 
-#: menu/models.py:88
+#: menu/models.py:87
 msgid "Product Variation"
 msgstr ""
 
-#: menu/models.py:89
+#: menu/models.py:88
 msgid "Product Variations"
 msgstr ""
 
@@ -251,10 +275,6 @@ msgstr ""
 
 #: post/models.py:30
 msgid "Post content"
-msgstr ""
-
-#: post/models.py:33 voucher/models.py:112
-msgid "Creation date"
 msgstr ""
 
 #: post/models.py:40
@@ -287,11 +307,15 @@ msgstr ""
 msgid "QR code"
 msgstr ""
 
-#: qr_code/models.py:56 user/models.py:47
-msgid "User"
-msgstr "Пользователь"
+#: qr_code/models.py:65
+msgid "User QR code"
+msgstr ""
 
-#: qr_code/models.py:72 voucher/models.py:124
+#: qr_code/models.py:66
+msgid "User QR codes"
+msgstr ""
+
+#: qr_code/models.py:72 voucher/models.py:147
 msgid "Voucher"
 msgstr ""
 
@@ -299,45 +323,92 @@ msgstr ""
 msgid "QR Code"
 msgstr ""
 
-#: qr_code/models.py:81
-#, python-brace-format
-msgid "{self.voucher} QR code [{self.pk}]"
-msgstr ""
-
 #: qr_code/models.py:84 qr_code/models.py:85
 msgid "Voucher QR code"
 msgstr ""
 
-#: user/models.py:13
+#: sms/models.py:8 sms/models.py:23
+msgid "Password reset SMS code"
+msgstr ""
+
+#: sms/models.py:24
+msgid "Password reset SMS codes"
+msgstr ""
+
+#: user/models.py:44
 msgid "Instagram Profile"
 msgstr ""
 
-#: user/models.py:25
+#: user/models.py:54
 msgid "Email address"
 msgstr ""
 
-#: user/models.py:30
+#: user/models.py:60
 msgid "Current user purchase"
 msgstr ""
 
-#: user/models.py:32
+#: user/models.py:62
 msgid "Count of current user purchase"
 msgstr ""
 
-#: user/models.py:35
+#: user/models.py:65
 msgid "Birth day"
 msgstr ""
 
-#: user/models.py:48
+#: user/models.py:70
+msgid "Firebase user uId"
+msgstr ""
+
+#: user/models.py:86
 msgid "Users"
 msgstr ""
 
-#: user/serializers.py:90
-msgid "Invalid user QR code"
+#: user/serializers.py:62
+msgid "User with this phone number already registered"
 msgstr ""
 
-#: user/views.py:29 voucher/views.py:18
+#: user/serializers.py:191 user/serializers.py:243
+msgid "User with entered phone number not found"
+msgstr ""
+
+#: user/serializers.py:232
+msgid "Invalid code"
+msgstr ""
+
+#: user/serializers.py:236
+msgid "Error occurred while phone number validation"
+msgstr ""
+
+#: user/serializers.py:258
+msgid "Passwords must match"
+msgstr ""
+
+#: user/serializers.py:279
+msgid "Must include phone number and password"
+msgstr ""
+
+#: user/serializers.py:290
+msgid "User account is disabled."
+msgstr ""
+
+#: user/serializers.py:293
+msgid "Unable to log in with provided credentials."
+msgstr "Вы ввели не правильные данные для входа"
+
+#: user/views.py:37 voucher/views.py:18
 msgid "QR Code scanned successfully"
+msgstr ""
+
+#: user/views.py:63
+msgid "Code was successfully send by SMS"
+msgstr ""
+
+#: user/views.py:89
+msgid "Password was successfully changed"
+msgstr ""
+
+#: user/views.py:102
+msgid "Phone number is missing"
 msgstr ""
 
 #: utils/models.py:7
@@ -348,525 +419,126 @@ msgstr ""
 msgid "Designate, if object is active"
 msgstr ""
 
-#: voucher/models.py:21
+#: voucher/models.py:26
 msgid "Minimum purchase amount"
 msgstr ""
 
-#: voucher/models.py:22
+#: voucher/models.py:27
 msgid "For registration"
 msgstr ""
 
-#: voucher/models.py:23
+#: voucher/models.py:28
 msgid "For all users"
 msgstr ""
 
-#: voucher/models.py:27
+#: voucher/models.py:32
 msgid "Fixed discount"
 msgstr ""
 
-#: voucher/models.py:28
+#: voucher/models.py:33
 msgid "Percentage dicount"
 msgstr ""
 
-#: voucher/models.py:29
+#: voucher/models.py:34
 msgid "Free product"
 msgstr ""
 
-#: voucher/models.py:33
+#: voucher/models.py:38
 msgid "Voucher name"
 msgstr ""
 
-#: voucher/models.py:35
+#: voucher/models.py:40
 msgid "Enter voucher name"
 msgstr ""
 
-#: voucher/models.py:38
+#: voucher/models.py:43
 msgid "Voucher description"
 msgstr ""
 
-#: voucher/models.py:42
+#: voucher/models.py:47
 msgid "Enter voucher description"
 msgstr ""
 
-#: voucher/models.py:45
+#: voucher/models.py:50
 msgid "Voucher type"
 msgstr ""
 
-#: voucher/models.py:48
+#: voucher/models.py:53
 msgid "Select voucher type (in which case user receive voucher)"
 msgstr ""
 
-#: voucher/models.py:52
+#: voucher/models.py:57
 msgid "Discount type"
 msgstr ""
 
-#: voucher/models.py:55
+#: voucher/models.py:60
 msgid "Select discount type"
 msgstr ""
 
-#: voucher/models.py:59
+#: voucher/models.py:64
 msgid "Amount"
 msgstr ""
 
-#: voucher/models.py:62
+#: voucher/models.py:69
 msgid "Set discount amount"
 msgstr ""
 
-#: voucher/models.py:65
+#: voucher/models.py:72
 msgid "Voucher duration"
 msgstr ""
 
-#: voucher/models.py:68
+#: voucher/models.py:75
 msgid "Set how much days will voucher be available after creation"
 msgstr ""
 
-#: voucher/models.py:71
+#: voucher/models.py:78
 msgid "Purchase count"
 msgstr ""
 
-#: voucher/models.py:74
+#: voucher/models.py:81
 msgid "Set minimum purchase amount for receiving voucher"
 msgstr ""
 
-#: voucher/models.py:80 voucher/models.py:81
+#: voucher/models.py:93 voucher/models.py:94
 msgid "Voucher discount"
 msgstr ""
 
-#: voucher/models.py:108
+#: voucher/models.py:101
+msgid "Specify discount amount"
+msgstr ""
+
+#: voucher/models.py:104
+msgid "Select free item"
+msgstr ""
+
+#: voucher/models.py:107
+msgid "Specify purchase count"
+msgstr ""
+
+#: voucher/models.py:131
 msgid "Is scanned?"
 msgstr ""
 
-#: voucher/models.py:116
+#: voucher/models.py:139
 msgid "Expiration date"
 msgstr ""
 
-#: voucher/models.py:125
+#: voucher/models.py:148
 msgid "Vouchers"
 msgstr ""
 
-#: voucher/serializers.py:82
+#: voucher/serializers.py:125
 msgid "Invalid voucher QR code"
 msgstr ""
 
-#: voucher/serializers.py:87
+#: voucher/serializers.py:133
 msgid "QR code has already been scanned"
 msgstr ""
 
-#: voucher/serializers.py:94
+#: voucher/serializers.py:137
 msgid "Voucher expired {voucher.expiration_date.strftime('%m/%d/%Y')}"
 msgstr ""
 
-#: authentication.py:73
-msgid "Invalid basic header. No credentials provided."
-msgstr ""
-
-#: authentication.py:76
-msgid "Invalid basic header. Credentials string should not contain spaces."
-msgstr ""
-
-#: authentication.py:82
-msgid "Invalid basic header. Credentials not correctly base64 encoded."
-msgstr ""
-
-#: authentication.py:99
-msgid "Invalid username/password."
-msgstr ""
-
-#: authentication.py:102 authentication.py:198
-msgid "User inactive or deleted."
-msgstr ""
-
-#: authentication.py:176
-msgid "Invalid token header. No credentials provided."
-msgstr ""
-
-#: authentication.py:179
-msgid "Invalid token header. Token string should not contain spaces."
-msgstr ""
-
-#: authentication.py:185
-msgid ""
-"Invalid token header. Token string should not contain invalid characters."
-msgstr ""
-
-#: authentication.py:195
-msgid "Invalid token."
-msgstr ""
-
-#: authtoken/apps.py:7
-msgid "Auth Token"
-msgstr ""
-
-#: authtoken/models.py:15
-msgid "Key"
-msgstr ""
-
-#: authtoken/models.py:20
-msgid "Created"
-msgstr ""
-
-#: authtoken/models.py:29
-msgid "Token"
-msgstr ""
-
-#: authtoken/models.py:30
-msgid "Tokens"
-msgstr ""
-
-#: authtoken/serializers.py:8
-msgid "Username"
-msgstr ""
-
-#: authtoken/serializers.py:9
-msgid "Password"
-msgstr ""
-
-#: authtoken/serializers.py:20
-msgid "User account is disabled."
-msgstr ""
-
-#: authtoken/serializers.py:23
-msgid "Unable to log in with provided credentials."
-msgstr "Вы ввели не правильные данные для входа"
-
-#: authtoken/serializers.py:26
-msgid "Must include \"username\" and \"password\"."
-msgstr ""
-
-#: exceptions.py:49
-msgid "A server error occurred."
-msgstr ""
-
-#: exceptions.py:84
-msgid "Malformed request."
-msgstr ""
-
-#: exceptions.py:89
-msgid "Incorrect authentication credentials."
-msgstr ""
-
-#: exceptions.py:94
-msgid "Authentication credentials were not provided."
-msgstr ""
-
-#: exceptions.py:99
-msgid "You do not have permission to perform this action."
-msgstr ""
-
-#: exceptions.py:104 views.py:81
-msgid "Not found."
-msgstr ""
-
-#: exceptions.py:109
-msgid "Method \"{method}\" not allowed."
-msgstr ""
-
-#: exceptions.py:120
-msgid "Could not satisfy the request Accept header."
-msgstr ""
-
-#: exceptions.py:132
-msgid "Unsupported media type \"{media_type}\" in request."
-msgstr ""
-
-#: exceptions.py:145
-msgid "Request was throttled."
-msgstr ""
-
-#: fields.py:269 relations.py:206 relations.py:239 validators.py:98
-#: validators.py:181
-msgid "This field is required."
-msgstr ""
-
-#: fields.py:270
-msgid "This field may not be null."
-msgstr ""
-
-#: fields.py:608 fields.py:639
-msgid "\"{input}\" is not a valid boolean."
-msgstr ""
-
-#: fields.py:674
-msgid "This field may not be blank."
-msgstr ""
-
-#: fields.py:675 fields.py:1675
-msgid "Ensure this field has no more than {max_length} characters."
-msgstr ""
-
-#: fields.py:676
-msgid "Ensure this field has at least {min_length} characters."
-msgstr ""
-
-#: fields.py:713
-msgid "Enter a valid email address."
-msgstr ""
-
-#: fields.py:724
-msgid "This value does not match the required pattern."
-msgstr ""
-
-#: fields.py:735
-msgid ""
-"Enter a valid \"slug\" consisting of letters, numbers, underscores or "
-"hyphens."
-msgstr ""
-
-#: fields.py:747
-msgid "Enter a valid URL."
-msgstr ""
-
-#: fields.py:760
-msgid "\"{value}\" is not a valid UUID."
-msgstr ""
-
-#: fields.py:796
-msgid "Enter a valid IPv4 or IPv6 address."
-msgstr ""
-
-#: fields.py:821
-msgid "A valid integer is required."
-msgstr ""
-
-#: fields.py:822 fields.py:857 fields.py:891
-msgid "Ensure this value is less than or equal to {max_value}."
-msgstr ""
-
-#: fields.py:823 fields.py:858 fields.py:892
-msgid "Ensure this value is greater than or equal to {min_value}."
-msgstr ""
-
-#: fields.py:824 fields.py:859 fields.py:896
-msgid "String value too large."
-msgstr ""
-
-#: fields.py:856 fields.py:890
-msgid "A valid number is required."
-msgstr ""
-
-#: fields.py:893
-msgid "Ensure that there are no more than {max_digits} digits in total."
-msgstr ""
-
-#: fields.py:894
-msgid "Ensure that there are no more than {max_decimal_places} decimal places."
-msgstr ""
-
-#: fields.py:895
-msgid ""
-"Ensure that there are no more than {max_whole_digits} digits before the "
-"decimal point."
-msgstr ""
-
-#: fields.py:1025
-msgid "Datetime has wrong format. Use one of these formats instead: {format}."
-msgstr ""
-
-#: fields.py:1026
-msgid "Expected a datetime but got a date."
-msgstr ""
-
-#: fields.py:1103
-msgid "Date has wrong format. Use one of these formats instead: {format}."
-msgstr ""
-
-#: fields.py:1104
-msgid "Expected a date but got a datetime."
-msgstr ""
-
-#: fields.py:1170
-msgid "Time has wrong format. Use one of these formats instead: {format}."
-msgstr ""
-
-#: fields.py:1232
-msgid "Duration has wrong format. Use one of these formats instead: {format}."
-msgstr ""
-
-#: fields.py:1251 fields.py:1300
-msgid "\"{input}\" is not a valid choice."
-msgstr ""
-
-#: fields.py:1254 relations.py:71 relations.py:441
-msgid "More than {count} items..."
-msgstr ""
-
-#: fields.py:1301 fields.py:1448 relations.py:437 serializers.py:524
-msgid "Expected a list of items but got type \"{input_type}\"."
-msgstr ""
-
-#: fields.py:1302
-msgid "This selection may not be empty."
-msgstr ""
-
-#: fields.py:1339
-msgid "\"{input}\" is not a valid path choice."
-msgstr ""
-
-#: fields.py:1358
-msgid "No file was submitted."
-msgstr ""
-
-#: fields.py:1359
-msgid "The submitted data was not a file. Check the encoding type on the form."
-msgstr ""
-
-#: fields.py:1360
-msgid "No filename could be determined."
-msgstr ""
-
-#: fields.py:1361
-msgid "The submitted file is empty."
-msgstr ""
-
-#: fields.py:1362
-msgid ""
-"Ensure this filename has at most {max_length} characters (it has {length})."
-msgstr ""
-
-#: fields.py:1410
-msgid ""
-"Upload a valid image. The file you uploaded was either not an image or a "
-"corrupted image."
-msgstr ""
-
-#: fields.py:1449 relations.py:438 serializers.py:525
-msgid "This list may not be empty."
-msgstr ""
-
-#: fields.py:1502
-msgid "Expected a dictionary of items but got type \"{input_type}\"."
-msgstr ""
-
-#: fields.py:1549
-msgid "Value must be valid JSON."
-msgstr ""
-
-#: filters.py:36 templates/rest_framework/filters/django_filter.html:5
-msgid "Submit"
-msgstr ""
-
-#: filters.py:336
-msgid "ascending"
-msgstr ""
-
-#: filters.py:337
-msgid "descending"
-msgstr ""
-
-#: pagination.py:193
-msgid "Invalid page."
-msgstr ""
-
-#: pagination.py:427
-msgid "Invalid cursor"
-msgstr ""
-
-#: relations.py:207
-msgid "Invalid pk \"{pk_value}\" - object does not exist."
-msgstr ""
-
-#: relations.py:208
-msgid "Incorrect type. Expected pk value, received {data_type}."
-msgstr ""
-
-#: relations.py:240
-msgid "Invalid hyperlink - No URL match."
-msgstr ""
-
-#: relations.py:241
-msgid "Invalid hyperlink - Incorrect URL match."
-msgstr ""
-
-#: relations.py:242
-msgid "Invalid hyperlink - Object does not exist."
-msgstr ""
-
-#: relations.py:243
-msgid "Incorrect type. Expected URL string, received {data_type}."
-msgstr ""
-
-#: relations.py:401
-msgid "Object with {slug_name}={value} does not exist."
-msgstr ""
-
-#: relations.py:402
-msgid "Invalid value."
-msgstr ""
-
-#: serializers.py:326
-msgid "Invalid data. Expected a dictionary, but got {datatype}."
-msgstr ""
-
-#: templates/rest_framework/admin.html:116
-#: templates/rest_framework/base.html:128
-msgid "Filters"
-msgstr ""
-
-#: templates/rest_framework/filters/django_filter.html:2
-#: templates/rest_framework/filters/django_filter_crispyforms.html:4
-msgid "Field filters"
-msgstr ""
-
-#: templates/rest_framework/filters/ordering.html:3
-msgid "Ordering"
-msgstr ""
-
-#: templates/rest_framework/filters/search.html:2
-msgid "Search"
-msgstr ""
-
-#: templates/rest_framework/horizontal/radio.html:2
-#: templates/rest_framework/inline/radio.html:2
-#: templates/rest_framework/vertical/radio.html:2
-msgid "None"
-msgstr ""
-
-#: templates/rest_framework/horizontal/select_multiple.html:2
-#: templates/rest_framework/inline/select_multiple.html:2
-#: templates/rest_framework/vertical/select_multiple.html:2
-msgid "No items to select."
-msgstr ""
-
-#: validators.py:43
-msgid "This field must be unique."
-msgstr ""
-
-#: validators.py:97
-msgid "The fields {field_names} must make a unique set."
-msgstr ""
-
-#: validators.py:245
-msgid "This field must be unique for the \"{date_field}\" date."
-msgstr ""
-
-#: validators.py:260
-msgid "This field must be unique for the \"{date_field}\" month."
-msgstr ""
-
-#: validators.py:273
-msgid "This field must be unique for the \"{date_field}\" year."
-msgstr ""
-
-#: versioning.py:42
-msgid "Invalid version in \"Accept\" header."
-msgstr ""
-
-#: versioning.py:73
-msgid "Invalid version in URL path."
-msgstr ""
-
-#: versioning.py:115
-msgid "Invalid version in URL path. Does not match any version namespace."
-msgstr ""
-
-#: versioning.py:147
-msgid "Invalid version in hostname."
-msgstr ""
-
-#: versioning.py:169
-msgid "Invalid version in query parameter."
-msgstr ""
-
-#: views.py:88
-msgid "Permission denied."
+#: voucher/serializers.py:141
+msgid "Voucher is inactive"
 msgstr ""
