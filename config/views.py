@@ -13,6 +13,7 @@ class RestaurantBranchViewSet(GenericViewSet, ListModelMixin, RetrieveModelMixin
     queryset = RestaurantBranch.objects.active()
     lookup_field = 'id'
     serializer_class = RestaurantBranchDetailsSerializer
+    pagination_class = None
 
 
 class RestaurantConfigView(APIView):
