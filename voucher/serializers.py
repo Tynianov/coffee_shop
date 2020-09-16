@@ -1,7 +1,7 @@
 from datetime import timedelta
 
 from django.utils import timezone
-from django.utils.translation import ugettext_lazy as _
+from django.utils.translation import ugettext as _
 from rest_framework import serializers
 
 from logs.models import ScanLogEntry
@@ -41,7 +41,7 @@ class VoucherSerializer(serializers.ModelSerializer):
 
     def get_expiration_date(self, obj):
         if obj.voucher_config.duration:
-            return obj.created + timedelta(days=obj.voucher_config.duration)
+            return (obj.created + timedelta(days=obj.voucher_config.duration)).strftime("%d/%m/%Y %H:%M")
         return None
 
     def get_qr_code(self, obj):

@@ -25,4 +25,5 @@ def send_push_notification(user, title, data):
     }
 
     device.send_message(**message_data)
-    logger.info("Push send")
+    logger.warning("Push send")
+    return
