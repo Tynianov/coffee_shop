@@ -173,9 +173,10 @@ class UpdateUserDetailsSerializer(serializers.ModelSerializer):
             "first_name",
             "phone_number",
             "instagram_username",
-            "firebase_uid"
+            "firebase_uid",
+            "birth_date"
         ]
-        read_only_fields = ('email', )
+        read_only_fields = ('email', "firebase_uid")
 
 
 class PasswordResetBySMSSerializer(serializers.Serializer):
