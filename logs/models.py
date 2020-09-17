@@ -1,7 +1,11 @@
 from django.db import models
+from django.db.models.signals import post_save
+from django.dispatch import receiver
 from django.utils.translation import ugettext_lazy as _
 
 from user.models import User
+from user.constants import NEW_LOG_ENTRY_CREATED
+from user.utils import send_push_notification
 from voucher.models import Voucher
 
 
@@ -68,3 +72,16 @@ class ScanLogEntry(models.Model):
 
     def __str__(self):
         return f'Log #{self.pk}'
+
+
+@receiver(post_save, sender=ScanLogEntry)
+def send_push_notification_with_log(sender, instance, created, **kwargs):
+    if created:
+        from .serializers import ScanLogEntrySerializer
+
+        user = instance.initiator
+        data = {
+            'code': NEW_LOG_ENTRY_CREATED,
+            'log_entry': ScanLogEntrySerializer(instance).data
+        }
+        send_push_notification(user, 'New Log arrived', data)
