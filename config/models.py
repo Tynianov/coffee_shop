@@ -148,6 +148,21 @@ class RestaurantBranch(StatusModel):
         related_name='weekend_working_hours',
         help_text=_("Set working hours during weekends")
     )
+    lat = models.DecimalField(
+        _("Latitude"),
+        max_digits=10,
+        decimal_places=6,
+        null=True,
+        help_text=_("Enter latitude of branch")
+    )
+    lon = models.DecimalField(
+        _("Longitude"),
+        max_digits=10,
+        decimal_places=6,
+        null=True,
+        help_text=_("Enter longitude of branch")
+    )
+
     objects = StatusQuerySet.as_manager()
 
     class Meta:
