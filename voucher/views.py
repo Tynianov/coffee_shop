@@ -18,5 +18,9 @@ class ScanVoucherQRCode(APIView):
                 'message': _("QR Code scanned successfully"),
                 'voucher': VoucherSerializer(serializer.voucher).data
             }
+            serializer.voucher.qr_code.qr_code.delete()
+            serializer.voucher.qr_code.delete()
+            serializer.voucher.delete()
+
             return Response(data)
         return Response(serializer.errors, status=HTTP_400_BAD_REQUEST)
