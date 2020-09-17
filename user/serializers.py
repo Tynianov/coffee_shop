@@ -165,6 +165,8 @@ class ValidateUserQrCodeSerializer(serializers.Serializer):
 
 
 class UpdateUserDetailsSerializer(serializers.ModelSerializer):
+    firebase_uid = serializers.CharField(write_only=True)
+
     class Meta:
         model = User
         fields = [
@@ -176,7 +178,7 @@ class UpdateUserDetailsSerializer(serializers.ModelSerializer):
             "firebase_uid",
             "birth_date"
         ]
-        read_only_fields = ('email', "firebase_uid")
+        read_only_fields = ('email', )
 
 
 class PasswordResetBySMSSerializer(serializers.Serializer):
