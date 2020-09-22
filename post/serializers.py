@@ -7,6 +7,7 @@ from .models import Post, PostConfig
 class PostListSerializer(serializers.ModelSerializer):
     short_description = serializers.SerializerMethodField()
     first_image = serializers.SerializerMethodField()
+    created = serializers.SerializerMethodField()
 
     class Meta:
         model = Post
@@ -22,9 +23,13 @@ class PostListSerializer(serializers.ModelSerializer):
             return get_absolute_url(obj.images.all().first().image.url)
         return None
 
+    def get_created(self, obj):
+        return obj.created.strftime("%d/%m/%Y")
+
 
 class PostDetailsSerializer(serializers.ModelSerializer):
     post_images = serializers.SerializerMethodField()
+    created = serializers.SerializerMethodField()
 
     class Meta:
         model = Post
@@ -37,6 +42,9 @@ class PostDetailsSerializer(serializers.ModelSerializer):
                 images.append(get_absolute_url(image.image.url))
             return images
         return None
+
+    def get_created(self, obj):
+        return obj.created.strftime("%d/%m/%Y")
 
 
 class PostConfigSerializer(serializers.ModelSerializer):
