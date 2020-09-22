@@ -168,3 +168,6 @@ class RestaurantBranch(StatusModel):
     class Meta:
         verbose_name = _("Restaurant branch")
         verbose_name_plural = _("Restaurant branches")
+
+    def __str__(self):
+        return self.branch_name

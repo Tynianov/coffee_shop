@@ -41,6 +41,9 @@ class Post(StatusModel):
         verbose_name_plural = _("Posts")
         ordering = ["-created"]
 
+    def __str__(self):
+        return self.title
+
 
 class PostConfig(SingletonModel):
     show_post_section = models.BooleanField(

@@ -79,7 +79,7 @@ class User(AbstractUser):
     objects = UserManager()
 
     def __str__(self):
-        return self.phone_number.__str__()
+        return f"{self.first_name} {self.last_name}"
 
     class Meta:
         verbose_name = _("User")
