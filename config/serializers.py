@@ -2,7 +2,7 @@ from rest_framework import serializers
 
 from utils.funcs import get_absolute_url
 
-from .models import RestaurantConfig, RestaurantBranch
+from .models import RestaurantConfig, RestaurantBranch, AppMetadataConfig
 
 
 class RestaurantConfigSerializers(serializers.ModelSerializer):
@@ -57,3 +57,14 @@ class RestaurantBranchDetailsSerializer(RestaurantBranchListSerializer):
             return obj.weekday_working_hours.__str__()
         return None
 
+
+class TnCSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = AppMetadataConfig
+        fields = ['terms_and_conditions']
+
+
+class WebPageConfigSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = AppMetadataConfig
+        fields = '__all__'

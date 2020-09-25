@@ -10,7 +10,7 @@ class WorkHours(models.Model):
     end = models.TimeField(_('End'))
 
     class Meta:
-        verbose_name = _("Work Hours")
+        verbose_name = _("Work Hour")
 
     def __str__(self):
         return self.begin.strftime("%H:%M") + "-" + self.end.strftime("%H:%M")
@@ -169,5 +169,21 @@ class RestaurantBranch(StatusModel):
         verbose_name = _("Restaurant branch")
         verbose_name_plural = _("Restaurant branches")
 
+
+class AppMetadataConfig(SingletonModel):
+    terms_and_conditions = models.TextField(
+        _("Terms and Conditions"),
+        help_text=_("Enter app terms and Conditions")
+    )
+    android_download_link = models.URLField(
+        _("Android app download link")
+    )
+    ios_download_link = models.URLField(
+        _("IOS app download link")
+    )
+
+    class Meta:
+        verbose_name = _("App metadata config")
+
     def __str__(self):
-        return self.branch_name
+        return "App config"

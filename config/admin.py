@@ -20,3 +20,8 @@ class WeekDayAdmin(admin.ModelAdmin):
 @admin.register(WorkHours)
 class WorkHoursAdmin(admin.ModelAdmin):
     list_display = ['begin', 'end']
+
+
+@admin.register(AppMetadataConfig)
+class AppMetadataAdmin(admin.ModelAdmin):
+    pass
