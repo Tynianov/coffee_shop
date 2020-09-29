@@ -68,3 +68,10 @@ class WebPageConfigSerializer(serializers.ModelSerializer):
     class Meta:
         model = AppMetadataConfig
         fields = '__all__'
+
+
+class PrivacyPolicySerializer(serializers.ModelSerializer):
+    class Meta:
+        model = AppMetadataConfig
+        fields = ['privacy_policy']
+

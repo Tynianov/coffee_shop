@@ -10,6 +10,7 @@ urlpatterns = [
     path('config', RestaurantConfigView.as_view(), name='restaurant-config'),
     path('terms-and-conditions', TnCView.as_view(), name='terms-and-conditions'),
     path('web-page-config', WebPageConfigView.as_view(), name='web-page-config'),
+    path('privacy-policy', PrivacyPolicyView.as_view(), name='privacy-policy'),
 
     re_path(r'^', include(router.urls)),
 ]

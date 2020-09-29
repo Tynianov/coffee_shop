@@ -181,6 +181,10 @@ class AppMetadataConfig(SingletonModel):
     ios_download_link = models.URLField(
         _("IOS app download link")
     )
+    privacy_policy = models.TextField(
+        _("Privacy Policy"),
+        help_text=_("Enter app Privacy Policy")
+    )
 
     class Meta:
         verbose_name = _("App metadata config")

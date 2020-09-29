@@ -10,7 +10,8 @@ from .serializers import \
     RestaurantBranchDetailsSerializer,\
     RestaurantConfigSerializers,\
     TnCSerializer,\
-    WebPageConfigSerializer
+    WebPageConfigSerializer,\
+    PrivacyPolicySerializer
 
 
 class RestaurantBranchViewSet(GenericViewSet, ListModelMixin, RetrieveModelMixin):
@@ -41,3 +42,8 @@ class TnCView(BaseAppMetadataView):
 
 class WebPageConfigView(BaseAppMetadataView):
     serializer_class = WebPageConfigSerializer
+
+
+class PrivacyPolicyView(BaseAppMetadataView):
+    serializer_class = PrivacyPolicySerializer
+
