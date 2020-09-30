@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-09-13 19:46+0000\n"
+"POT-Creation-Date: 2020-09-30 07:45+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -22,310 +22,354 @@ msgstr ""
 
 #: coffee_shop/settings/base.py:157
 msgid "English"
-msgstr ""
+msgstr "Английский"
 
 #: coffee_shop/settings/base.py:158
 msgid "Russian"
-msgstr ""
+msgstr "Русский"
 
 #: config/models.py:9
 msgid "Start"
-msgstr ""
+msgstr "Старт"
 
 #: config/models.py:10
 msgid "End"
-msgstr ""
+msgstr "Конец"
 
 #: config/models.py:13
-msgid "Work Hours"
-msgstr ""
+msgid "Work Hour"
+msgstr "Рабочие время"
 
 #: config/models.py:21
 msgid "Monday"
-msgstr ""
+msgstr "Понедельник"
 
 #: config/models.py:22
 msgid "Tuesday"
-msgstr ""
+msgstr "Вторник"
 
 #: config/models.py:23
 msgid "Wednesday"
-msgstr ""
+msgstr "Среда"
 
 #: config/models.py:24
 msgid "Thursday"
-msgstr ""
+msgstr "Четврег"
 
 #: config/models.py:25
 msgid "Friday"
-msgstr ""
+msgstr "Пятница"
 
 #: config/models.py:26
 msgid "Saturday"
-msgstr ""
+msgstr "Суббота"
 
 #: config/models.py:27
 msgid "Sunday"
-msgstr ""
+msgstr "Воскресенье"
 
 #: config/models.py:38
 msgid "Week day"
-msgstr ""
+msgstr "Рабочий день"
 
 #: config/models.py:39
 msgid "Week days"
-msgstr ""
+msgstr "Рабочие дни"
 
 #: config/models.py:50 menu/models.py:70
 msgid "Name"
-msgstr ""
+msgstr "Имя"
 
 #: config/models.py:52
 msgid "Enter restaurant name"
-msgstr ""
+msgstr "Введите название ресторана"
 
 #: config/models.py:55
 msgid "Email"
-msgstr ""
+msgstr "Электронная почта"
 
 #: config/models.py:58
 msgid "Enter restaurant email address"
-msgstr ""
+msgstr "Введите название ресторана"
 
 #: config/models.py:61
 msgid "Website"
-msgstr ""
+msgstr "Сайт"
 
 #: config/models.py:64
 msgid "Enter restaurant website"
-msgstr ""
+msgstr "Введите адресс сайта"
 
 #: config/models.py:67 config/models.py:106 sms/models.py:12 user/models.py:50
 msgid "Phone number"
-msgstr ""
+msgstr "Номер телефона"
 
 #: config/models.py:71 config/models.py:110
 msgid "Enter restaurant phone number"
-msgstr ""
+msgstr "Введите номер телефона ресторана"
 
 #: config/models.py:74
 msgid "Instagram link"
-msgstr ""
+msgstr "Ссылка на профиль Instagram"
 
 #: config/models.py:78
 msgid "Enter Instagram link"
-msgstr ""
+msgstr "Введите ссылку на профиль Instagram"
 
 #: config/models.py:81
 msgid "Facebook link"
-msgstr ""
+msgstr "Ссылка на профиль Facebook"
 
 #: config/models.py:85
 msgid "Enter Facebook link"
-msgstr ""
+msgstr "Введите ссылку на профиль в Facebook"
 
 #: config/models.py:88
 msgid "Restaurant logo"
-msgstr ""
+msgstr "Логотип ресторана"
 
 #: config/models.py:92
 msgid "Add restaurant logo to display it in the app"
-msgstr ""
+msgstr "Добавте логотип ресторана что бы отобразить его в приложении"
 
 #: config/models.py:96
 msgid "Restaurant config"
-msgstr ""
+msgstr "Настройки ресторана"
 
 #: config/models.py:101
 msgid "Branch name"
-msgstr ""
+msgstr "Название отделения"
 
 #: config/models.py:103
 msgid "Enter branch name"
-msgstr ""
+msgstr "Введите название отделения"
 
 #: config/models.py:113
 msgid "Branch address"
-msgstr ""
+msgstr "Адресс отделения"
 
 #: config/models.py:115
 msgid "Enter Branch address"
-msgstr ""
+msgstr "Введите адресс отделения"
 
 #: config/models.py:118
 msgid "Google Maps embedded code"
-msgstr ""
+msgstr "Google Maps код"
 
 #: config/models.py:119
 msgid ""
 "Click 'Share or embed map', then click 'Embed map' and copy-paste code there"
-msgstr ""
+msgstr "Нажмите 'Share or embed map', после чего 'Embed map' т вставьте код сюда"
 
 #: config/models.py:123
 msgid "Branch image"
-msgstr ""
+msgstr "Фото отделения"
 
 #: config/models.py:127
 msgid "Add branch image to display it in the app"
-msgstr ""
+msgstr "Добавте фото отделения для того, что бы показать его в приложении"
 
 #: config/models.py:130
 msgid "Short description"
-msgstr ""
+msgstr "Краткое описание"
 
 #: config/models.py:134
 msgid "Enter short description of branch"
-msgstr ""
+msgstr "Введите краткое описание"
 
 #: config/models.py:141
 msgid "Set working hours during weekdays"
-msgstr ""
+msgstr "Выставите рабочие время в будние дни"
 
 #: config/models.py:149
 msgid "Set working hours during weekends"
-msgstr ""
+msgstr "Выставите рабочие время в выходные дни"
 
-#: config/models.py:154
+#: config/models.py:152
+msgid "Latitude"
+msgstr "Широта"
+
+#: config/models.py:156
+msgid "Enter latitude of branch"
+msgstr "Введите широту отделения"
+
+#: config/models.py:159
+msgid "Longitude"
+msgstr "Долгота"
+
+#: config/models.py:163
+msgid "Enter longitude of branch"
+msgstr "Введите долготу отделения"
+
+#: config/models.py:169
 msgid "Restaurant branch"
-msgstr ""
+msgstr "Отделение ресторана"
 
-#: config/models.py:155
+#: config/models.py:170
 msgid "Restaurant branches"
-msgstr ""
+msgstr "Отделения ресторана"
 
-#: logs/models.py:22
+#: config/models.py:175
+msgid "Terms and Conditions"
+msgstr "Условия пользования"
+
+#: config/models.py:176
+msgid "Enter app terms and Conditions"
+msgstr "Введите условия пользования приложением"
+
+#: config/models.py:179
+msgid "Android app download link"
+msgstr "Ссылка для скачивания Android приложения"
+
+#: config/models.py:182
+msgid "IOS app download link"
+msgstr "Ссылка для скачивания IOS приложения"
+
+#: config/models.py:185
+msgid "Privacy Policy"
+msgstr "Политика конфиденциальности"
+
+#: config/models.py:186
+msgid "Enter app Privacy Policy"
+msgstr "Введите политику конфиденциальности приложения"
+
+#: config/models.py:190
+msgid "App metadata config"
+msgstr "Метаданные приложения"
+
+#: logs/models.py:26
 msgid "voucher"
-msgstr ""
+msgstr "Ваучер"
 
-#: logs/models.py:23 qr_code/models.py:56 user/models.py:85
+#: logs/models.py:27 qr_code/models.py:56 user/models.py:85
 msgid "User"
 msgstr "Пользователь"
 
-#: logs/models.py:27 post/models.py:33 sms/models.py:15 voucher/models.py:135
+#: logs/models.py:31 post/models.py:33 sms/models.py:15 voucher/models.py:135
 msgid "Creation date"
-msgstr ""
-
-#: logs/models.py:40
-msgid "Successfully scanned?"
-msgstr ""
+msgstr "Дата создания"
 
 #: logs/models.py:44
+msgid "Successfully scanned?"
+msgstr "Успешно отсканирован?"
+
+#: logs/models.py:48
 msgid "Error message"
-msgstr ""
+msgstr "Сообщение об ошибке"
 
-#: logs/models.py:66
+#: logs/models.py:70
 msgid "Scan log"
-msgstr ""
+msgstr "Запись сканирования"
 
-#: logs/models.py:67
+#: logs/models.py:71
 msgid "Scan logs"
-msgstr ""
+msgstr "Записи сканирования"
 
 #: menu/models.py:9
 msgid "Category name"
-msgstr ""
+msgstr "Название категории"
 
 #: menu/models.py:17
 msgid "Category"
-msgstr ""
+msgstr "Категория"
 
 #: menu/models.py:18
 msgid "Categories"
-msgstr ""
+msgstr "Категории"
 
 #: menu/models.py:28
 msgid "Product name"
-msgstr ""
+msgstr "название продукта"
 
 #: menu/models.py:32
 msgid "Product description"
-msgstr ""
+msgstr "Описание продукта"
 
 #: menu/models.py:37 menu/models.py:74
 msgid "Price"
-msgstr ""
+msgstr "Цена"
 
 #: menu/models.py:55
 msgid "Product"
-msgstr ""
+msgstr "Продукт"
 
 #: menu/models.py:56
 msgid "Products"
-msgstr ""
+msgstr "Продукты"
 
 #: menu/models.py:87
 msgid "Product Variation"
-msgstr ""
+msgstr "Вариация продукта"
 
 #: menu/models.py:88
 msgid "Product Variations"
-msgstr ""
+msgstr "Вариации продуктов"
 
 #: post/models.py:15 post/models.py:20
 msgid "Post image"
-msgstr ""
+msgstr "Изображение статьи"
 
 #: post/models.py:21
 msgid "Post images"
-msgstr ""
+msgstr "Изображения статей"
 
 #: post/models.py:26
 msgid "Title"
-msgstr ""
+msgstr "Заголовок"
 
 #: post/models.py:30
 msgid "Post content"
-msgstr ""
+msgstr "Контент"
 
 #: post/models.py:40
 msgid "Post"
-msgstr ""
+msgstr "Статья"
 
 #: post/models.py:41
 msgid "Posts"
-msgstr ""
+msgstr "Статьи"
 
-#: post/models.py:47
+#: post/models.py:50
 msgid "Show post section in app?"
-msgstr ""
+msgstr "Показывать секцию со статьями в приложении?"
 
-#: post/models.py:51
+#: post/models.py:54
 msgid "How much post to show in mobile app?"
-msgstr ""
+msgstr "Сколько статей отображать в приложении?"
 
-#: post/models.py:53
+#: post/models.py:56
 msgid ""
 "Set how much post to show in mobile app. Rest of the post will be visible "
 "after clicking 'more' button"
-msgstr ""
+msgstr "Выставите сколько статей должно быть видно в приложении. Остальные статьи будут видны после нажатия на кнопку 'Еще'"
 
-#: post/models.py:58
+#: post/models.py:61
 msgid "Posts config"
-msgstr ""
+msgstr "Настроки секции со статьями"
 
 #: qr_code/models.py:18
 msgid "QR code"
-msgstr ""
+msgstr "QR код"
 
 #: qr_code/models.py:65
 msgid "User QR code"
-msgstr ""
+msgstr "QR код пользователя"
 
 #: qr_code/models.py:66
 msgid "User QR codes"
-msgstr ""
+msgstr "QR коды пользователя"
 
 #: qr_code/models.py:72 voucher/models.py:147
 msgid "Voucher"
-msgstr ""
+msgstr "Ваучер"
 
 #: qr_code/models.py:77
 msgid "QR Code"
-msgstr ""
+msgstr "QR код"
 
 #: qr_code/models.py:84 qr_code/models.py:85
 msgid "Voucher QR code"
-msgstr ""
+msgstr "QR код ваучера"
 
 #: sms/models.py:8 sms/models.py:23
 msgid "Password reset SMS code"
@@ -337,203 +381,203 @@ msgstr ""
 
 #: user/models.py:44
 msgid "Instagram Profile"
-msgstr ""
+msgstr "Instagram профиль"
 
 #: user/models.py:54
 msgid "Email address"
-msgstr ""
+msgstr "Email"
 
 #: user/models.py:60
 msgid "Current user purchase"
-msgstr ""
+msgstr "Текущее кол-во покупок"
 
 #: user/models.py:62
 msgid "Count of current user purchase"
-msgstr ""
+msgstr "Счетчик текущих покупок пользователя"
 
 #: user/models.py:65
 msgid "Birth day"
-msgstr ""
+msgstr "День рождения"
 
 #: user/models.py:70
 msgid "Firebase user uId"
-msgstr ""
+msgstr "Firebase uId пользователя"
 
 #: user/models.py:86
 msgid "Users"
-msgstr ""
+msgstr "Пользователи"
 
 #: user/serializers.py:62
 msgid "User with this phone number already registered"
-msgstr ""
+msgstr "Пользователь с таким номером телефона уже зарагестрированн"
 
-#: user/serializers.py:191 user/serializers.py:243
+#: user/serializers.py:194 user/serializers.py:246
 msgid "User with entered phone number not found"
-msgstr ""
+msgstr "Пользователь с введенным номером телефона не найден"
 
-#: user/serializers.py:232
+#: user/serializers.py:235
 msgid "Invalid code"
-msgstr ""
+msgstr "Неверный код"
 
-#: user/serializers.py:236
+#: user/serializers.py:239
 msgid "Error occurred while phone number validation"
-msgstr ""
+msgstr "Во время валидации номера телефона произошла ошибка"
 
-#: user/serializers.py:258
+#: user/serializers.py:261
 msgid "Passwords must match"
-msgstr ""
+msgstr "Пароли должны совпадать"
 
-#: user/serializers.py:279
+#: user/serializers.py:282
 msgid "Must include phone number and password"
-msgstr ""
-
-#: user/serializers.py:290
-msgid "User account is disabled."
-msgstr ""
+msgstr "Должен содержать номер телефона и пароль"
 
 #: user/serializers.py:293
+msgid "User account is disabled."
+msgstr "Аккаунт пользователя заблокированн"
+
+#: user/serializers.py:296
 msgid "Unable to log in with provided credentials."
 msgstr "Вы ввели не правильные данные для входа"
 
 #: user/views.py:37 voucher/views.py:18
 msgid "QR Code scanned successfully"
-msgstr ""
+msgstr "QR код отсканированн успешно"
 
 #: user/views.py:63
 msgid "Code was successfully send by SMS"
-msgstr ""
+msgstr "SMS сщщбщение с кодом был выслан"
 
 #: user/views.py:89
 msgid "Password was successfully changed"
-msgstr ""
+msgstr "Пароль успешно изменен"
 
 #: user/views.py:102
 msgid "Phone number is missing"
-msgstr ""
+msgstr "Введите номер телефона"
 
 #: utils/models.py:7
 msgid "Is active?"
-msgstr ""
+msgstr "Активен?"
 
 #: utils/models.py:10
 msgid "Designate, if object is active"
-msgstr ""
+msgstr "Отметьте, если объект активен"
 
 #: voucher/models.py:26
 msgid "Minimum purchase amount"
-msgstr ""
+msgstr "Минимальное кол-во покупок"
 
 #: voucher/models.py:27
 msgid "For registration"
-msgstr ""
+msgstr "За регестрацию"
 
 #: voucher/models.py:28
 msgid "For all users"
-msgstr ""
+msgstr "Для всех пользователей"
 
 #: voucher/models.py:32
 msgid "Fixed discount"
-msgstr ""
+msgstr "Фиксрованная скидка"
 
 #: voucher/models.py:33
 msgid "Percentage dicount"
-msgstr ""
+msgstr "Процентнная скидка"
 
 #: voucher/models.py:34
 msgid "Free product"
-msgstr ""
+msgstr "Бесплатный продукт"
 
 #: voucher/models.py:38
 msgid "Voucher name"
-msgstr ""
+msgstr "Имя ваучера"
 
 #: voucher/models.py:40
 msgid "Enter voucher name"
-msgstr ""
+msgstr "Введите имя ваучера"
 
 #: voucher/models.py:43
 msgid "Voucher description"
-msgstr ""
+msgstr "Описание ваучера"
 
 #: voucher/models.py:47
 msgid "Enter voucher description"
-msgstr ""
+msgstr "Введите описание ваучера"
 
 #: voucher/models.py:50
 msgid "Voucher type"
-msgstr ""
+msgstr "Тип ваучера"
 
 #: voucher/models.py:53
 msgid "Select voucher type (in which case user receive voucher)"
-msgstr ""
+msgstr "Выберете тип ваучера (в каких случаях пользователь будет получать ваучер)"
 
 #: voucher/models.py:57
 msgid "Discount type"
-msgstr ""
+msgstr "Тип ссылки"
 
 #: voucher/models.py:60
 msgid "Select discount type"
-msgstr ""
+msgstr "Выберете тип скидки"
 
 #: voucher/models.py:64
 msgid "Amount"
-msgstr ""
+msgstr "Сумма"
 
 #: voucher/models.py:69
 msgid "Set discount amount"
-msgstr ""
+msgstr "Высавите размер ссылки"
 
 #: voucher/models.py:72
 msgid "Voucher duration"
-msgstr ""
+msgstr "длительность ваучера"
 
 #: voucher/models.py:75
 msgid "Set how much days will voucher be available after creation"
-msgstr ""
+msgstr "Выставите сколько дней после создания будет доступен ваучер"
 
 #: voucher/models.py:78
 msgid "Purchase count"
-msgstr ""
+msgstr "Кол-во покупок"
 
 #: voucher/models.py:81
 msgid "Set minimum purchase amount for receiving voucher"
-msgstr ""
+msgstr "Выставите минимальное кол-во покупок"
 
 #: voucher/models.py:93 voucher/models.py:94
 msgid "Voucher discount"
-msgstr ""
+msgstr "Скидка ваучера"
 
 #: voucher/models.py:101
 msgid "Specify discount amount"
-msgstr ""
+msgstr "Выставите размер ссылки"
 
 #: voucher/models.py:104
 msgid "Select free item"
-msgstr ""
+msgstr "Выберете бесплатный продукт"
 
 #: voucher/models.py:107
 msgid "Specify purchase count"
-msgstr ""
+msgstr "Выставите кол-во покупок"
 
 #: voucher/models.py:131
 msgid "Is scanned?"
-msgstr ""
+msgstr "Отсканированн?"
 
 #: voucher/models.py:139
 msgid "Expiration date"
-msgstr ""
+msgstr "Дата истечения"
 
 #: voucher/models.py:148
 msgid "Vouchers"
-msgstr ""
+msgstr "Ваучеры"
 
 #: voucher/serializers.py:125
 msgid "Invalid voucher QR code"
-msgstr ""
+msgstr "Не верный QR код ваучера"
 
 #: voucher/serializers.py:133
 msgid "QR code has already been scanned"
-msgstr ""
+msgstr "QR код уже был отсканированн"
 
 #: voucher/serializers.py:137
 msgid "Voucher expired {voucher.expiration_date.strftime('%m/%d/%Y')}"
@@ -541,4 +585,4 @@ msgstr ""
 
 #: voucher/serializers.py:141
 msgid "Voucher is inactive"
-msgstr ""
+msgstr "Ваучер неактивен"
