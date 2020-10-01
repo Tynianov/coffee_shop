@@ -62,6 +62,7 @@ INSTALLED_APPS = [
     'drf_yasg',
     'phonenumber_field',
     'fcm_django',
+    'solo',
 
     'voucher',
     'menu',
@@ -71,7 +72,8 @@ INSTALLED_APPS = [
     'post',
     'api',
     'logs',
-    'sms'
+    'sms',
+    'web'
 ]
 SITE_ID = 1
 # PROTOCOL = 'https'
@@ -92,7 +94,7 @@ ROOT_URLCONF = 'coffee_shop.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [os.path.join(BASE_DIR, 'templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [

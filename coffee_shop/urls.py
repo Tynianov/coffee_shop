@@ -45,6 +45,7 @@ urlpatterns = [
     re_path(r'^register-notify-token/',
          FCMDeviceAuthorizedViewSet.as_view({'post': 'create'}), name='create_fcm_device'),
     re_path(r'^', include('django.contrib.auth.urls')),
+    re_path(r'', include(('web.urls', 'web'), namespace='web')),
 ]
 
 urlpatterns += i18n_patterns(

@@ -1,0 +1,38 @@
+html, body {
+    background-color: #252427;
+    height: 100%;
+}
+
+a, p, h2 {
+    color: white;
+    text-decoration: none;
+    padding: 1rem 30px 1rem 30px;
+    margin: 0;
+}
+
+a:hover {
+    color: white;
+}
+
+h2 {
+    text-align: center;
+    margin: 1rem 0 2rem 0;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+}
+
+.content {
+    flex: 1 0 auto;
+}
+
+footer {
+    flex-shrink: 0;
+    background-color: black;
+}
+
+.semi {
+  color: #BBBBBB;
+}

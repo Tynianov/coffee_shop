@@ -1,4 +1,5 @@
 from django.contrib import admin
+from solo.admin import SingletonModelAdmin
 from .models import *
 
 
@@ -23,5 +24,5 @@ class WorkHoursAdmin(admin.ModelAdmin):
 
 
 @admin.register(AppMetadataConfig)
-class AppMetadataAdmin(admin.ModelAdmin):
+class AppMetadataAdmin(SingletonModelAdmin):
     pass

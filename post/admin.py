@@ -1,4 +1,5 @@
 from django.contrib import admin
+from solo.admin import SingletonModelAdmin
 
 from .models import PostImage, Post, PostConfig
 
@@ -14,5 +15,5 @@ class PostAdmin(admin.ModelAdmin):
 
 
 @admin.register(PostConfig)
-class PostConfigAdmin(admin.ModelAdmin):
+class PostConfigAdmin(SingletonModelAdmin):
     pass
