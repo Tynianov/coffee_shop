@@ -31,6 +31,7 @@ class CustomRegistrationSerializer(RegisterSerializer):
 
     def get_cleaned_data(self):
         super(CustomRegistrationSerializer, self).get_cleaned_data()
+        print('>>>', self.validated_data)
         return {
             'first_name': self.validated_data.get('first_name', ''),
             'last_name': self.validated_data.get('last_name', ''),
@@ -58,8 +59,12 @@ class CustomRegistrationSerializer(RegisterSerializer):
         return user
 
     def validate_phone_number(self, val):
-        if User.objects.filter(phone_number=val).exists():
-            raise serializers.ValidationError(_("User with this phone number already registered"))
+        user = User.objects.filter(phone_number=val).first()
+        if user:
+            if not user.firebase_uid:
+                User.objects.filter(id=user.id).delete()
+            else:
+                raise serializers.ValidationError(_("User with this phone number already registered"))
 
         return val
 
