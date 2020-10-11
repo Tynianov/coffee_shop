@@ -127,7 +127,10 @@ class ScanVoucherSerializer(serializers.Serializer):
             ScanLogEntry.objects.create(**log_data)
             raise serializers.ValidationError({"message": error_message})
 
-        log_data.update({"voucher": voucher})
+        log_data.update({
+            "voucher": voucher,
+            "user": voucher.user
+        })
 
         if voucher.is_scanned:
             error_message = _("QR code has already been scanned")

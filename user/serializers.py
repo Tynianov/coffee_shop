@@ -31,7 +31,6 @@ class CustomRegistrationSerializer(RegisterSerializer):
 
     def get_cleaned_data(self):
         super(CustomRegistrationSerializer, self).get_cleaned_data()
-        print('>>>', self.validated_data)
         return {
             'first_name': self.validated_data.get('first_name', ''),
             'last_name': self.validated_data.get('last_name', ''),
