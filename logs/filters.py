@@ -14,5 +14,5 @@ class ScanLogEntryFilter(django_filters.FilterSet):
     def filter_created(self, queryset, name, value):
         if not value:
             return queryset
-        next_day = value + timedelta(days=1)
-        return queryset.filter(created__range=[value, next_day])
+        last_day = value - timedelta(days=1)
+        return queryset.filter(created__range=[last_day, value])
