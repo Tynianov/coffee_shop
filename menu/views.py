@@ -1,6 +1,7 @@
 from rest_framework.viewsets import GenericViewSet
 from rest_framework.generics import ListAPIView
 from rest_framework.response import Response
+from rest_framework.permissions import AllowAny
 from rest_framework.pagination import LimitOffsetPagination
 from rest_framework.status import HTTP_404_NOT_FOUND
 from rest_framework.mixins import RetrieveModelMixin, ListModelMixin
@@ -11,6 +12,7 @@ from .serializers import *
 class CategoriesViewSet(GenericViewSet, ListModelMixin, RetrieveModelMixin):
     queryset = ProductCategory.objects.active()
     lookup_field = 'id'
+    permission_classes = [AllowAny]
 
     def get_serializer_class(self):
         if self.kwargs.get(self.lookup_field, None):
@@ -22,11 +24,13 @@ class ProductViewSet(GenericViewSet, ListModelMixin, RetrieveModelMixin):
     queryset = Product.objects.active()
     lookup_field = 'id'
     serializer_class = ProductSerializer
+    permission_classes = [AllowAny]
 
 
 class CategoryProductList(ListAPIView):
 
     pagination_class = LimitOffsetPagination
+    permission_classes = [AllowAny]
 
     def list(self, request, *args, **kwargs):
         category_id = self.kwargs.get('id')
