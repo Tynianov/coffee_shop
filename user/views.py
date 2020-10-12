@@ -131,3 +131,14 @@ class GetAuthTokenByFirebaseUid(APIView):
             return Response({
                 "firebase_uid": "Invalid firebase uid"
             }, status=status.HTTP_400_BAD_REQUEST)
+
+
+class RecreateUserQRCodeView(APIView):
+    def get(self, request):
+        user = request.user
+        user.qr_code.qr_code.delete()
+        user.qr_code.delete()
+        user.create_qr_code()
+        return Response(data={
+            "message": _("QR code has been successfully recreated")
+        })

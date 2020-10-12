@@ -2,8 +2,11 @@ import qrcode
 from io import BytesIO
 
 from django.db import models
+from django.db.models.signals import post_save
+from django.contrib.sites.models import Site
 from django.core.files.uploadedfile import InMemoryUploadedFile
 from django.utils.translation import ugettext_lazy as _
+from django.dispatch import receiver
 
 from user.models import User
 from voucher.models import Voucher
@@ -83,3 +86,33 @@ class VoucherQRCode(QRCode):
     class Meta:
         verbose_name = _("Voucher QR code")
         verbose_name_plural = _("Voucher QR code")
+
+
+class SitesTracker(models.Model):
+    original_domain = models.CharField(
+        max_length=100,
+        unique=True
+    )
+    site = models.ForeignKey(
+        Site,
+        on_delete=models.CASCADE
+    )
+
+
+@receiver(post_save, sender=Site)
+def recreate_qr_codes(sender, instance, created, **kwargs):
+    if created or not SitesTracker.objects.filter(site=instance).exists():
+        SitesTracker.objects.create(original_domain=instance.domain, site=instance)
+
+    tracker = SitesTracker.objects.filter(site=instance).first()
+
+    if tracker and tracker.original_domain != instance.domain:
+        for user in User.objects.all():
+            user.qr_code.qr_code.delete()
+            user.qr_code.delete()
+            user.create_qr_code()
+
+        for voucher in Voucher.objects.all():
+            voucher.qr_code.qr_code.delete()
+            voucher.qr_code.delete()
+            voucher.create_qr_code()

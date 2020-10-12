@@ -91,7 +91,7 @@ class User(AbstractUser):
         code = UserQRCode.objects.create(user=self)
         path = reverse('scan-user-code', args=(self.pk,))
         url = f"{get_backend_url()}{path}"
-        code.create_code(url, filename=self.email)
+        code.create_code(url, filename=self.phone_number)
         return code
 
 
