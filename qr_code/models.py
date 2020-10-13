@@ -107,6 +107,8 @@ def recreate_qr_codes(sender, instance, created, **kwargs):
     tracker = SitesTracker.objects.filter(site=instance).first()
 
     if tracker and tracker.original_domain != instance.domain:
+        tracker.original_domain = instance.domain
+        tracker.save()
         for user in User.objects.all():
             user.qr_code.qr_code.delete()
             user.qr_code.delete()
