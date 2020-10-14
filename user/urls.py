@@ -11,5 +11,6 @@ urlpatterns = [
     re_path(r'^change-password', ChangePasswordView.as_view({'post': 'create'})),
     re_path(r'^is-phone-number-taken', CheckIfPhoneNumberRegisterView.as_view()),
     re_path(r'^get-token-by-firebaseuid', GetAuthTokenByFirebaseUid.as_view()),
-    re_path(r'qr_code/recreate', RecreateUserQRCodeView.as_view())
+    re_path(r'qr_code/recreate', RecreateUserQRCodeView.as_view()),
+    re_path(r'register/complete', CompleteRegistrationView.as_view())
 ]

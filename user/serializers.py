@@ -308,3 +308,12 @@ class MinimumUserDataSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
         fields = ['phone_number', 'first_name', 'last_name']
+
+
+class CompleteRegistrationSerializer(serializers.ModelSerializer):
+    first_name = serializers.CharField(required=True)
+    last_name = serializers.CharField(required=True)
+
+    class Meta:
+        model = User
+        fields = ['first_name', 'last_name']

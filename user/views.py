@@ -1,5 +1,7 @@
 from rest_framework.permissions import IsAdminUser, AllowAny
-from rest_framework.viewsets import ModelViewSet
+from rest_framework.viewsets import ModelViewSet, GenericViewSet
+from rest_framework.mixins import UpdateModelMixin
+from rest_framework.generics import RetrieveUpdateAPIView
 from rest_framework import status
 from rest_framework.views import APIView
 from rest_framework.response import Response
@@ -14,7 +16,8 @@ from .serializers import \
     ValidateUserQrCodeSerializer,\
     PasswordResetBySMSSerializer, \
     ValidatePasswordResetPasswordCodeSerializer, \
-    ChangePasswordSerializer
+    ChangePasswordSerializer,\
+    CompleteRegistrationSerializer
 
 
 class UserView(APIView):
@@ -142,3 +145,20 @@ class RecreateUserQRCodeView(APIView):
         return Response(data={
             "message": _("QR code has been successfully recreated")
         })
+
+
+class CompleteRegistrationView(RetrieveUpdateAPIView):
+    queryset = User.objects.all()
+    serializer_class = CompleteRegistrationSerializer
+
+    def get_object(self):
+        return self.request.user
+
+    def update(self, request, *args, **kwargs):
+        obj = self.get_object()
+        serializer = self.get_serializer(data=request.data)
+        serializer.is_valid(raise_exception=True)
+        data = serializer.data
+        User.objects.filter(id=obj.id).update(**data)
+        return Response(data)
+
