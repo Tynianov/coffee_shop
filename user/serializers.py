@@ -313,7 +313,8 @@ class MinimumUserDataSerializer(serializers.ModelSerializer):
 class CompleteRegistrationSerializer(serializers.ModelSerializer):
     first_name = serializers.CharField(required=True)
     last_name = serializers.CharField(required=True)
+    firebase_uid = serializers.CharField(required=True)
 
     class Meta:
         model = User
-        fields = ['first_name', 'last_name']
+        fields = ['first_name', 'last_name', 'firebase_uid']
