@@ -36,3 +36,20 @@ footer {
 .semi {
   color: #BBBBBB;
 }
+
+.page-title {
+    margin-top: 5rem;
+    margin-bottom: 10rem;
+}
+.download-img{
+    width: 200px;
+    height: 70px;
+}
+.ios-container{
+    margin-top: 50px;
+}
+
+.android-download-img{
+    width: 230px;
+    height: 90px;
+}

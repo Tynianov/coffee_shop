@@ -11,11 +11,27 @@
 <body>
 <div class="content">
     {% block content %}
+        <div class="container">
+            <div class="page-title">
+                <h1 class="text-white text-center display-2">Black Dog Coffee</h1>
+            </div>
+            <div class="text-center">
+                <div>
+                    <a href="{{ config.android_download_link }}">
+                        <img class="android-download-img" src="{% static 'img/google-play-badge.png' %}">
+                    </a>
+                </div>
+                <div class="ios-container">
+                    <a href="{{ config.ios_download_link }}">
+                        <img class="download-img" src="{% static 'img/Download_on_the_App_Store_Badge_US-UK_RGB_wht_092917.svg' %}">
+                    </a>
+                </div>
+            </div>
+        </div>
     {% endblock %}
 </div>
 {% block footer %}
     <footer class="navbar navbar-default navbar-fixed-bottom">
-        <div class="container">
             <p>© {% now 'Y' %} Black Dog Coffee</p>
             <a href="{% url 'web:term' %}">{% trans "Terms and Conditions" %}</a>
             <a href="{% url 'web:privacy' %}">{% trans "Privacy Policy" %}</a>
