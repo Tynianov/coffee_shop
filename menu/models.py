@@ -12,10 +12,16 @@ class ProductCategory(StatusModel):
     image = models.ImageField(
         upload_to='categories/images'
     )
+    order = models.PositiveIntegerField(
+        _("Order"),
+        default=0,
+        help_text=_("Specify order in which categories will be displayed on frontend"),
+    )
 
     class Meta:
         verbose_name = _("Category")
         verbose_name_plural = _("Categories")
+        ordering = ["order"]
 
     def __str__(self):
         return self.name

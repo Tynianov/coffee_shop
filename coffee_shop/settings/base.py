@@ -63,6 +63,7 @@ INSTALLED_APPS = [
     'phonenumber_field',
     'fcm_django',
     'solo',
+    'adminsortable2',
 
     'voucher',
     'menu',

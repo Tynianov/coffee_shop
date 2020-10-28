@@ -1,4 +1,5 @@
 from django.contrib import admin
+from adminsortable2.admin import SortableAdminMixin
 
 from .models import Product, ProductCategory, ProductVariation
 
@@ -14,5 +15,5 @@ class ProductAdmin(admin.ModelAdmin):
 
 
 @admin.register(ProductCategory)
-class ProductCategoryAdmin(admin.ModelAdmin):
+class ProductCategoryAdmin(SortableAdminMixin, admin.ModelAdmin):
     list_display = ['name']
