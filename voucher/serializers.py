@@ -30,6 +30,7 @@ class VoucherSerializer(serializers.ModelSerializer):
     class Meta:
         model = Voucher
         fields = [
+            "id",
             "is_scanned",
             "is_active",
             "created",
