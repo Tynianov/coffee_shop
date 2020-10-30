@@ -1,3 +1,5 @@
+import io
+from PIL import Image
 from django.db import models
 from django.utils.translation import ugettext_lazy as _
 
@@ -25,6 +27,10 @@ class ProductCategory(StatusModel):
 
     def __str__(self):
         return self.name
+
+    def save(self, force_insert=False, force_update=False, using=None,
+             update_fields=None):
+        pass
 
     objects = StatusQuerySet.as_manager()
 
