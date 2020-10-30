@@ -7,6 +7,7 @@
     <title>Black Dog Coffee</title>
     <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
     <link rel="stylesheet" href="{% static 'css/main.css' %}">
+    <link rel="shortcut icon" href="{% static 'images/logo.png' %}">
 </head>
 <body>
 <div class="content">
@@ -23,7 +24,8 @@
                 </div>
                 <div class="ios-container">
                     <a href="{{ config.ios_download_link }}">
-                        <img class="download-img" src="{% static 'img/Download_on_the_App_Store_Badge_US-UK_RGB_wht_092917.svg' %}">
+                        <img class="download-img"
+                             src="{% static 'img/Download_on_the_App_Store_Badge_US-UK_RGB_wht_092917.svg' %}">
                     </a>
                 </div>
             </div>
@@ -32,10 +34,9 @@
 </div>
 {% block footer %}
     <footer class="navbar navbar-default navbar-fixed-bottom">
-            <p>© {% now 'Y' %} Black Dog Coffee</p>
-            <a href="{% url 'web:term' %}">{% trans "Terms and Conditions" %}</a>
-            <a href="{% url 'web:privacy' %}">{% trans "Privacy Policy" %}</a>
-        </div>
+        <p>© {% now 'Y' %} Black Dog Coffee</p>
+        <a href="{% url 'web:term' %}">{% trans "Terms and Conditions" %}</a>
+        <a href="{% url 'web:privacy' %}">{% trans "Privacy Policy" %}</a>
     </footer>
 {% endblock footer %}
 </body>

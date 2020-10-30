@@ -26,11 +26,12 @@ body {
 
 .content {
     flex: 1 0 auto;
+    padding-bottom: 20px;
 }
 
 footer {
     flex-shrink: 0;
-    background-color: black;
+    background-color: rgba(0, 0, 0, 0.6);;
 }
 
 .semi {
@@ -53,3 +54,5 @@ footer {
     width: 230px;
     height: 90px;
 }
+
+
