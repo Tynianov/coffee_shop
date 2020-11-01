@@ -20,7 +20,6 @@ class ScanVoucherQRCode(APIView):
             }
             serializer.voucher.qr_code.qr_code.delete()
             serializer.voucher.qr_code.delete()
-            serializer.voucher.delete()
 
             return Response(data)
         return Response(serializer.errors, status=HTTP_400_BAD_REQUEST)

@@ -6,6 +6,7 @@ from .models import ScanLogEntry
 
 class ScanLogEntrySerializer(serializers.ModelSerializer):
     user = serializers.SerializerMethodField()
+    voucher = serializers.SerializerMethodField()
 
     class Meta:
         model = ScanLogEntry
@@ -15,3 +16,8 @@ class ScanLogEntrySerializer(serializers.ModelSerializer):
         if obj.user:
             return MinimumUserDataSerializer(obj.user).data
         return
+
+    def get_voucher(self, obj):
+        if obj.voucher:
+            return obj.voucher.voucher_config.name
+        return ""
