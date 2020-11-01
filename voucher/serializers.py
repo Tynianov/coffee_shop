@@ -70,7 +70,8 @@ class UserDetailsVoucherSerializer(serializers.ModelSerializer):
             "id",
             "title",
             "description",
-            "free_item"
+            "free_item",
+            "is_scanned"
         ]
 
     def get_expiration_date(self, obj):

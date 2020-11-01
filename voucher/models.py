@@ -11,7 +11,7 @@ from menu.models import Product
 from user.models import User
 
 
-class VoucherQuerySet(StatusQuerySet):
+class VoucherConfigQuerySet(StatusQuerySet):
     def min_purchase_type(self):
         return self.active().filter(type=VoucherConfig.MIN_PURCHASE_AMOUNT)
 
@@ -87,7 +87,7 @@ class VoucherConfig(StatusModel):
         blank=True
     )
 
-    objects = VoucherQuerySet.as_manager()
+    objects = VoucherConfigQuerySet.as_manager()
 
     class Meta:
         verbose_name = _("Voucher discount")

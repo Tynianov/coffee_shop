@@ -69,7 +69,7 @@ class CustomRegistrationSerializer(RegisterSerializer):
 
 
 class UserSerializer(serializers.ModelSerializer):
-    vouchers = UserDetailsVoucherSerializer(many=True)
+    vouchers = serializers.SerializerMethodField()
     is_staff = serializers.SerializerMethodField()
     qr_code = serializers.SerializerMethodField()
 
@@ -96,6 +96,9 @@ class UserSerializer(serializers.ModelSerializer):
         if hasattr(obj, "qr_code"):
             return get_absolute_url(obj.qr_code.qr_code.url)
         return None
+
+    def get_vouchers(self, obj):
+        return UserDetailsVoucherSerializer(obj.vouchers.all().not_scanned(), many=True).data
 
 
 class ValidateUserQrCodeSerializer(serializers.Serializer):
