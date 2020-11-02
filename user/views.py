@@ -1,6 +1,5 @@
 from rest_framework.permissions import IsAdminUser, AllowAny
-from rest_framework.viewsets import ModelViewSet, GenericViewSet
-from rest_framework.mixins import UpdateModelMixin
+from rest_framework.viewsets import ModelViewSet
 from rest_framework.generics import RetrieveUpdateAPIView
 from rest_framework import status
 from rest_framework.views import APIView
@@ -9,6 +8,7 @@ from django.utils.translation import ugettext_lazy as _
 
 from voucher.models import VoucherConfig
 from voucher.serializers import VoucherConfigSerializer
+from qr_code.utils import recreate_model_qr_code
 
 from .models import User
 from .serializers import \
@@ -139,9 +139,7 @@ class GetAuthTokenByFirebaseUid(APIView):
 class RecreateUserQRCodeView(APIView):
     def get(self, request):
         user = request.user
-        user.qr_code.qr_code.delete()
-        user.qr_code.delete()
-        user.create_qr_code()
+        recreate_model_qr_code(user)
         return Response(data={
             "message": _("QR code has been successfully recreated")
         })
