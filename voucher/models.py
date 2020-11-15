@@ -148,7 +148,7 @@ class Voucher(StatusModel):
         verbose_name_plural = _("Vouchers")
 
     def __str__(self):
-        return f"{self.voucher_config.name} - {self.user.email}"
+        return f"{self.voucher_config.name} - {self.user.name}"
 
     def create_qr_code(self):
         from qr_code.models import VoucherQRCode

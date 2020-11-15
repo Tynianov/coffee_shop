@@ -79,11 +79,15 @@ class User(AbstractUser):
     objects = UserManager()
 
     def __str__(self):
-        return f"{self.first_name} {self.last_name}"
+        return self.name
 
     class Meta:
         verbose_name = _("User")
         verbose_name_plural = _("Users")
+
+    @property
+    def name(self):
+        return f"{self.first_name} {self.last_name}"
 
     def create_qr_code(self):
         from qr_code.models import UserQRCode
