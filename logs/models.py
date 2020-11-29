@@ -62,10 +62,6 @@ class ScanLogEntry(models.Model):
         null=True,
         blank=True
     )
-    is_voucher_received = models.BooleanField(
-        _("Is voucher received?"),
-        default=False
-    )
 
     objects = ScanLogEntryQuerySet.as_manager()
 
@@ -88,9 +84,4 @@ def send_push_notification_with_log(sender, instance, created, **kwargs):
             'code': NEW_LOG_ENTRY_CREATED,
             'log_entry': ScanLogEntrySerializer(instance).data
         }
-        if instance.is_voucher_received and instance.user:
-            voucher_conf = instance.user.vouchers.all().first().voucher_config
-            push_message = f"Пользователь получил '{voucher_conf.name}' ваучер"
-            send_push_notification(user, push_message, data)
-        else:
-            send_push_notification(user, 'QR Код отсканирован успешно', data)
+        send_push_notification(user, 'New Log arrived', data)

@@ -104,6 +104,11 @@ class UserSerializer(serializers.ModelSerializer):
 class ValidateUserQrCodeSerializer(serializers.Serializer):
     id = serializers.IntegerField()
 
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.is_voucher_received = False
+        self.received_voucher = None
+
     def validate(self, attrs):
         id = attrs.get('id')
         user = User.objects.filter(id=id).first()
@@ -154,9 +159,9 @@ class ValidateUserQrCodeSerializer(serializers.Serializer):
                     'voucher': VoucherSerializer(voucher).data,
                     'updated_counter': user.current_purchase_count
                 }
-                log_entry_data.update({
-                    "is_voucher_received": True
-                })
+                self.is_voucher_received = True
+                self.received_voucher = voucher
+
                 send_push_notification(user, "Voucher received", push_notification_data)
         log_entry_data.update({
             'status': True,

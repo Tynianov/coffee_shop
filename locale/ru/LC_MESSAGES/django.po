@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-09-30 07:45+0000\n"
+"POT-Creation-Date: 2020-11-29 21:24+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -20,11 +20,11 @@ msgstr ""
 "%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n"
 "%100>=11 && n%100<=14)? 2 : 3);\n"
 
-#: coffee_shop/settings/base.py:157
+#: coffee_shop/settings/base.py:156
 msgid "English"
 msgstr "Английский"
 
-#: coffee_shop/settings/base.py:158
+#: coffee_shop/settings/base.py:157
 msgid "Russian"
 msgstr "Русский"
 
@@ -41,30 +41,37 @@ msgid "Work Hour"
 msgstr "Рабочие время"
 
 #: config/models.py:21
+#: new_venv/lib/python3.8/site-packages/django/utils/dates.py:6
 msgid "Monday"
 msgstr "Понедельник"
 
 #: config/models.py:22
+#: new_venv/lib/python3.8/site-packages/django/utils/dates.py:6
 msgid "Tuesday"
 msgstr "Вторник"
 
 #: config/models.py:23
+#: new_venv/lib/python3.8/site-packages/django/utils/dates.py:6
 msgid "Wednesday"
 msgstr "Среда"
 
 #: config/models.py:24
+#: new_venv/lib/python3.8/site-packages/django/utils/dates.py:6
 msgid "Thursday"
 msgstr "Четврег"
 
 #: config/models.py:25
+#: new_venv/lib/python3.8/site-packages/django/utils/dates.py:6
 msgid "Friday"
 msgstr "Пятница"
 
 #: config/models.py:26
+#: new_venv/lib/python3.8/site-packages/django/utils/dates.py:7
 msgid "Saturday"
 msgstr "Суббота"
 
 #: config/models.py:27
+#: new_venv/lib/python3.8/site-packages/django/utils/dates.py:7
 msgid "Sunday"
 msgstr "Воскресенье"
 
@@ -76,7 +83,8 @@ msgstr "Рабочий день"
 msgid "Week days"
 msgstr "Рабочие дни"
 
-#: config/models.py:50 menu/models.py:70
+#: config/models.py:50 menu/models.py:82
+#: new_venv/lib/python3.8/site-packages/fcm_django/models.py:15
 msgid "Name"
 msgstr "Имя"
 
@@ -159,7 +167,8 @@ msgstr "Google Maps код"
 #: config/models.py:119
 msgid ""
 "Click 'Share or embed map', then click 'Embed map' and copy-paste code there"
-msgstr "Нажмите 'Share or embed map', после чего 'Embed map' т вставьте код сюда"
+msgstr ""
+"Нажмите 'Share or embed map', после чего 'Embed map' т вставьте код сюда"
 
 #: config/models.py:123
 msgid "Branch image"
@@ -209,7 +218,7 @@ msgstr "Отделение ресторана"
 msgid "Restaurant branches"
 msgstr "Отделения ресторана"
 
-#: config/models.py:175
+#: config/models.py:175 templates/base.html:38 web/views.py:15
 msgid "Terms and Conditions"
 msgstr "Условия пользования"
 
@@ -225,7 +234,7 @@ msgstr "Ссылка для скачивания Android приложения"
 msgid "IOS app download link"
 msgstr "Ссылка для скачивания IOS приложения"
 
-#: config/models.py:185
+#: config/models.py:185 templates/base.html:39 web/views.py:21
 msgid "Privacy Policy"
 msgstr "Политика конфиденциальности"
 
@@ -241,11 +250,13 @@ msgstr "Метаданные приложения"
 msgid "voucher"
 msgstr "Ваучер"
 
-#: logs/models.py:27 qr_code/models.py:56 user/models.py:85
+#: logs/models.py:27 qr_code/models.py:59 user/models.py:85
 msgid "User"
 msgstr "Пользователь"
 
-#: logs/models.py:31 post/models.py:33 sms/models.py:15 voucher/models.py:135
+#: logs/models.py:31
+#: new_venv/lib/python3.8/site-packages/fcm_django/models.py:26
+#: post/models.py:33 sms/models.py:15 voucher/models.py:135
 msgid "Creation date"
 msgstr "Дата создания"
 
@@ -265,45 +276,1539 @@ msgstr "Запись сканирования"
 msgid "Scan logs"
 msgstr "Записи сканирования"
 
-#: menu/models.py:9
+#: menu/models.py:11
 msgid "Category name"
 msgstr "Название категории"
 
-#: menu/models.py:17
+#: menu/models.py:18
+#: new_venv/lib/python3.8/site-packages/django/forms/formsets.py:371
+#: new_venv/lib/python3.8/site-packages/django/forms/formsets.py:373
+msgid "Order"
+msgstr "Порядок"
+
+#: menu/models.py:20
+msgid "Specify order in which categories will be displayed on frontend"
+msgstr ""
+
+#: menu/models.py:24
 msgid "Category"
 msgstr "Категория"
 
-#: menu/models.py:18
+#: menu/models.py:25
 msgid "Categories"
 msgstr "Категории"
 
-#: menu/models.py:28
+#: menu/models.py:40
 msgid "Product name"
 msgstr "название продукта"
 
-#: menu/models.py:32
+#: menu/models.py:44
 msgid "Product description"
 msgstr "Описание продукта"
 
-#: menu/models.py:37 menu/models.py:74
+#: menu/models.py:49 menu/models.py:86
 msgid "Price"
 msgstr "Цена"
 
-#: menu/models.py:55
+#: menu/models.py:67
 msgid "Product"
 msgstr "Продукт"
 
-#: menu/models.py:56
+#: menu/models.py:68
 msgid "Products"
 msgstr "Продукты"
 
-#: menu/models.py:87
+#: menu/models.py:99
 msgid "Product Variation"
 msgstr "Вариация продукта"
 
-#: menu/models.py:88
+#: menu/models.py:100
 msgid "Product Variations"
 msgstr "Вариации продуктов"
+
+#: new_venv/lib/python3.8/site-packages/authtools/admin.py:21
+msgid "Permissions"
+msgstr ""
+
+#: new_venv/lib/python3.8/site-packages/authtools/admin.py:28
+#, fuzzy
+#| msgid "Expiration date"
+msgid "Important dates"
+msgstr "Дата истечения"
+
+#: new_venv/lib/python3.8/site-packages/authtools/forms.py:38
+msgid "No password set."
+msgstr ""
+
+#: new_venv/lib/python3.8/site-packages/authtools/forms.py:43
+msgid "Invalid password format or unknown hashing algorithm."
+msgstr ""
+
+#: new_venv/lib/python3.8/site-packages/authtools/forms.py:46
+msgid "*************"
+msgstr ""
+
+#: new_venv/lib/python3.8/site-packages/authtools/forms.py:59
+msgid "The two password fields didn't match."
+msgstr ""
+
+#: new_venv/lib/python3.8/site-packages/authtools/forms.py:60
+#, fuzzy, python-format
+#| msgid "User with this phone number already registered"
+msgid "A user with that %(username)s already exists."
+msgstr "Пользователь с таким номером телефона уже зарагестрированн"
+
+#: new_venv/lib/python3.8/site-packages/authtools/forms.py:63
+#: new_venv/lib/python3.8/site-packages/authtools/forms.py:147
+msgid "Password"
+msgstr ""
+
+#: new_venv/lib/python3.8/site-packages/authtools/forms.py:64
+msgid "Password confirmation"
+msgstr ""
+
+#: new_venv/lib/python3.8/site-packages/authtools/forms.py:66
+msgid "Enter the same password as above, for verification."
+msgstr ""
+
+#: new_venv/lib/python3.8/site-packages/authtools/forms.py:177
+msgid ""
+"This email address doesn't have an associated user account. Are you sure "
+"you've registered?"
+msgstr ""
+
+#: new_venv/lib/python3.8/site-packages/authtools/models.py:28
+#, fuzzy
+#| msgid "Email address"
+msgid "email address"
+msgstr "Email"
+
+#: new_venv/lib/python3.8/site-packages/authtools/models.py:30
+msgid "staff status"
+msgstr ""
+
+#: new_venv/lib/python3.8/site-packages/authtools/models.py:31
+msgid "Designates whether the user can log into this admin site."
+msgstr ""
+
+#: new_venv/lib/python3.8/site-packages/authtools/models.py:33
+#, fuzzy
+#| msgid "Is active?"
+msgid "active"
+msgstr "Активен?"
+
+#: new_venv/lib/python3.8/site-packages/authtools/models.py:34
+msgid ""
+"Designates whether this user should be treated as active. Unselect this "
+"instead of deleting accounts."
+msgstr ""
+
+#: new_venv/lib/python3.8/site-packages/authtools/models.py:36
+msgid "date joined"
+msgstr ""
+
+#: new_venv/lib/python3.8/site-packages/authtools/models.py:60
+msgid "name"
+msgstr ""
+
+#: new_venv/lib/python3.8/site-packages/authtools/models.py:84
+msgid "user"
+msgstr ""
+
+#: new_venv/lib/python3.8/site-packages/authtools/models.py:85
+#, fuzzy
+#| msgid "Users"
+msgid "users"
+msgstr "Пользователи"
+
+#: new_venv/lib/python3.8/site-packages/ckeditor_uploader/forms.py:6
+msgid "Search files"
+msgstr ""
+
+#: new_venv/lib/python3.8/site-packages/ckeditor_uploader/templates/ckeditor/browse.html:5
+#, fuzzy
+#| msgid "Select free item"
+msgid "Select an image to embed"
+msgstr "Выберете бесплатный продукт"
+
+#: new_venv/lib/python3.8/site-packages/ckeditor_uploader/templates/ckeditor/browse.html:27
+msgid "Browse for the image you want, then click 'Embed Image' to continue..."
+msgstr ""
+
+#: new_venv/lib/python3.8/site-packages/ckeditor_uploader/templates/ckeditor/browse.html:29
+msgid ""
+"No images found. Upload images using the 'Image Button' dialog's 'Upload' "
+"tab."
+msgstr ""
+
+#: new_venv/lib/python3.8/site-packages/ckeditor_uploader/templates/ckeditor/browse.html:50
+msgid "Images in: "
+msgstr ""
+
+#: new_venv/lib/python3.8/site-packages/ckeditor_uploader/templates/ckeditor/browse.html:62
+#: new_venv/lib/python3.8/site-packages/ckeditor_uploader/templates/ckeditor/browse.html:80
+msgid "Embed Image"
+msgstr ""
+
+#: new_venv/lib/python3.8/site-packages/ckeditor_uploader/templates/ckeditor/browse.html:146
+msgid "Play Slideshow"
+msgstr ""
+
+#: new_venv/lib/python3.8/site-packages/ckeditor_uploader/templates/ckeditor/browse.html:147
+msgid "Pause Slideshow"
+msgstr ""
+
+#: new_venv/lib/python3.8/site-packages/ckeditor_uploader/templates/ckeditor/browse.html:148
+msgid "&lsaquo; Previous Photo"
+msgstr ""
+
+#: new_venv/lib/python3.8/site-packages/ckeditor_uploader/templates/ckeditor/browse.html:149
+msgid "Next Photo &rsaquo;"
+msgstr ""
+
+#: new_venv/lib/python3.8/site-packages/ckeditor_uploader/templates/ckeditor/browse.html:150
+msgid "Next &rsaquo;"
+msgstr ""
+
+#: new_venv/lib/python3.8/site-packages/ckeditor_uploader/templates/ckeditor/browse.html:151
+msgid "&lsaquo; Prev"
+msgstr ""
+
+#: new_venv/lib/python3.8/site-packages/django/contrib/messages/apps.py:7
+msgid "Messages"
+msgstr ""
+
+#: new_venv/lib/python3.8/site-packages/django/contrib/sitemaps/apps.py:7
+msgid "Site Maps"
+msgstr ""
+
+#: new_venv/lib/python3.8/site-packages/django/contrib/staticfiles/apps.py:9
+msgid "Static Files"
+msgstr ""
+
+#: new_venv/lib/python3.8/site-packages/django/contrib/syndication/apps.py:7
+msgid "Syndication"
+msgstr ""
+
+#: new_venv/lib/python3.8/site-packages/django/core/paginator.py:45
+msgid "That page number is not an integer"
+msgstr ""
+
+#: new_venv/lib/python3.8/site-packages/django/core/paginator.py:47
+msgid "That page number is less than 1"
+msgstr ""
+
+#: new_venv/lib/python3.8/site-packages/django/core/paginator.py:52
+msgid "That page contains no results"
+msgstr ""
+
+#: new_venv/lib/python3.8/site-packages/django/core/validators.py:31
+msgid "Enter a valid value."
+msgstr ""
+
+#: new_venv/lib/python3.8/site-packages/django/core/validators.py:102
+#: new_venv/lib/python3.8/site-packages/django/forms/fields.py:658
+msgid "Enter a valid URL."
+msgstr ""
+
+#: new_venv/lib/python3.8/site-packages/django/core/validators.py:154
+msgid "Enter a valid integer."
+msgstr ""
+
+#: new_venv/lib/python3.8/site-packages/django/core/validators.py:165
+#, fuzzy
+#| msgid "Enter restaurant email address"
+msgid "Enter a valid email address."
+msgstr "Введите название ресторана"
+
+#. Translators: "letters" means latin letters: a-z and A-Z.
+#: new_venv/lib/python3.8/site-packages/django/core/validators.py:239
+msgid ""
+"Enter a valid 'slug' consisting of letters, numbers, underscores or hyphens."
+msgstr ""
+
+#: new_venv/lib/python3.8/site-packages/django/core/validators.py:246
+msgid ""
+"Enter a valid 'slug' consisting of Unicode letters, numbers, underscores, or "
+"hyphens."
+msgstr ""
+
+#: new_venv/lib/python3.8/site-packages/django/core/validators.py:255
+#: new_venv/lib/python3.8/site-packages/django/core/validators.py:275
+#, fuzzy
+#| msgid "Enter Branch address"
+msgid "Enter a valid IPv4 address."
+msgstr "Введите адресс отделения"
+
+#: new_venv/lib/python3.8/site-packages/django/core/validators.py:260
+#: new_venv/lib/python3.8/site-packages/django/core/validators.py:276
+#, fuzzy
+#| msgid "Enter Branch address"
+msgid "Enter a valid IPv6 address."
+msgstr "Введите адресс отделения"
+
+#: new_venv/lib/python3.8/site-packages/django/core/validators.py:270
+#: new_venv/lib/python3.8/site-packages/django/core/validators.py:274
+msgid "Enter a valid IPv4 or IPv6 address."
+msgstr ""
+
+#: new_venv/lib/python3.8/site-packages/django/core/validators.py:304
+msgid "Enter only digits separated by commas."
+msgstr ""
+
+#: new_venv/lib/python3.8/site-packages/django/core/validators.py:310
+#, python-format
+msgid "Ensure this value is %(limit_value)s (it is %(show_value)s)."
+msgstr ""
+
+#: new_venv/lib/python3.8/site-packages/django/core/validators.py:342
+#, python-format
+msgid "Ensure this value is less than or equal to %(limit_value)s."
+msgstr ""
+
+#: new_venv/lib/python3.8/site-packages/django/core/validators.py:351
+#, python-format
+msgid "Ensure this value is greater than or equal to %(limit_value)s."
+msgstr ""
+
+#: new_venv/lib/python3.8/site-packages/django/core/validators.py:361
+#, python-format
+msgid ""
+"Ensure this value has at least %(limit_value)d character (it has "
+"%(show_value)d)."
+msgid_plural ""
+"Ensure this value has at least %(limit_value)d characters (it has "
+"%(show_value)d)."
+msgstr[0] ""
+msgstr[1] ""
+msgstr[2] ""
+msgstr[3] ""
+
+#: new_venv/lib/python3.8/site-packages/django/core/validators.py:376
+#, python-format
+msgid ""
+"Ensure this value has at most %(limit_value)d character (it has "
+"%(show_value)d)."
+msgid_plural ""
+"Ensure this value has at most %(limit_value)d characters (it has "
+"%(show_value)d)."
+msgstr[0] ""
+msgstr[1] ""
+msgstr[2] ""
+msgstr[3] ""
+
+#: new_venv/lib/python3.8/site-packages/django/core/validators.py:395
+#: new_venv/lib/python3.8/site-packages/django/forms/fields.py:290
+#: new_venv/lib/python3.8/site-packages/django/forms/fields.py:325
+#, fuzzy
+#| msgid "Enter branch name"
+msgid "Enter a number."
+msgstr "Введите название отделения"
+
+#: new_venv/lib/python3.8/site-packages/django/core/validators.py:397
+#, python-format
+msgid "Ensure that there are no more than %(max)s digit in total."
+msgid_plural "Ensure that there are no more than %(max)s digits in total."
+msgstr[0] ""
+msgstr[1] ""
+msgstr[2] ""
+msgstr[3] ""
+
+#: new_venv/lib/python3.8/site-packages/django/core/validators.py:402
+#, python-format
+msgid "Ensure that there are no more than %(max)s decimal place."
+msgid_plural "Ensure that there are no more than %(max)s decimal places."
+msgstr[0] ""
+msgstr[1] ""
+msgstr[2] ""
+msgstr[3] ""
+
+#: new_venv/lib/python3.8/site-packages/django/core/validators.py:407
+#, python-format
+msgid ""
+"Ensure that there are no more than %(max)s digit before the decimal point."
+msgid_plural ""
+"Ensure that there are no more than %(max)s digits before the decimal point."
+msgstr[0] ""
+msgstr[1] ""
+msgstr[2] ""
+msgstr[3] ""
+
+#: new_venv/lib/python3.8/site-packages/django/core/validators.py:469
+#, python-format
+msgid ""
+"File extension '%(extension)s' is not allowed. Allowed extensions are: "
+"'%(allowed_extensions)s'."
+msgstr ""
+
+#: new_venv/lib/python3.8/site-packages/django/core/validators.py:521
+msgid "Null characters are not allowed."
+msgstr ""
+
+#: new_venv/lib/python3.8/site-packages/django/db/models/base.py:1162
+#: new_venv/lib/python3.8/site-packages/django/forms/models.py:756
+#, fuzzy
+#| msgid "End"
+msgid "and"
+msgstr "Конец"
+
+#: new_venv/lib/python3.8/site-packages/django/db/models/base.py:1164
+#, python-format
+msgid "%(model_name)s with this %(field_labels)s already exists."
+msgstr ""
+
+#: new_venv/lib/python3.8/site-packages/django/db/models/fields/__init__.py:104
+#, python-format
+msgid "Value %(value)r is not a valid choice."
+msgstr ""
+
+#: new_venv/lib/python3.8/site-packages/django/db/models/fields/__init__.py:105
+msgid "This field cannot be null."
+msgstr ""
+
+#: new_venv/lib/python3.8/site-packages/django/db/models/fields/__init__.py:106
+msgid "This field cannot be blank."
+msgstr ""
+
+#: new_venv/lib/python3.8/site-packages/django/db/models/fields/__init__.py:107
+#, python-format
+msgid "%(model_name)s with this %(field_label)s already exists."
+msgstr ""
+
+#. Translators: The 'lookup_type' is one of 'date', 'year' or 'month'.
+#. Eg: "Title must be unique for pub_date year"
+#: new_venv/lib/python3.8/site-packages/django/db/models/fields/__init__.py:111
+#, python-format
+msgid ""
+"%(field_label)s must be unique for %(date_field_label)s %(lookup_type)s."
+msgstr ""
+
+#: new_venv/lib/python3.8/site-packages/django/db/models/fields/__init__.py:128
+#, python-format
+msgid "Field of type: %(field_type)s"
+msgstr ""
+
+#: new_venv/lib/python3.8/site-packages/django/db/models/fields/__init__.py:905
+#: new_venv/lib/python3.8/site-packages/django/db/models/fields/__init__.py:1772
+msgid "Integer"
+msgstr ""
+
+#: new_venv/lib/python3.8/site-packages/django/db/models/fields/__init__.py:909
+#: new_venv/lib/python3.8/site-packages/django/db/models/fields/__init__.py:1770
+#, python-format
+msgid "'%(value)s' value must be an integer."
+msgstr ""
+
+#: new_venv/lib/python3.8/site-packages/django/db/models/fields/__init__.py:984
+#: new_venv/lib/python3.8/site-packages/django/db/models/fields/__init__.py:1850
+msgid "Big (8 byte) integer"
+msgstr ""
+
+#: new_venv/lib/python3.8/site-packages/django/db/models/fields/__init__.py:996
+#, python-format
+msgid "'%(value)s' value must be either True or False."
+msgstr ""
+
+#: new_venv/lib/python3.8/site-packages/django/db/models/fields/__init__.py:997
+#, python-format
+msgid "'%(value)s' value must be either True, False, or None."
+msgstr ""
+
+#: new_venv/lib/python3.8/site-packages/django/db/models/fields/__init__.py:999
+msgid "Boolean (Either True or False)"
+msgstr ""
+
+#: new_venv/lib/python3.8/site-packages/django/db/models/fields/__init__.py:1040
+#, python-format
+msgid "String (up to %(max_length)s)"
+msgstr ""
+
+#: new_venv/lib/python3.8/site-packages/django/db/models/fields/__init__.py:1104
+msgid "Comma-separated integers"
+msgstr ""
+
+#: new_venv/lib/python3.8/site-packages/django/db/models/fields/__init__.py:1153
+#, python-format
+msgid ""
+"'%(value)s' value has an invalid date format. It must be in YYYY-MM-DD "
+"format."
+msgstr ""
+
+#: new_venv/lib/python3.8/site-packages/django/db/models/fields/__init__.py:1155
+#: new_venv/lib/python3.8/site-packages/django/db/models/fields/__init__.py:1298
+#, python-format
+msgid ""
+"'%(value)s' value has the correct format (YYYY-MM-DD) but it is an invalid "
+"date."
+msgstr ""
+
+#: new_venv/lib/python3.8/site-packages/django/db/models/fields/__init__.py:1158
+msgid "Date (without time)"
+msgstr ""
+
+#: new_venv/lib/python3.8/site-packages/django/db/models/fields/__init__.py:1296
+#, python-format
+msgid ""
+"'%(value)s' value has an invalid format. It must be in YYYY-MM-DD HH:MM[:ss[."
+"uuuuuu]][TZ] format."
+msgstr ""
+
+#: new_venv/lib/python3.8/site-packages/django/db/models/fields/__init__.py:1300
+#, python-format
+msgid ""
+"'%(value)s' value has the correct format (YYYY-MM-DD HH:MM[:ss[.uuuuuu]]"
+"[TZ]) but it is an invalid date/time."
+msgstr ""
+
+#: new_venv/lib/python3.8/site-packages/django/db/models/fields/__init__.py:1304
+msgid "Date (with time)"
+msgstr ""
+
+#: new_venv/lib/python3.8/site-packages/django/db/models/fields/__init__.py:1452
+#, python-format
+msgid "'%(value)s' value must be a decimal number."
+msgstr ""
+
+#: new_venv/lib/python3.8/site-packages/django/db/models/fields/__init__.py:1454
+#, fuzzy
+#| msgid "Phone number"
+msgid "Decimal number"
+msgstr "Номер телефона"
+
+#: new_venv/lib/python3.8/site-packages/django/db/models/fields/__init__.py:1593
+#, python-format
+msgid ""
+"'%(value)s' value has an invalid format. It must be in [DD] [HH:[MM:]]ss[."
+"uuuuuu] format."
+msgstr ""
+
+#: new_venv/lib/python3.8/site-packages/django/db/models/fields/__init__.py:1596
+msgid "Duration"
+msgstr ""
+
+#: new_venv/lib/python3.8/site-packages/django/db/models/fields/__init__.py:1646
+#: user/models.py:54
+msgid "Email address"
+msgstr "Email"
+
+#: new_venv/lib/python3.8/site-packages/django/db/models/fields/__init__.py:1669
+msgid "File path"
+msgstr ""
+
+#: new_venv/lib/python3.8/site-packages/django/db/models/fields/__init__.py:1735
+#, python-format
+msgid "'%(value)s' value must be a float."
+msgstr ""
+
+#: new_venv/lib/python3.8/site-packages/django/db/models/fields/__init__.py:1737
+msgid "Floating point number"
+msgstr ""
+
+#: new_venv/lib/python3.8/site-packages/django/db/models/fields/__init__.py:1866
+#, fuzzy
+#| msgid "Email address"
+msgid "IPv4 address"
+msgstr "Email"
+
+#: new_venv/lib/python3.8/site-packages/django/db/models/fields/__init__.py:1897
+#, fuzzy
+#| msgid "Email address"
+msgid "IP address"
+msgstr "Email"
+
+#: new_venv/lib/python3.8/site-packages/django/db/models/fields/__init__.py:1977
+#: new_venv/lib/python3.8/site-packages/django/db/models/fields/__init__.py:1978
+#, python-format
+msgid "'%(value)s' value must be either None, True or False."
+msgstr ""
+
+#: new_venv/lib/python3.8/site-packages/django/db/models/fields/__init__.py:1980
+msgid "Boolean (Either True, False or None)"
+msgstr ""
+
+#: new_venv/lib/python3.8/site-packages/django/db/models/fields/__init__.py:2015
+msgid "Positive integer"
+msgstr ""
+
+#: new_venv/lib/python3.8/site-packages/django/db/models/fields/__init__.py:2028
+msgid "Positive small integer"
+msgstr ""
+
+#: new_venv/lib/python3.8/site-packages/django/db/models/fields/__init__.py:2042
+#, python-format
+msgid "Slug (up to %(max_length)s)"
+msgstr ""
+
+#: new_venv/lib/python3.8/site-packages/django/db/models/fields/__init__.py:2074
+msgid "Small integer"
+msgstr ""
+
+#: new_venv/lib/python3.8/site-packages/django/db/models/fields/__init__.py:2081
+msgid "Text"
+msgstr ""
+
+#: new_venv/lib/python3.8/site-packages/django/db/models/fields/__init__.py:2109
+#, python-format
+msgid ""
+"'%(value)s' value has an invalid format. It must be in HH:MM[:ss[.uuuuuu]] "
+"format."
+msgstr ""
+
+#: new_venv/lib/python3.8/site-packages/django/db/models/fields/__init__.py:2111
+#, python-format
+msgid ""
+"'%(value)s' value has the correct format (HH:MM[:ss[.uuuuuu]]) but it is an "
+"invalid time."
+msgstr ""
+
+#: new_venv/lib/python3.8/site-packages/django/db/models/fields/__init__.py:2114
+msgid "Time"
+msgstr ""
+
+#: new_venv/lib/python3.8/site-packages/django/db/models/fields/__init__.py:2240
+msgid "URL"
+msgstr ""
+
+#: new_venv/lib/python3.8/site-packages/django/db/models/fields/__init__.py:2262
+msgid "Raw binary data"
+msgstr ""
+
+#: new_venv/lib/python3.8/site-packages/django/db/models/fields/__init__.py:2312
+#, python-format
+msgid "'%(value)s' is not a valid UUID."
+msgstr ""
+
+#: new_venv/lib/python3.8/site-packages/django/db/models/fields/__init__.py:2314
+msgid "Universally unique identifier"
+msgstr ""
+
+#: new_venv/lib/python3.8/site-packages/django/db/models/fields/files.py:221
+msgid "File"
+msgstr ""
+
+#: new_venv/lib/python3.8/site-packages/django/db/models/fields/files.py:360
+msgid "Image"
+msgstr ""
+
+#: new_venv/lib/python3.8/site-packages/django/db/models/fields/related.py:778
+#, python-format
+msgid "%(model)s instance with %(field)s %(value)r does not exist."
+msgstr ""
+
+#: new_venv/lib/python3.8/site-packages/django/db/models/fields/related.py:780
+msgid "Foreign Key (type determined by related field)"
+msgstr ""
+
+#: new_venv/lib/python3.8/site-packages/django/db/models/fields/related.py:1007
+msgid "One-to-one relationship"
+msgstr ""
+
+#: new_venv/lib/python3.8/site-packages/django/db/models/fields/related.py:1057
+#, python-format
+msgid "%(from)s-%(to)s relationship"
+msgstr ""
+
+#: new_venv/lib/python3.8/site-packages/django/db/models/fields/related.py:1058
+#, python-format
+msgid "%(from)s-%(to)s relationships"
+msgstr ""
+
+#: new_venv/lib/python3.8/site-packages/django/db/models/fields/related.py:1100
+msgid "Many-to-many relationship"
+msgstr ""
+
+#. Translators: If found as last label character, these punctuation
+#. characters will prevent the default label_suffix to be appended to the label
+#: new_venv/lib/python3.8/site-packages/django/forms/boundfield.py:146
+msgid ":?.!"
+msgstr ""
+
+#: new_venv/lib/python3.8/site-packages/django/forms/fields.py:53
+msgid "This field is required."
+msgstr ""
+
+#: new_venv/lib/python3.8/site-packages/django/forms/fields.py:245
+#, fuzzy
+#| msgid "Enter restaurant phone number"
+msgid "Enter a whole number."
+msgstr "Введите номер телефона ресторана"
+
+#: new_venv/lib/python3.8/site-packages/django/forms/fields.py:396
+#: new_venv/lib/python3.8/site-packages/django/forms/fields.py:1126
+#, fuzzy
+#| msgid "Enter Branch address"
+msgid "Enter a valid date."
+msgstr "Введите адресс отделения"
+
+#: new_venv/lib/python3.8/site-packages/django/forms/fields.py:420
+#: new_venv/lib/python3.8/site-packages/django/forms/fields.py:1127
+#, fuzzy
+#| msgid "Enter branch name"
+msgid "Enter a valid time."
+msgstr "Введите название отделения"
+
+#: new_venv/lib/python3.8/site-packages/django/forms/fields.py:442
+msgid "Enter a valid date/time."
+msgstr ""
+
+#: new_venv/lib/python3.8/site-packages/django/forms/fields.py:471
+#, fuzzy
+#| msgid "Enter app terms and Conditions"
+msgid "Enter a valid duration."
+msgstr "Введите условия пользования приложением"
+
+#: new_venv/lib/python3.8/site-packages/django/forms/fields.py:472
+#, python-brace-format
+msgid "The number of days must be between {min_days} and {max_days}."
+msgstr ""
+
+#: new_venv/lib/python3.8/site-packages/django/forms/fields.py:532
+msgid "No file was submitted. Check the encoding type on the form."
+msgstr ""
+
+#: new_venv/lib/python3.8/site-packages/django/forms/fields.py:533
+msgid "No file was submitted."
+msgstr ""
+
+#: new_venv/lib/python3.8/site-packages/django/forms/fields.py:534
+msgid "The submitted file is empty."
+msgstr ""
+
+#: new_venv/lib/python3.8/site-packages/django/forms/fields.py:536
+#, python-format
+msgid "Ensure this filename has at most %(max)d character (it has %(length)d)."
+msgid_plural ""
+"Ensure this filename has at most %(max)d characters (it has %(length)d)."
+msgstr[0] ""
+msgstr[1] ""
+msgstr[2] ""
+msgstr[3] ""
+
+#: new_venv/lib/python3.8/site-packages/django/forms/fields.py:539
+msgid "Please either submit a file or check the clear checkbox, not both."
+msgstr ""
+
+#: new_venv/lib/python3.8/site-packages/django/forms/fields.py:600
+msgid ""
+"Upload a valid image. The file you uploaded was either not an image or a "
+"corrupted image."
+msgstr ""
+
+#: new_venv/lib/python3.8/site-packages/django/forms/fields.py:762
+#: new_venv/lib/python3.8/site-packages/django/forms/fields.py:852
+#: new_venv/lib/python3.8/site-packages/django/forms/models.py:1270
+#, python-format
+msgid "Select a valid choice. %(value)s is not one of the available choices."
+msgstr ""
+
+#: new_venv/lib/python3.8/site-packages/django/forms/fields.py:853
+#: new_venv/lib/python3.8/site-packages/django/forms/fields.py:968
+#: new_venv/lib/python3.8/site-packages/django/forms/models.py:1269
+msgid "Enter a list of values."
+msgstr ""
+
+#: new_venv/lib/python3.8/site-packages/django/forms/fields.py:969
+msgid "Enter a complete value."
+msgstr ""
+
+#: new_venv/lib/python3.8/site-packages/django/forms/fields.py:1185
+msgid "Enter a valid UUID."
+msgstr ""
+
+#. Translators: This is the default suffix added to form field labels
+#: new_venv/lib/python3.8/site-packages/django/forms/forms.py:86
+msgid ":"
+msgstr ""
+
+#: new_venv/lib/python3.8/site-packages/django/forms/forms.py:212
+#, python-format
+msgid "(Hidden field %(name)s) %(error)s"
+msgstr ""
+
+#: new_venv/lib/python3.8/site-packages/django/forms/formsets.py:91
+msgid "ManagementForm data is missing or has been tampered with"
+msgstr ""
+
+#: new_venv/lib/python3.8/site-packages/django/forms/formsets.py:338
+#, python-format
+msgid "Please submit %d or fewer forms."
+msgid_plural "Please submit %d or fewer forms."
+msgstr[0] ""
+msgstr[1] ""
+msgstr[2] ""
+msgstr[3] ""
+
+#: new_venv/lib/python3.8/site-packages/django/forms/formsets.py:345
+#, python-format
+msgid "Please submit %d or more forms."
+msgid_plural "Please submit %d or more forms."
+msgstr[0] ""
+msgstr[1] ""
+msgstr[2] ""
+msgstr[3] ""
+
+#: new_venv/lib/python3.8/site-packages/django/forms/formsets.py:375
+msgid "Delete"
+msgstr ""
+
+#: new_venv/lib/python3.8/site-packages/django/forms/models.py:751
+#, python-format
+msgid "Please correct the duplicate data for %(field)s."
+msgstr ""
+
+#: new_venv/lib/python3.8/site-packages/django/forms/models.py:755
+#, python-format
+msgid "Please correct the duplicate data for %(field)s, which must be unique."
+msgstr ""
+
+#: new_venv/lib/python3.8/site-packages/django/forms/models.py:761
+#, python-format
+msgid ""
+"Please correct the duplicate data for %(field_name)s which must be unique "
+"for the %(lookup)s in %(date_field)s."
+msgstr ""
+
+#: new_venv/lib/python3.8/site-packages/django/forms/models.py:770
+msgid "Please correct the duplicate values below."
+msgstr ""
+
+#: new_venv/lib/python3.8/site-packages/django/forms/models.py:1091
+msgid "The inline value did not match the parent instance."
+msgstr ""
+
+#: new_venv/lib/python3.8/site-packages/django/forms/models.py:1158
+msgid "Select a valid choice. That choice is not one of the available choices."
+msgstr ""
+
+#: new_venv/lib/python3.8/site-packages/django/forms/models.py:1272
+#, python-format
+msgid "\"%(pk)s\" is not a valid value."
+msgstr ""
+
+#: new_venv/lib/python3.8/site-packages/django/forms/utils.py:162
+#, python-format
+msgid ""
+"%(datetime)s couldn't be interpreted in time zone %(current_timezone)s; it "
+"may be ambiguous or it may not exist."
+msgstr ""
+
+#: new_venv/lib/python3.8/site-packages/django/forms/widgets.py:395
+msgid "Clear"
+msgstr ""
+
+#: new_venv/lib/python3.8/site-packages/django/forms/widgets.py:396
+msgid "Currently"
+msgstr ""
+
+#: new_venv/lib/python3.8/site-packages/django/forms/widgets.py:397
+msgid "Change"
+msgstr ""
+
+#: new_venv/lib/python3.8/site-packages/django/forms/widgets.py:709
+msgid "Unknown"
+msgstr ""
+
+#: new_venv/lib/python3.8/site-packages/django/forms/widgets.py:710
+msgid "Yes"
+msgstr ""
+
+#: new_venv/lib/python3.8/site-packages/django/forms/widgets.py:711
+msgid "No"
+msgstr ""
+
+#: new_venv/lib/python3.8/site-packages/django/template/defaultfilters.py:788
+msgid "yes,no,maybe"
+msgstr ""
+
+#: new_venv/lib/python3.8/site-packages/django/template/defaultfilters.py:817
+#: new_venv/lib/python3.8/site-packages/django/template/defaultfilters.py:834
+#, python-format
+msgid "%(size)d byte"
+msgid_plural "%(size)d bytes"
+msgstr[0] ""
+msgstr[1] ""
+msgstr[2] ""
+msgstr[3] ""
+
+#: new_venv/lib/python3.8/site-packages/django/template/defaultfilters.py:836
+#, python-format
+msgid "%s KB"
+msgstr ""
+
+#: new_venv/lib/python3.8/site-packages/django/template/defaultfilters.py:838
+#, python-format
+msgid "%s MB"
+msgstr ""
+
+#: new_venv/lib/python3.8/site-packages/django/template/defaultfilters.py:840
+#, python-format
+msgid "%s GB"
+msgstr ""
+
+#: new_venv/lib/python3.8/site-packages/django/template/defaultfilters.py:842
+#, python-format
+msgid "%s TB"
+msgstr ""
+
+#: new_venv/lib/python3.8/site-packages/django/template/defaultfilters.py:844
+#, python-format
+msgid "%s PB"
+msgstr ""
+
+#: new_venv/lib/python3.8/site-packages/django/utils/dateformat.py:62
+msgid "p.m."
+msgstr ""
+
+#: new_venv/lib/python3.8/site-packages/django/utils/dateformat.py:63
+msgid "a.m."
+msgstr ""
+
+#: new_venv/lib/python3.8/site-packages/django/utils/dateformat.py:68
+msgid "PM"
+msgstr ""
+
+#: new_venv/lib/python3.8/site-packages/django/utils/dateformat.py:69
+msgid "AM"
+msgstr ""
+
+#: new_venv/lib/python3.8/site-packages/django/utils/dateformat.py:150
+msgid "midnight"
+msgstr ""
+
+#: new_venv/lib/python3.8/site-packages/django/utils/dateformat.py:152
+msgid "noon"
+msgstr ""
+
+#: new_venv/lib/python3.8/site-packages/django/utils/dates.py:10
+#, fuzzy
+#| msgid "Monday"
+msgid "Mon"
+msgstr "Понедельник"
+
+#: new_venv/lib/python3.8/site-packages/django/utils/dates.py:10
+#, fuzzy
+#| msgid "Tuesday"
+msgid "Tue"
+msgstr "Вторник"
+
+#: new_venv/lib/python3.8/site-packages/django/utils/dates.py:10
+msgid "Wed"
+msgstr ""
+
+#: new_venv/lib/python3.8/site-packages/django/utils/dates.py:10
+msgid "Thu"
+msgstr ""
+
+#: new_venv/lib/python3.8/site-packages/django/utils/dates.py:10
+#, fuzzy
+#| msgid "Friday"
+msgid "Fri"
+msgstr "Пятница"
+
+#: new_venv/lib/python3.8/site-packages/django/utils/dates.py:11
+#, fuzzy
+#| msgid "Start"
+msgid "Sat"
+msgstr "Старт"
+
+#: new_venv/lib/python3.8/site-packages/django/utils/dates.py:11
+#, fuzzy
+#| msgid "Sunday"
+msgid "Sun"
+msgstr "Воскресенье"
+
+#: new_venv/lib/python3.8/site-packages/django/utils/dates.py:14
+msgid "January"
+msgstr ""
+
+#: new_venv/lib/python3.8/site-packages/django/utils/dates.py:14
+msgid "February"
+msgstr ""
+
+#: new_venv/lib/python3.8/site-packages/django/utils/dates.py:14
+msgid "March"
+msgstr ""
+
+#: new_venv/lib/python3.8/site-packages/django/utils/dates.py:14
+msgid "April"
+msgstr ""
+
+#: new_venv/lib/python3.8/site-packages/django/utils/dates.py:14
+#, fuzzy
+#| msgid "Monday"
+msgid "May"
+msgstr "Понедельник"
+
+#: new_venv/lib/python3.8/site-packages/django/utils/dates.py:14
+msgid "June"
+msgstr ""
+
+#: new_venv/lib/python3.8/site-packages/django/utils/dates.py:15
+msgid "July"
+msgstr ""
+
+#: new_venv/lib/python3.8/site-packages/django/utils/dates.py:15
+msgid "August"
+msgstr ""
+
+#: new_venv/lib/python3.8/site-packages/django/utils/dates.py:15
+msgid "September"
+msgstr ""
+
+#: new_venv/lib/python3.8/site-packages/django/utils/dates.py:15
+msgid "October"
+msgstr ""
+
+#: new_venv/lib/python3.8/site-packages/django/utils/dates.py:15
+#, fuzzy
+#| msgid "Phone number"
+msgid "November"
+msgstr "Номер телефона"
+
+#: new_venv/lib/python3.8/site-packages/django/utils/dates.py:16
+msgid "December"
+msgstr ""
+
+#: new_venv/lib/python3.8/site-packages/django/utils/dates.py:19
+msgid "jan"
+msgstr ""
+
+#: new_venv/lib/python3.8/site-packages/django/utils/dates.py:19
+msgid "feb"
+msgstr ""
+
+#: new_venv/lib/python3.8/site-packages/django/utils/dates.py:19
+msgid "mar"
+msgstr ""
+
+#: new_venv/lib/python3.8/site-packages/django/utils/dates.py:19
+msgid "apr"
+msgstr ""
+
+#: new_venv/lib/python3.8/site-packages/django/utils/dates.py:19
+msgid "may"
+msgstr ""
+
+#: new_venv/lib/python3.8/site-packages/django/utils/dates.py:19
+msgid "jun"
+msgstr ""
+
+#: new_venv/lib/python3.8/site-packages/django/utils/dates.py:20
+msgid "jul"
+msgstr ""
+
+#: new_venv/lib/python3.8/site-packages/django/utils/dates.py:20
+msgid "aug"
+msgstr ""
+
+#: new_venv/lib/python3.8/site-packages/django/utils/dates.py:20
+msgid "sep"
+msgstr ""
+
+#: new_venv/lib/python3.8/site-packages/django/utils/dates.py:20
+#, fuzzy
+#| msgid "Product"
+msgid "oct"
+msgstr "Продукт"
+
+#: new_venv/lib/python3.8/site-packages/django/utils/dates.py:20
+msgid "nov"
+msgstr ""
+
+#: new_venv/lib/python3.8/site-packages/django/utils/dates.py:20
+msgid "dec"
+msgstr ""
+
+#: new_venv/lib/python3.8/site-packages/django/utils/dates.py:23
+msgctxt "abbrev. month"
+msgid "Jan."
+msgstr ""
+
+#: new_venv/lib/python3.8/site-packages/django/utils/dates.py:24
+msgctxt "abbrev. month"
+msgid "Feb."
+msgstr ""
+
+#: new_venv/lib/python3.8/site-packages/django/utils/dates.py:25
+msgctxt "abbrev. month"
+msgid "March"
+msgstr ""
+
+#: new_venv/lib/python3.8/site-packages/django/utils/dates.py:26
+msgctxt "abbrev. month"
+msgid "April"
+msgstr ""
+
+#: new_venv/lib/python3.8/site-packages/django/utils/dates.py:27
+#, fuzzy
+#| msgid "Monday"
+msgctxt "abbrev. month"
+msgid "May"
+msgstr "Понедельник"
+
+#: new_venv/lib/python3.8/site-packages/django/utils/dates.py:28
+msgctxt "abbrev. month"
+msgid "June"
+msgstr ""
+
+#: new_venv/lib/python3.8/site-packages/django/utils/dates.py:29
+msgctxt "abbrev. month"
+msgid "July"
+msgstr ""
+
+#: new_venv/lib/python3.8/site-packages/django/utils/dates.py:30
+msgctxt "abbrev. month"
+msgid "Aug."
+msgstr ""
+
+#: new_venv/lib/python3.8/site-packages/django/utils/dates.py:31
+msgctxt "abbrev. month"
+msgid "Sept."
+msgstr ""
+
+#: new_venv/lib/python3.8/site-packages/django/utils/dates.py:32
+msgctxt "abbrev. month"
+msgid "Oct."
+msgstr ""
+
+#: new_venv/lib/python3.8/site-packages/django/utils/dates.py:33
+msgctxt "abbrev. month"
+msgid "Nov."
+msgstr ""
+
+#: new_venv/lib/python3.8/site-packages/django/utils/dates.py:34
+msgctxt "abbrev. month"
+msgid "Dec."
+msgstr ""
+
+#: new_venv/lib/python3.8/site-packages/django/utils/dates.py:37
+msgctxt "alt. month"
+msgid "January"
+msgstr ""
+
+#: new_venv/lib/python3.8/site-packages/django/utils/dates.py:38
+msgctxt "alt. month"
+msgid "February"
+msgstr ""
+
+#: new_venv/lib/python3.8/site-packages/django/utils/dates.py:39
+msgctxt "alt. month"
+msgid "March"
+msgstr ""
+
+#: new_venv/lib/python3.8/site-packages/django/utils/dates.py:40
+msgctxt "alt. month"
+msgid "April"
+msgstr ""
+
+#: new_venv/lib/python3.8/site-packages/django/utils/dates.py:41
+#, fuzzy
+#| msgid "Monday"
+msgctxt "alt. month"
+msgid "May"
+msgstr "Понедельник"
+
+#: new_venv/lib/python3.8/site-packages/django/utils/dates.py:42
+msgctxt "alt. month"
+msgid "June"
+msgstr ""
+
+#: new_venv/lib/python3.8/site-packages/django/utils/dates.py:43
+msgctxt "alt. month"
+msgid "July"
+msgstr ""
+
+#: new_venv/lib/python3.8/site-packages/django/utils/dates.py:44
+msgctxt "alt. month"
+msgid "August"
+msgstr ""
+
+#: new_venv/lib/python3.8/site-packages/django/utils/dates.py:45
+msgctxt "alt. month"
+msgid "September"
+msgstr ""
+
+#: new_venv/lib/python3.8/site-packages/django/utils/dates.py:46
+msgctxt "alt. month"
+msgid "October"
+msgstr ""
+
+#: new_venv/lib/python3.8/site-packages/django/utils/dates.py:47
+#, fuzzy
+#| msgid "Phone number"
+msgctxt "alt. month"
+msgid "November"
+msgstr "Номер телефона"
+
+#: new_venv/lib/python3.8/site-packages/django/utils/dates.py:48
+msgctxt "alt. month"
+msgid "December"
+msgstr ""
+
+#: new_venv/lib/python3.8/site-packages/django/utils/ipv6.py:8
+msgid "This is not a valid IPv6 address."
+msgstr ""
+
+#: new_venv/lib/python3.8/site-packages/django/utils/text.py:67
+#, python-format
+msgctxt "String to return when truncating text"
+msgid "%(truncated_text)s…"
+msgstr ""
+
+#: new_venv/lib/python3.8/site-packages/django/utils/text.py:233
+msgid "or"
+msgstr ""
+
+#. Translators: This string is used as a separator between list elements
+#: new_venv/lib/python3.8/site-packages/django/utils/text.py:252
+#: new_venv/lib/python3.8/site-packages/django/utils/timesince.py:83
+msgid ", "
+msgstr ""
+
+#: new_venv/lib/python3.8/site-packages/django/utils/timesince.py:9
+#, python-format
+msgid "%d year"
+msgid_plural "%d years"
+msgstr[0] ""
+msgstr[1] ""
+msgstr[2] ""
+msgstr[3] ""
+
+#: new_venv/lib/python3.8/site-packages/django/utils/timesince.py:10
+#, python-format
+msgid "%d month"
+msgid_plural "%d months"
+msgstr[0] ""
+msgstr[1] ""
+msgstr[2] ""
+msgstr[3] ""
+
+#: new_venv/lib/python3.8/site-packages/django/utils/timesince.py:11
+#, python-format
+msgid "%d week"
+msgid_plural "%d weeks"
+msgstr[0] ""
+msgstr[1] ""
+msgstr[2] ""
+msgstr[3] ""
+
+#: new_venv/lib/python3.8/site-packages/django/utils/timesince.py:12
+#, python-format
+msgid "%d day"
+msgid_plural "%d days"
+msgstr[0] ""
+msgstr[1] ""
+msgstr[2] ""
+msgstr[3] ""
+
+#: new_venv/lib/python3.8/site-packages/django/utils/timesince.py:13
+#, python-format
+msgid "%d hour"
+msgid_plural "%d hours"
+msgstr[0] ""
+msgstr[1] ""
+msgstr[2] ""
+msgstr[3] ""
+
+#: new_venv/lib/python3.8/site-packages/django/utils/timesince.py:14
+#, python-format
+msgid "%d minute"
+msgid_plural "%d minutes"
+msgstr[0] ""
+msgstr[1] ""
+msgstr[2] ""
+msgstr[3] ""
+
+#: new_venv/lib/python3.8/site-packages/django/utils/timesince.py:72
+msgid "0 minutes"
+msgstr ""
+
+#: new_venv/lib/python3.8/site-packages/django/views/csrf.py:110
+msgid "Forbidden"
+msgstr ""
+
+#: new_venv/lib/python3.8/site-packages/django/views/csrf.py:111
+msgid "CSRF verification failed. Request aborted."
+msgstr ""
+
+#: new_venv/lib/python3.8/site-packages/django/views/csrf.py:115
+msgid ""
+"You are seeing this message because this HTTPS site requires a 'Referer "
+"header' to be sent by your Web browser, but none was sent. This header is "
+"required for security reasons, to ensure that your browser is not being "
+"hijacked by third parties."
+msgstr ""
+
+#: new_venv/lib/python3.8/site-packages/django/views/csrf.py:120
+msgid ""
+"If you have configured your browser to disable 'Referer' headers, please re-"
+"enable them, at least for this site, or for HTTPS connections, or for 'same-"
+"origin' requests."
+msgstr ""
+
+#: new_venv/lib/python3.8/site-packages/django/views/csrf.py:124
+msgid ""
+"If you are using the <meta name=\"referrer\" content=\"no-referrer\"> tag or "
+"including the 'Referrer-Policy: no-referrer' header, please remove them. The "
+"CSRF protection requires the 'Referer' header to do strict referer checking. "
+"If you're concerned about privacy, use alternatives like <a rel=\"noreferrer"
+"\" ...> for links to third-party sites."
+msgstr ""
+
+#: new_venv/lib/python3.8/site-packages/django/views/csrf.py:132
+msgid ""
+"You are seeing this message because this site requires a CSRF cookie when "
+"submitting forms. This cookie is required for security reasons, to ensure "
+"that your browser is not being hijacked by third parties."
+msgstr ""
+
+#: new_venv/lib/python3.8/site-packages/django/views/csrf.py:137
+msgid ""
+"If you have configured your browser to disable cookies, please re-enable "
+"them, at least for this site, or for 'same-origin' requests."
+msgstr ""
+
+#: new_venv/lib/python3.8/site-packages/django/views/csrf.py:142
+msgid "More information is available with DEBUG=True."
+msgstr ""
+
+#: new_venv/lib/python3.8/site-packages/django/views/generic/dates.py:41
+msgid "No year specified"
+msgstr ""
+
+#: new_venv/lib/python3.8/site-packages/django/views/generic/dates.py:61
+#: new_venv/lib/python3.8/site-packages/django/views/generic/dates.py:111
+#: new_venv/lib/python3.8/site-packages/django/views/generic/dates.py:208
+msgid "Date out of range"
+msgstr ""
+
+#: new_venv/lib/python3.8/site-packages/django/views/generic/dates.py:90
+msgid "No month specified"
+msgstr ""
+
+#: new_venv/lib/python3.8/site-packages/django/views/generic/dates.py:142
+msgid "No day specified"
+msgstr ""
+
+#: new_venv/lib/python3.8/site-packages/django/views/generic/dates.py:188
+msgid "No week specified"
+msgstr ""
+
+#: new_venv/lib/python3.8/site-packages/django/views/generic/dates.py:338
+#: new_venv/lib/python3.8/site-packages/django/views/generic/dates.py:367
+#, python-format
+msgid "No %(verbose_name_plural)s available"
+msgstr ""
+
+#: new_venv/lib/python3.8/site-packages/django/views/generic/dates.py:589
+#, python-format
+msgid ""
+"Future %(verbose_name_plural)s not available because %(class_name)s."
+"allow_future is False."
+msgstr ""
+
+#: new_venv/lib/python3.8/site-packages/django/views/generic/dates.py:623
+#, python-format
+msgid "Invalid date string '%(datestr)s' given format '%(format)s'"
+msgstr ""
+
+#: new_venv/lib/python3.8/site-packages/django/views/generic/detail.py:54
+#, python-format
+msgid "No %(verbose_name)s found matching the query"
+msgstr ""
+
+#: new_venv/lib/python3.8/site-packages/django/views/generic/list.py:67
+msgid "Page is not 'last', nor can it be converted to an int."
+msgstr ""
+
+#: new_venv/lib/python3.8/site-packages/django/views/generic/list.py:72
+#, python-format
+msgid "Invalid page (%(page_number)s): %(message)s"
+msgstr ""
+
+#: new_venv/lib/python3.8/site-packages/django/views/generic/list.py:154
+#, python-format
+msgid "Empty list and '%(class_name)s.allow_empty' is False."
+msgstr ""
+
+#: new_venv/lib/python3.8/site-packages/django/views/static.py:40
+msgid "Directory indexes are not allowed here."
+msgstr ""
+
+#: new_venv/lib/python3.8/site-packages/django/views/static.py:42
+#, python-format
+msgid "\"%(path)s\" does not exist"
+msgstr ""
+
+#: new_venv/lib/python3.8/site-packages/django/views/static.py:80
+#, python-format
+msgid "Index of %(directory)s"
+msgstr ""
+
+#: new_venv/lib/python3.8/site-packages/django/views/templates/default_urlconf.html:6
+msgid "Django: the Web framework for perfectionists with deadlines."
+msgstr ""
+
+#: new_venv/lib/python3.8/site-packages/django/views/templates/default_urlconf.html:345
+#, python-format
+msgid ""
+"View <a href=\"https://docs.djangoproject.com/en/%(version)s/releases/\" "
+"target=\"_blank\" rel=\"noopener\">release notes</a> for Django %(version)s"
+msgstr ""
+
+#: new_venv/lib/python3.8/site-packages/django/views/templates/default_urlconf.html:367
+msgid "The install worked successfully! Congratulations!"
+msgstr ""
+
+#: new_venv/lib/python3.8/site-packages/django/views/templates/default_urlconf.html:368
+#, python-format
+msgid ""
+"You are seeing this page because <a href=\"https://docs.djangoproject.com/en/"
+"%(version)s/ref/settings/#debug\" target=\"_blank\" rel=\"noopener"
+"\">DEBUG=True</a> is in your settings file and you have not configured any "
+"URLs."
+msgstr ""
+
+#: new_venv/lib/python3.8/site-packages/django/views/templates/default_urlconf.html:383
+msgid "Django Documentation"
+msgstr ""
+
+#: new_venv/lib/python3.8/site-packages/django/views/templates/default_urlconf.html:384
+msgid "Topics, references, &amp; how-to's"
+msgstr ""
+
+#: new_venv/lib/python3.8/site-packages/django/views/templates/default_urlconf.html:395
+msgid "Tutorial: A Polling App"
+msgstr ""
+
+#: new_venv/lib/python3.8/site-packages/django/views/templates/default_urlconf.html:396
+msgid "Get started with Django"
+msgstr ""
+
+#: new_venv/lib/python3.8/site-packages/django/views/templates/default_urlconf.html:407
+msgid "Django Community"
+msgstr ""
+
+#: new_venv/lib/python3.8/site-packages/django/views/templates/default_urlconf.html:408
+msgid "Connect, get help, or contribute"
+msgstr ""
+
+#: new_venv/lib/python3.8/site-packages/fcm_django/admin.py:65
+#, python-format
+msgid "Some messages were sent: %s"
+msgstr ""
+
+#: new_venv/lib/python3.8/site-packages/fcm_django/admin.py:67
+#, python-format
+msgid "All messages were sent: %s"
+msgstr ""
+
+#: new_venv/lib/python3.8/site-packages/fcm_django/admin.py:73
+#, python-format
+msgid "Some messages failed to send. %d devices were marked as inactive."
+msgstr ""
+
+#: new_venv/lib/python3.8/site-packages/fcm_django/admin.py:81
+msgid "Send test notification"
+msgstr ""
+
+#: new_venv/lib/python3.8/site-packages/fcm_django/admin.py:86
+msgid "Send test notification in bulk"
+msgstr ""
+
+#: new_venv/lib/python3.8/site-packages/fcm_django/admin.py:91
+msgid "Send test data message"
+msgstr ""
+
+#: new_venv/lib/python3.8/site-packages/fcm_django/admin.py:97
+msgid "Send test data message in bulk"
+msgstr ""
+
+#: new_venv/lib/python3.8/site-packages/fcm_django/admin.py:102
+msgid "Enable selected devices"
+msgstr ""
+
+#: new_venv/lib/python3.8/site-packages/fcm_django/admin.py:107
+msgid "Disable selected devices"
+msgstr ""
+
+#: new_venv/lib/python3.8/site-packages/fcm_django/fields.py:52
+msgid "Enter a valid hexadecimal number"
+msgstr ""
+
+#: new_venv/lib/python3.8/site-packages/fcm_django/models.py:20
+#, fuzzy
+#| msgid "Is active?"
+msgid "Is active"
+msgstr "Активен?"
+
+#: new_venv/lib/python3.8/site-packages/fcm_django/models.py:21
+msgid "Inactive devices will not be sent notifications"
+msgstr ""
+
+#: new_venv/lib/python3.8/site-packages/fcm_django/models.py:164
+msgid "Device ID"
+msgstr ""
+
+#: new_venv/lib/python3.8/site-packages/fcm_django/models.py:165
+msgid "Unique device identifier"
+msgstr ""
+
+#: new_venv/lib/python3.8/site-packages/fcm_django/models.py:168
+#, fuzzy
+#| msgid "For registration"
+msgid "Registration token"
+msgstr "За регестрацию"
+
+#: new_venv/lib/python3.8/site-packages/fcm_django/models.py:174
+#: new_venv/lib/python3.8/site-packages/fcm_django/models.py:258
+msgid "FCM device"
+msgstr ""
+
+#: new_venv/lib/python3.8/site-packages/fcm_django/models.py:259
+msgid "FCM devices"
+msgstr ""
+
+#: new_venv/lib/python3.8/site-packages/fcm_django/settings.py:7
+msgid "FCM Django"
+msgstr ""
+
+#: new_venv/lib/python3.8/site-packages/solo/admin.py:53
+#, fuzzy, python-format
+#| msgid "QR Code scanned successfully"
+msgid "%(obj)s was changed successfully."
+msgstr "QR код отсканированн успешно"
+
+#: new_venv/lib/python3.8/site-packages/solo/admin.py:55
+msgid "You may edit it again below."
+msgstr ""
+
+#: new_venv/lib/python3.8/site-packages/solo/templates/admin/solo/change_form.html:7
+#: new_venv/lib/python3.8/site-packages/solo/templates/admin/solo/object_history.html:6
+msgid "Home"
+msgstr ""
+
+#: new_venv/lib/python3.8/site-packages/solo/templates/admin/solo/change_form.html:14
+#: new_venv/lib/python3.8/site-packages/solo/templates/admin/solo/object_history.html:9
+msgid "History"
+msgstr ""
+
+#: new_venv/lib/python3.8/site-packages/solo/templates/admin/solo/change_form.html:15
+msgid "View on site"
+msgstr ""
+
+#: new_venv/lib/python3.8/site-packages/solo/templatetags/solo_tags.py:22
+#, python-format
+msgid ""
+"Templatetag requires the model dotted path: 'app_label.ModelName'. Received "
+"'%s'."
+msgstr ""
+
+#: new_venv/lib/python3.8/site-packages/solo/templatetags/solo_tags.py:28
+#, python-format
+msgid ""
+"Could not get the model name '%(model)s' from the application named '%(app)s'"
+msgstr ""
 
 #: post/models.py:15 post/models.py:20
 msgid "Post image"
@@ -341,33 +1846,35 @@ msgstr "Сколько статей отображать в приложении
 msgid ""
 "Set how much post to show in mobile app. Rest of the post will be visible "
 "after clicking 'more' button"
-msgstr "Выставите сколько статей должно быть видно в приложении. Остальные статьи будут видны после нажатия на кнопку 'Еще'"
+msgstr ""
+"Выставите сколько статей должно быть видно в приложении. Остальные статьи "
+"будут видны после нажатия на кнопку 'Еще'"
 
 #: post/models.py:61
 msgid "Posts config"
 msgstr "Настроки секции со статьями"
 
-#: qr_code/models.py:18
+#: qr_code/models.py:21
 msgid "QR code"
 msgstr "QR код"
 
-#: qr_code/models.py:65
+#: qr_code/models.py:68
 msgid "User QR code"
 msgstr "QR код пользователя"
 
-#: qr_code/models.py:66
+#: qr_code/models.py:69
 msgid "User QR codes"
 msgstr "QR коды пользователя"
 
-#: qr_code/models.py:72 voucher/models.py:147
+#: qr_code/models.py:75 voucher/models.py:147
 msgid "Voucher"
 msgstr "Ваучер"
 
-#: qr_code/models.py:77
+#: qr_code/models.py:80
 msgid "QR Code"
 msgstr "QR код"
 
-#: qr_code/models.py:84 qr_code/models.py:85
+#: qr_code/models.py:87 qr_code/models.py:88
 msgid "Voucher QR code"
 msgstr "QR код ваучера"
 
@@ -382,10 +1889,6 @@ msgstr ""
 #: user/models.py:44
 msgid "Instagram Profile"
 msgstr "Instagram профиль"
-
-#: user/models.py:54
-msgid "Email address"
-msgstr "Email"
 
 #: user/models.py:60
 msgid "Current user purchase"
@@ -407,53 +1910,63 @@ msgstr "Firebase uId пользователя"
 msgid "Users"
 msgstr "Пользователи"
 
-#: user/serializers.py:62
+#: user/serializers.py:66
 msgid "User with this phone number already registered"
 msgstr "Пользователь с таким номером телефона уже зарагестрированн"
 
-#: user/serializers.py:194 user/serializers.py:246
+#: user/serializers.py:209 user/serializers.py:261
 msgid "User with entered phone number not found"
 msgstr "Пользователь с введенным номером телефона не найден"
 
-#: user/serializers.py:235
+#: user/serializers.py:250
 msgid "Invalid code"
 msgstr "Неверный код"
 
-#: user/serializers.py:239
+#: user/serializers.py:254
 msgid "Error occurred while phone number validation"
 msgstr "Во время валидации номера телефона произошла ошибка"
 
-#: user/serializers.py:261
+#: user/serializers.py:276
 msgid "Passwords must match"
 msgstr "Пароли должны совпадать"
 
-#: user/serializers.py:282
+#: user/serializers.py:297
 msgid "Must include phone number and password"
 msgstr "Должен содержать номер телефона и пароль"
 
-#: user/serializers.py:293
+#: user/serializers.py:308
 msgid "User account is disabled."
 msgstr "Аккаунт пользователя заблокированн"
 
-#: user/serializers.py:296
+#: user/serializers.py:311
 msgid "Unable to log in with provided credentials."
 msgstr "Вы ввели не правильные данные для входа"
 
-#: user/views.py:37 voucher/views.py:18
+#: user/views.py:41 voucher/views.py:18
 msgid "QR Code scanned successfully"
 msgstr "QR код отсканированн успешно"
 
-#: user/views.py:63
+#: user/views.py:44
+msgid "User received voucher"
+msgstr "Пользователь получил ваучер"
+
+#: user/views.py:72
 msgid "Code was successfully send by SMS"
 msgstr "SMS сщщбщение с кодом был выслан"
 
-#: user/views.py:89
+#: user/views.py:98
 msgid "Password was successfully changed"
 msgstr "Пароль успешно изменен"
 
-#: user/views.py:102
+#: user/views.py:111
 msgid "Phone number is missing"
 msgstr "Введите номер телефона"
+
+#: user/views.py:150
+#, fuzzy
+#| msgid "QR Code scanned successfully"
+msgid "QR code has been successfully recreated"
+msgstr "QR код отсканированн успешно"
 
 #: utils/models.py:7
 msgid "Is active?"
@@ -509,7 +2022,8 @@ msgstr "Тип ваучера"
 
 #: voucher/models.py:53
 msgid "Select voucher type (in which case user receive voucher)"
-msgstr "Выберете тип ваучера (в каких случаях пользователь будет получать ваучер)"
+msgstr ""
+"Выберете тип ваучера (в каких случаях пользователь будет получать ваучер)"
 
 #: voucher/models.py:57
 msgid "Discount type"
@@ -571,18 +2085,18 @@ msgstr "Дата истечения"
 msgid "Vouchers"
 msgstr "Ваучеры"
 
-#: voucher/serializers.py:125
+#: voucher/serializers.py:127
 msgid "Invalid voucher QR code"
 msgstr "Не верный QR код ваучера"
 
-#: voucher/serializers.py:133
+#: voucher/serializers.py:138
 msgid "QR code has already been scanned"
 msgstr "QR код уже был отсканированн"
 
-#: voucher/serializers.py:137
+#: voucher/serializers.py:142
 msgid "Voucher expired {voucher.expiration_date.strftime('%m/%d/%Y')}"
 msgstr ""
 
-#: voucher/serializers.py:141
+#: voucher/serializers.py:146
 msgid "Voucher is inactive"
 msgstr "Ваучер неактивен"

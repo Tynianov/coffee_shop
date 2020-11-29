@@ -37,7 +37,13 @@ class ScanUserQRCodeView(APIView):
         serializer = ValidateUserQrCodeSerializer(data={"id": user_id}, context={'initiator': request.user})
         serializer.is_valid(raise_exception=True)
 
-        return Response({"message": _("QR Code scanned successfully")})
+        if not serializer.is_voucher_received:
+            return Response({"message": _("QR Code scanned successfully")})
+
+        return Response({
+            "message": _("User received voucher"),
+            "voucher_name": serializer.received_voucher.voucher_config.name
+        })
 
 
 class UserVoucherDetailsView(APIView):
