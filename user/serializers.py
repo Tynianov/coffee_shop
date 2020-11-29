@@ -154,6 +154,9 @@ class ValidateUserQrCodeSerializer(serializers.Serializer):
                     'voucher': VoucherSerializer(voucher).data,
                     'updated_counter': user.current_purchase_count
                 }
+                log_entry_data.update({
+                    "is_voucher_received": True
+                })
                 send_push_notification(user, "Voucher received", push_notification_data)
         log_entry_data.update({
             'status': True,
