@@ -38,7 +38,16 @@ class ScanUserQRCodeView(APIView):
         serializer.is_valid(raise_exception=True)
 
         if not serializer.is_voucher_received:
-            return Response({"message": _("QR Code scanned successfully")})
+            response_data = {"message": _("QR Code scanned successfully")}
+
+            voucher_conf = VoucherConfig.objects.min_purchase_type().order_by(
+                "purchase_count"
+            ).first()
+            if not voucher_conf:
+                return Response(response_data)
+            remain_till_voucher = voucher_conf.purchase_count - request.user.current_purchase_count
+            response_data['remain_till_voucher'] = remain_till_voucher
+            return Response(response_data)
 
         return Response({
             "message": _("User received voucher"),
