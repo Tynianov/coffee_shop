@@ -108,6 +108,7 @@ class ValidateUserQrCodeSerializer(serializers.Serializer):
         super().__init__(*args, **kwargs)
         self.is_voucher_received = False
         self.received_voucher = None
+        self.scanned_user = None
 
     def validate(self, attrs):
         id = attrs.get('id')
@@ -132,6 +133,7 @@ class ValidateUserQrCodeSerializer(serializers.Serializer):
 
         user.current_purchase_count += 1
         user.save()
+        self.scanned_user = user
 
         user_received_voucher = False
         for voucher_config in VoucherConfig.objects.min_purchase_type():

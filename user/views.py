@@ -45,7 +45,7 @@ class ScanUserQRCodeView(APIView):
             ).first()
             if not voucher_conf:
                 return Response(response_data)
-            remain_till_voucher = voucher_conf.purchase_count - request.user.current_purchase_count
+            remain_till_voucher = voucher_conf.purchase_count - serializer.scanned_user.current_purchase_count
             response_data['remain_till_voucher'] = remain_till_voucher
             return Response(response_data)
 
